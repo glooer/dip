@@ -1,0 +1,1 @@
+rbuic4 search_window.ui > ui_search_window.rb
