@@ -6,410 +6,496 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>641</width>
-    <height>594</height>
+    <width>1171</width>
+    <height>878</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">.QComboBox:disabled {
+	background-color: rgba(240, 240, 240, 0)
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="1">
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="1">
-       <widget class="QTabWidget" name="tabWidget">
-        <property name="currentIndex">
-         <number>0</number>
-        </property>
-        <widget class="QWidget" name="tab_3">
-         <attribute name="title">
-          <string>Tab 1</string>
-         </attribute>
-         <layout class="QGridLayout" name="gridLayout_3">
-          <item row="3" column="0">
-           <layout class="QVBoxLayout" name="firstName_layout">
-            <item>
-             <widget class="QCheckBox" name="firstName_checkBox">
-              <property name="text">
-               <string>Имя</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="firstName_edit">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
+    <item row="0" column="0">
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QTableView" name="tableView">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>1</horstretch>
+         <verstretch>1</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderDefaultSectionSize">
+        <number>23</number>
+       </attribute>
+       <attribute name="verticalHeaderHighlightSections">
+        <bool>false</bool>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="1" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QPushButton" name="pushButton_2">
+            <property name="text">
+             <string>Сбросить</string>
+            </property>
+           </widget>
           </item>
-          <item row="1" column="0">
-           <layout class="QGridLayout" name="id_layout">
-            <item row="0" column="0">
-             <widget class="QCheckBox" name="id_checkBox">
-              <property name="text">
-               <string>Код</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QComboBox" name="id_selecter">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">.QComboBox:disabled {
-
-}</string>
-              </property>
-              <property name="editable">
-               <bool>false</bool>
-              </property>
-              <property name="sizeAdjustPolicy">
-               <enum>QComboBox::AdjustToMinimumContentsLength</enum>
-              </property>
-              <property name="duplicatesEnabled">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0" colspan="2">
-             <widget class="QLineEdit" name="id_edit">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="2" column="0">
-           <layout class="QVBoxLayout" name="lastName_layout">
-            <item>
-             <widget class="QCheckBox" name="lastName_checkBox">
-              <property name="text">
-               <string>Фамилия</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="lastName_edit">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="6" column="0">
-           <layout class="QHBoxLayout" name="sex_layout">
-            <item>
-             <widget class="QCheckBox" name="sex_checkBox">
-              <property name="text">
-               <string>Пол</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="sex_group_layout">
-              <item>
-               <spacer name="horizontalSpacer_2">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QRadioButton" name="sex_male">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-                <property name="text">
-                 <string>М</string>
-                </property>
-                <property name="checked">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QRadioButton" name="sex_female">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-                <property name="text">
-                 <string>Ж</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
-          </item>
-          <item row="5" column="0">
-           <layout class="QFormLayout" name="formLayout">
-            <item row="0" column="0">
-             <widget class="QCheckBox" name="birthDate_checkBox">
-              <property name="text">
-               <string>Дата рождения</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QDateEdit" name="birthDate_edit_start">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="dateTime">
-               <datetime>
-                <hour>0</hour>
-                <minute>0</minute>
-                <second>0</second>
-                <year>2000</year>
-                <month>1</month>
-                <day>1</day>
-               </datetime>
-              </property>
-              <property name="calendarPopup">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QDateEdit" name="birthDate_edit_end">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="calendarPopup">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QCheckBox" name="birthDate_checkBox_end">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="text">
-               <string>по</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="7" column="0">
-           <layout class="QHBoxLayout" name="contact_layout">
-            <item>
-             <widget class="QCheckBox" name="contact_checkBox">
-              <property name="text">
-               <string>Контакт</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="contact_edit">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="4" column="0">
-           <layout class="QVBoxLayout" name="patrName_layout">
-            <item>
-             <widget class="QCheckBox" name="patrName_checkBox">
-              <property name="text">
-               <string>Отчество</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="patrName_edit">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="8" column="0">
-           <layout class="QHBoxLayout" name="snils_layout">
-            <item>
-             <widget class="QCheckBox" name="snils_checkBox">
-              <property name="text">
-               <string>СНИЛС</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="snils_edit">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="9" column="0">
-           <layout class="QGridLayout" name="document_layout">
-            <item row="0" column="1">
-             <widget class="QComboBox" name="document_selecter">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QCheckBox" name="document_checkBox">
-              <property name="text">
-               <string>Документ</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLineEdit" name="document_serial">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QLineEdit" name="document_number">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="11" column="0">
-           <spacer name="verticalSpacer">
+          <item>
+           <spacer name="horizontalSpacer">
             <property name="orientation">
-             <enum>Qt::Vertical</enum>
+             <enum>Qt::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>20</width>
-              <height>40</height>
+              <width>40</width>
+              <height>20</height>
              </size>
             </property>
            </spacer>
           </item>
-          <item row="10" column="0">
-           <layout class="QGridLayout" name="address_Layout">
-            <item row="0" column="2">
-             <layout class="QHBoxLayout" name="horizontalLayout">
-              <item>
-               <widget class="QRadioButton" name="address_type_reg">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-                <property name="text">
-                 <string>Регистрации</string>
-                </property>
-                <property name="checked">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QRadioButton" name="address_type_stay">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-                <property name="text">
-                 <string>Проживания</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item row="0" column="0">
-             <widget class="QCheckBox" name="address_checkBox">
-              <property name="text">
-               <string>Адрес</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <spacer name="horizontalSpacer_3">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
+          <item>
+           <widget class="QPushButton" name="ok_search_button">
+            <property name="text">
+             <string>Применить</string>
+            </property>
+           </widget>
           </item>
          </layout>
-        </widget>
-        <widget class="QWidget" name="tab_4">
-         <attribute name="title">
-          <string>Tab 2</string>
-         </attribute>
-        </widget>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <layout class="QHBoxLayout" name="horizontalLayout_5">
-        <item>
-         <widget class="QPushButton" name="pushButton_2">
-          <property name="text">
-           <string>Сбросить</string>
-          </property>
-         </widget>
         </item>
-        <item>
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
+        <item row="0" column="1">
+         <widget class="QTabWidget" name="tabWidget_2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
+          <property name="currentIndex">
+           <number>0</number>
           </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QPushButton" name="ok_search_button">
-          <property name="text">
-           <string>Применить</string>
-          </property>
+          <widget class="QWidget" name="tab">
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <attribute name="title">
+            <string>Основное</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_4">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QScrollArea" name="scrollArea">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QScrollArea { background: transparent; }
+QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Plain</enum>
+              </property>
+              <property name="lineWidth">
+               <number>0</number>
+              </property>
+              <property name="midLineWidth">
+               <number>0</number>
+              </property>
+              <property name="horizontalScrollBarPolicy">
+               <enum>Qt::ScrollBarAlwaysOff</enum>
+              </property>
+              <property name="widgetResizable">
+               <bool>true</bool>
+              </property>
+              <widget class="QWidget" name="scrollAreaWidgetContents">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>307</width>
+                 <height>760</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout">
+                <item>
+                 <layout class="QGridLayout" name="id_layout">
+                  <item row="0" column="0">
+                   <widget class="QCheckBox" name="id_checkBox">
+                    <property name="text">
+                     <string>Код</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QComboBox" name="id_selecter">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="editable">
+                     <bool>false</bool>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QComboBox::AdjustToMinimumContentsLength</enum>
+                    </property>
+                    <property name="duplicatesEnabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0" colspan="2">
+                   <widget class="QLineEdit" name="id_edit">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="lastName_layout">
+                  <item>
+                   <widget class="QCheckBox" name="lastName_checkBox">
+                    <property name="text">
+                     <string>Фамилия</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="lastName_edit">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="firstName_layout">
+                  <item>
+                   <widget class="QCheckBox" name="firstName_checkBox">
+                    <property name="text">
+                     <string>Имя</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="firstName_edit">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="patrName_layout">
+                  <item>
+                   <widget class="QCheckBox" name="patrName_checkBox">
+                    <property name="text">
+                     <string>Отчество</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="patrName_edit">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QFormLayout" name="formLayout">
+                  <item row="0" column="0">
+                   <widget class="QCheckBox" name="birthDate_checkBox">
+                    <property name="text">
+                     <string>Дата рождения</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QDateEdit" name="birthDate_edit_start">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="dateTime">
+                     <datetime>
+                      <hour>0</hour>
+                      <minute>0</minute>
+                      <second>0</second>
+                      <year>2000</year>
+                      <month>1</month>
+                      <day>1</day>
+                     </datetime>
+                    </property>
+                    <property name="calendarPopup">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QDateEdit" name="birthDate_edit_end">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="calendarPopup">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QCheckBox" name="birthDate_checkBox_end">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="text">
+                     <string>по</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="sex_layout">
+                  <item>
+                   <widget class="QCheckBox" name="sex_checkBox">
+                    <property name="text">
+                     <string>Пол</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="sex_group_layout">
+                    <item>
+                     <spacer name="horizontalSpacer_2">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QRadioButton" name="sex_male">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="text">
+                       <string>М</string>
+                      </property>
+                      <property name="checked">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QRadioButton" name="sex_female">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="text">
+                       <string>Ж</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="contact_layout">
+                  <item>
+                   <widget class="QCheckBox" name="contact_checkBox">
+                    <property name="text">
+                     <string>Контакт</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="contact_edit">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="snils_layout">
+                  <item>
+                   <widget class="QCheckBox" name="snils_checkBox">
+                    <property name="text">
+                     <string>СНИЛС</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="snils_edit">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QGridLayout" name="document_layout">
+                  <item row="0" column="1">
+                   <widget class="QComboBox" name="document_selecter">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QCheckBox" name="document_checkBox">
+                    <property name="text">
+                     <string>Документ</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLineEdit" name="document_serial">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLineEdit" name="document_number">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QGridLayout" name="address_Layout">
+                  <item row="0" column="2">
+                   <layout class="QHBoxLayout" name="horizontalLayout">
+                    <item>
+                     <widget class="QRadioButton" name="address_type_reg">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="text">
+                       <string>Регистрации</string>
+                      </property>
+                      <property name="checkable">
+                       <bool>true</bool>
+                      </property>
+                      <property name="checked">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QRadioButton" name="address_type_stay">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="text">
+                       <string>Проживания</string>
+                      </property>
+                      <property name="checkable">
+                       <bool>true</bool>
+                      </property>
+                      <property name="checked">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QCheckBox" name="address_checkBox">
+                    <property name="text">
+                     <string>Адрес</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <spacer name="horizontalSpacer_3">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </widget>
         </item>
        </layout>
-      </item>
-     </layout>
-    </item>
-    <item row="0" column="0">
-     <widget class="QTableView" name="tableView">
-      <property name="alternatingRowColors">
-       <bool>true</bool>
-      </property>
-      <attribute name="verticalHeaderVisible">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="verticalHeaderDefaultSectionSize">
-       <number>23</number>
-      </attribute>
-      <attribute name="verticalHeaderHighlightSections">
-       <bool>false</bool>
-      </attribute>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -419,7 +505,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>641</width>
+     <width>1171</width>
      <height>21</height>
     </rect>
    </property>
@@ -456,7 +542,20 @@
     <addaction name="menu_2"/>
     <addaction name="menu_3"/>
    </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>Результаты запроса</string>
+    </property>
+    <widget class="QMenu" name="menu_5">
+     <property name="title">
+      <string>Экспорт</string>
+     </property>
+     <addaction name="export_csv"/>
+    </widget>
+    <addaction name="menu_5"/>
+   </widget>
    <addaction name="menu"/>
+   <addaction name="menu_4"/>
   </widget>
   <widget class="QStatusBar" name="statusbar">
    <property name="enabled">
@@ -478,12 +577,18 @@
    <property name="checkable">
     <bool>true</bool>
    </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Имя</string>
    </property>
   </action>
   <action name="menu_Client_patrName">
    <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
     <bool>true</bool>
    </property>
    <property name="enabled">
@@ -501,7 +606,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="text">
     <string>Ид</string>
@@ -517,12 +622,18 @@
    <property name="checkable">
     <bool>true</bool>
    </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Дата рождения</string>
    </property>
   </action>
   <action name="menu_Client_sex">
    <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
     <bool>true</bool>
    </property>
    <property name="text">
@@ -621,153 +732,17 @@
     <string>Область</string>
    </property>
   </action>
+  <action name="export_csv">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>CSV</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>
-  <connection>
-   <sender>lastName_checkBox</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>lastName_edit</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>475</x>
-     <y>125</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>475</x>
-     <y>149</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>firstName_checkBox</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>firstName_edit</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>475</x>
-     <y>176</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>475</x>
-     <y>200</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>patrName_checkBox</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>patrName_edit</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>475</x>
-     <y>227</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>475</x>
-     <y>251</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>sex_checkBox</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>sex_male</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>356</x>
-     <y>334</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>560</x>
-     <y>334</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>sex_checkBox</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>sex_female</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>356</x>
-     <y>334</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>598</x>
-     <y>334</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>contact_checkBox</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>contact_edit</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>368</x>
-     <y>363</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>511</x>
-     <y>363</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>snils_checkBox</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>snils_edit</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>364</x>
-     <y>391</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>507</x>
-     <y>391</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>birthDate_checkBox_end</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>birthDate_edit_end</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>353</x>
-     <y>304</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>530</x>
-     <y>305</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>document_checkBox</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>document_serial</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>404</x>
-     <y>419</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>404</x>
-     <y>445</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>document_checkBox</sender>
    <signal>clicked(bool)</signal>
@@ -801,18 +776,18 @@
    </hints>
   </connection>
   <connection>
-   <sender>address_checkBox</sender>
+   <sender>lastName_checkBox</sender>
    <signal>clicked(bool)</signal>
-   <receiver>address_type_reg</receiver>
+   <receiver>lastName_edit</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>356</x>
-     <y>473</y>
+     <x>475</x>
+     <y>125</y>
     </hint>
     <hint type="destinationlabel">
-     <x>480</x>
-     <y>473</y>
+     <x>475</x>
+     <y>149</y>
     </hint>
    </hints>
   </connection>
@@ -829,6 +804,150 @@
     <hint type="destinationlabel">
      <x>572</x>
      <y>473</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sex_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>sex_male</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>356</x>
+     <y>334</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>560</x>
+     <y>334</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snils_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>snils_edit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>364</x>
+     <y>391</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>507</x>
+     <y>391</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>contact_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>contact_edit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>368</x>
+     <y>363</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>511</x>
+     <y>363</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>address_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>address_type_reg</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>356</x>
+     <y>473</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>473</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>firstName_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>firstName_edit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>475</x>
+     <y>176</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>475</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sex_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>sex_female</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>356</x>
+     <y>334</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>598</x>
+     <y>334</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>birthDate_checkBox_end</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>birthDate_edit_end</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>304</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>530</x>
+     <y>305</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>patrName_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>patrName_edit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>475</x>
+     <y>227</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>475</x>
+     <y>251</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>document_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>document_serial</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>404</x>
+     <y>419</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>404</x>
+     <y>445</y>
     </hint>
    </hints>
   </connection>

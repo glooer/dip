@@ -1,18 +1,24 @@
 class Search_window < Qt::MainWindow
-  slots "id_checkBox_change(int)", "ok_search_button_clicked()", "birthDate_checkBox_change(int)", "document_checkBox_ui_fill()"
+  attr_reader :limit
 
+  slots "id_checkBox_change(int)", "ok_search_button_clicked()", "birthDate_checkBox_change(int)", "document_checkBox_ui_fill()", "oncick_export_to_csv()"
 
   def initialize
     super
     @ui = Ui_Search_window.new
     @ui.setupUi(self)
+    
+    @limit = 1_000
+    
     ok_search_button_clicked
     connect(@ui.ok_search_button, SIGNAL("clicked()"), SLOT("ok_search_button_clicked()"))
-    
     
     connect(@ui.id_checkBox, SIGNAL("stateChanged(int)"), SLOT("id_checkBox_change(int)"))
     connect(@ui.birthDate_checkBox, SIGNAL("stateChanged(int)"), SLOT("birthDate_checkBox_change(int)"))
     connect(@ui.document_checkBox, SIGNAL("stateChanged(int)"), SLOT("document_checkBox_ui_fill()"))
+    
+    connect(@ui.export_csv, SIGNAL("triggered()"), SLOT("oncick_export_to_csv()"))
+    
   end
   
   
@@ -71,6 +77,14 @@ class Search_window < Qt::MainWindow
     db
   end
   
+  def oncick_export_to_csv
+    time = Time.new.strftime("%Y-%m-%d_%H-%M-%S") #винда не разренает ":" в названии файлов :(
+    filename = Qt::FileDialog::getSaveFileName(self, "", "Clients_#{time}", "CSV for MS Excel (*.csv)\n All files (*.*)") || return
+    filename += ".csv" if File.extname(filename).empty?
+    
+    Export.to_csv(filename, @ui.tableView.model.to_a, header: @ui.tableView.model.headers)
+  end
+  
   def parse_ui_select(db)
     #из верхнего меню.
     #"Client.id, Client.firstName, Client.lastName, Client.sex"
@@ -107,7 +121,7 @@ class Search_window < Qt::MainWindow
   
   def ok_search_button_clicked
     #show_main_table(db_generator(parse_ui_select, parse_ui_where)) 
-    limit = 1_000
+    
     #show_main_table parse_ui_select(S11::Client).take(limit).as_json
     db = S11::Client
     db_with_select = parse_ui_select(db)
@@ -122,6 +136,7 @@ class Search_window < Qt::MainWindow
       return
     end
     show_main_table(a)
+    
   end
   
   
@@ -133,10 +148,12 @@ class Search_window < Qt::MainWindow
     
     
     table.each.with_index do |row, i|
+      id = row.delete("id") || i.next.to_s
       row.values.each.with_index do |col, j|
         newItem = Qt::StandardItem.new(col.to_s)
         model.setItem(i, j, newItem)
       end
+      model.setHeaderData(i, Qt::Vertical, Qt::Variant.new(id))
     end
     #newItem = Qt::StandardItem.new("e")
     #model.setItem(0, 0, newItem)

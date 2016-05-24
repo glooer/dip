@@ -13,6 +13,11 @@ require "active_record"
 require "squeel"
 require "./database/S11.rb"
 
+#module
+require "csv"
+require "./module/export.rb"
+require "./module/rb.rb"
+
 
 
 app = Application.new(ARGV)
