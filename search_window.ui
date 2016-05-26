@@ -415,6 +415,13 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 </item>
                 <item>
                  <layout class="QGridLayout" name="address_Layout">
+                  <item row="2" column="0" colspan="3">
+                   <widget class="QComboBox" name="address_select_city">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="0" column="2">
                    <layout class="QHBoxLayout" name="horizontalLayout">
                     <item>
@@ -451,13 +458,6 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                     </item>
                    </layout>
                   </item>
-                  <item row="0" column="0">
-                   <widget class="QCheckBox" name="address_checkBox">
-                    <property name="text">
-                     <string>Адрес</string>
-                    </property>
-                   </widget>
-                  </item>
                   <item row="0" column="1">
                    <spacer name="horizontalSpacer_3">
                     <property name="orientation">
@@ -470,6 +470,82 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                      </size>
                     </property>
                    </spacer>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QCheckBox" name="address_checkBox">
+                    <property name="text">
+                     <string>Адрес</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0" colspan="3">
+                   <widget class="QComboBox" name="address_select_street">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0" colspan="3">
+                   <widget class="QComboBox" name="address_select_area">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="0" colspan="3">
+                   <layout class="QHBoxLayout" name="horizontalLayout_2">
+                    <item>
+                     <widget class="QLabel" name="address_text_home">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="text">
+                       <string>Дом</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="address_home">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="address_text_korp">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="text">
+                       <string>Корп</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="address_korp">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="address_text_flat">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="text">
+                       <string>Кв</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="address_flat">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
                   </item>
                  </layout>
                 </item>
@@ -948,6 +1024,150 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
     <hint type="destinationlabel">
      <x>404</x>
      <y>445</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>address_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>address_select_area</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>886</x>
+     <y>465</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1003</x>
+     <y>491</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>address_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>address_select_city</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>886</x>
+     <y>465</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1003</x>
+     <y>517</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>address_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>address_select_street</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>886</x>
+     <y>465</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1003</x>
+     <y>543</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>address_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>address_text_flat</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>886</x>
+     <y>465</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1067</x>
+     <y>570</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>address_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>address_text_home</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>886</x>
+     <y>465</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>870</x>
+     <y>570</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>address_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>address_text_korp</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>886</x>
+     <y>465</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>971</x>
+     <y>570</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>address_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>address_flat</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>886</x>
+     <y>465</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1112</x>
+     <y>570</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>address_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>address_home</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>886</x>
+     <y>465</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>919</x>
+     <y>570</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>address_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>address_korp</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>886</x>
+     <y>465</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1022</x>
+     <y>570</y>
     </hint>
    </hints>
   </connection>

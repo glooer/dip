@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'search_window.ui'
 **
-** Created: ѕн 23. май 23:52:11 2016
+** Created: ¬т 24. май 17:22:11 2016
 **      by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -77,11 +77,21 @@ class Ui_Search_window
     attr_reader :document_serial
     attr_reader :document_number
     attr_reader :address_Layout
+    attr_reader :address_select_city
     attr_reader :horizontalLayout
     attr_reader :address_type_reg
     attr_reader :address_type_stay
-    attr_reader :address_checkBox
     attr_reader :horizontalSpacer_3
+    attr_reader :address_checkBox
+    attr_reader :address_select_street
+    attr_reader :address_select_area
+    attr_reader :horizontalLayout_2
+    attr_reader :address_text_home
+    attr_reader :address_home
+    attr_reader :address_text_korp
+    attr_reader :address_korp
+    attr_reader :address_text_flat
+    attr_reader :address_flat
     attr_reader :verticalSpacer_2
     attr_reader :menubar
     attr_reader :menu
@@ -434,6 +444,12 @@ class Ui_Search_window
 
     @address_Layout = Qt::GridLayout.new()
     @address_Layout.objectName = "address_Layout"
+    @address_select_city = Qt::ComboBox.new(@scrollAreaWidgetContents)
+    @address_select_city.objectName = "address_select_city"
+    @address_select_city.enabled = false
+
+    @address_Layout.addWidget(@address_select_city, 2, 0, 1, 3)
+
     @horizontalLayout = Qt::HBoxLayout.new()
     @horizontalLayout.objectName = "horizontalLayout"
     @address_type_reg = Qt::RadioButton.new(@scrollAreaWidgetContents)
@@ -455,14 +471,67 @@ class Ui_Search_window
 
     @address_Layout.addLayout(@horizontalLayout, 0, 2, 1, 1)
 
+    @horizontalSpacer_3 = Qt::SpacerItem.new(40, 20, Qt::SizePolicy::Expanding, Qt::SizePolicy::Minimum)
+
+    @address_Layout.addItem(@horizontalSpacer_3, 0, 1, 1, 1)
+
     @address_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents)
     @address_checkBox.objectName = "address_checkBox"
 
     @address_Layout.addWidget(@address_checkBox, 0, 0, 1, 1)
 
-    @horizontalSpacer_3 = Qt::SpacerItem.new(40, 20, Qt::SizePolicy::Expanding, Qt::SizePolicy::Minimum)
+    @address_select_street = Qt::ComboBox.new(@scrollAreaWidgetContents)
+    @address_select_street.objectName = "address_select_street"
+    @address_select_street.enabled = false
 
-    @address_Layout.addItem(@horizontalSpacer_3, 0, 1, 1, 1)
+    @address_Layout.addWidget(@address_select_street, 3, 0, 1, 3)
+
+    @address_select_area = Qt::ComboBox.new(@scrollAreaWidgetContents)
+    @address_select_area.objectName = "address_select_area"
+    @address_select_area.enabled = false
+
+    @address_Layout.addWidget(@address_select_area, 1, 0, 1, 3)
+
+    @horizontalLayout_2 = Qt::HBoxLayout.new()
+    @horizontalLayout_2.objectName = "horizontalLayout_2"
+    @address_text_home = Qt::Label.new(@scrollAreaWidgetContents)
+    @address_text_home.objectName = "address_text_home"
+    @address_text_home.enabled = false
+
+    @horizontalLayout_2.addWidget(@address_text_home)
+
+    @address_home = Qt::LineEdit.new(@scrollAreaWidgetContents)
+    @address_home.objectName = "address_home"
+    @address_home.enabled = false
+
+    @horizontalLayout_2.addWidget(@address_home)
+
+    @address_text_korp = Qt::Label.new(@scrollAreaWidgetContents)
+    @address_text_korp.objectName = "address_text_korp"
+    @address_text_korp.enabled = false
+
+    @horizontalLayout_2.addWidget(@address_text_korp)
+
+    @address_korp = Qt::LineEdit.new(@scrollAreaWidgetContents)
+    @address_korp.objectName = "address_korp"
+    @address_korp.enabled = false
+
+    @horizontalLayout_2.addWidget(@address_korp)
+
+    @address_text_flat = Qt::Label.new(@scrollAreaWidgetContents)
+    @address_text_flat.objectName = "address_text_flat"
+    @address_text_flat.enabled = false
+
+    @horizontalLayout_2.addWidget(@address_text_flat)
+
+    @address_flat = Qt::LineEdit.new(@scrollAreaWidgetContents)
+    @address_flat.objectName = "address_flat"
+    @address_flat.enabled = false
+
+    @horizontalLayout_2.addWidget(@address_flat)
+
+
+    @address_Layout.addLayout(@horizontalLayout_2, 4, 0, 1, 3)
 
 
     @verticalLayout.addLayout(@address_Layout)
@@ -540,6 +609,15 @@ class Ui_Search_window
     Qt::Object.connect(@birthDate_checkBox_end, SIGNAL('clicked(bool)'), @birthDate_edit_end, SLOT('setEnabled(bool)'))
     Qt::Object.connect(@patrName_checkBox, SIGNAL('clicked(bool)'), @patrName_edit, SLOT('setEnabled(bool)'))
     Qt::Object.connect(@document_checkBox, SIGNAL('clicked(bool)'), @document_serial, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@address_checkBox, SIGNAL('clicked(bool)'), @address_select_area, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@address_checkBox, SIGNAL('clicked(bool)'), @address_select_city, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@address_checkBox, SIGNAL('clicked(bool)'), @address_select_street, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@address_checkBox, SIGNAL('clicked(bool)'), @address_text_flat, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@address_checkBox, SIGNAL('clicked(bool)'), @address_text_home, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@address_checkBox, SIGNAL('clicked(bool)'), @address_text_korp, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@address_checkBox, SIGNAL('clicked(bool)'), @address_flat, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@address_checkBox, SIGNAL('clicked(bool)'), @address_home, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@address_checkBox, SIGNAL('clicked(bool)'), @address_korp, SLOT('setEnabled(bool)'))
 
     @tabWidget_2.setCurrentIndex(0)
 
@@ -587,6 +665,9 @@ class Ui_Search_window
     @address_type_reg.text = Qt::Application.translate("Search_window", "\320\240\320\265\320\263\320\270\321\201\321\202\321\200\320\260\321\206\320\270\320\270", nil, Qt::Application::UnicodeUTF8)
     @address_type_stay.text = Qt::Application.translate("Search_window", "\320\237\321\200\320\276\320\266\320\270\320\262\320\260\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
     @address_checkBox.text = Qt::Application.translate("Search_window", "\320\220\320\264\321\200\320\265\321\201", nil, Qt::Application::UnicodeUTF8)
+    @address_text_home.text = Qt::Application.translate("Search_window", "\320\224\320\276\320\274", nil, Qt::Application::UnicodeUTF8)
+    @address_text_korp.text = Qt::Application.translate("Search_window", "\320\232\320\276\321\200\320\277", nil, Qt::Application::UnicodeUTF8)
+    @address_text_flat.text = Qt::Application.translate("Search_window", "\320\232\320\262", nil, Qt::Application::UnicodeUTF8)
     @tabWidget_2.setTabText(@tabWidget_2.indexOf(@tab), Qt::Application.translate("Search_window", "\320\236\321\201\320\275\320\276\320\262\320\275\320\276\320\265", nil, Qt::Application::UnicodeUTF8))
     @menu.title = Qt::Application.translate("Search_window", "\320\241\321\202\320\276\320\273\320\261\321\206\321\213", nil, Qt::Application::UnicodeUTF8)
     @menu_2.title = Qt::Application.translate("Search_window", "\320\237\320\260\321\206\320\270\320\265\320\275\321\202", nil, Qt::Application::UnicodeUTF8)

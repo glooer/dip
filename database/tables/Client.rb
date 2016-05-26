@@ -22,8 +22,12 @@ module S11
     has_many :clientDocument, foreign_key: "client_id"
     has_many :rbDocumentType, through: :clientDocument#не тестировал.
     
+    def self.joins_ares
+      joins{ kladr.outer }.joins("LEFT OUTER JOIN (SELECT `kladr`.`KLADR`.`prefix`, CONCAT(`kladr`.`KLADR`.`NAME`, ' ', `kladr`.`KLADR`.`SOCR`) as AREA FROM `kladr`.`KLADR` WHERE `kladr`.`KLADR`.`parent` = '' GROUP BY `kladr`.`KLADR`.`prefix`) as kladrAREA ON kladrAREA.prefix = `kladr`.`KLADR`.`prefix`")
+    end
+    
     def self.with_ares
-      select("kladrAREA.AREA as 'Область'").joins{ kladr.outer }.joins("LEFT OUTER JOIN (SELECT `kladr`.`KLADR`.`prefix`, CONCAT(`kladr`.`KLADR`.`NAME`, ' ', `kladr`.`KLADR`.`SOCR`) as AREA FROM `kladr`.`KLADR` WHERE `kladr`.`KLADR`.`parent` = '' GROUP BY `kladr`.`KLADR`.`prefix`) as kladrAREA ON kladrAREA.prefix = `kladr`.`KLADR`.`prefix`")
+      select("kladrAREA.AREA as 'Область'").joins_ares
     end
     
     #def self.join_clientAddress(q)

@@ -1,7 +1,7 @@
 class Search_window < Qt::MainWindow
   attr_reader :limit
 
-  slots "id_checkBox_change(int)", "ok_search_button_clicked()", "birthDate_checkBox_change(int)", "document_checkBox_ui_fill()", "oncick_export_to_csv()"
+  slots "id_checkBox_change(int)", "ok_search_button_clicked()", "birthDate_checkBox_change(int)", "document_checkBox_ui_fill()", "oncick_export_to_csv()", "address_select_area_ui_fill()", "address_select_city_ui_fill(int)", "address_select_street(int)"
 
   def initialize
     super
@@ -16,11 +16,15 @@ class Search_window < Qt::MainWindow
     connect(@ui.id_checkBox, SIGNAL("stateChanged(int)"), SLOT("id_checkBox_change(int)"))
     connect(@ui.birthDate_checkBox, SIGNAL("stateChanged(int)"), SLOT("birthDate_checkBox_change(int)"))
     connect(@ui.document_checkBox, SIGNAL("stateChanged(int)"), SLOT("document_checkBox_ui_fill()"))
+    connect(@ui.address_checkBox, SIGNAL("stateChanged(int)"), SLOT("address_select_area_ui_fill()"))
+    
+    connect(@ui.address_select_area, SIGNAL("currentIndexChanged(int)"), SLOT("address_select_city_ui_fill(int)"))
+    connect(@ui.address_select_city, SIGNAL("currentIndexChanged(int)"), SLOT("address_select_street(int)"))
     
     connect(@ui.export_csv, SIGNAL("triggered()"), SLOT("oncick_export_to_csv()"))
     
   end
-  
+
   
   def parse_ui_where(db)
     if @ui.id_checkBox.checked?
@@ -69,7 +73,7 @@ class Search_window < Qt::MainWindow
       end
     end
     
-    
+    #адрес
     if @ui.address_checkBox.checked?
       db = db.joins{ clientAddress.outer }.where("ClientAddress.type = ?", @ui.address_type_reg.checked? ? 1 : 0)
     end
@@ -79,7 +83,7 @@ class Search_window < Qt::MainWindow
   
   def oncick_export_to_csv
     time = Time.new.strftime("%Y-%m-%d_%H-%M-%S") #винда не разренает ":" в названии файлов :(
-    filename = Qt::FileDialog::getSaveFileName(self, "", "Clients_#{time}", "CSV for MS Excel (*.csv)\n All files (*.*)") || return
+    filename = Qt::FileDialog::getSaveFileName(self, "", "Clients_#{time}.csv", "CSV for MS Excel (*.csv)\n All files (*.*)") || return
     filename += ".csv" if File.extname(filename).empty?
     
     Export.to_csv(filename, @ui.tableView.model.to_a, header: @ui.tableView.model.headers)
@@ -167,6 +171,26 @@ class Search_window < Qt::MainWindow
     end
     '''
     table.first.keys.each.with_index{ |name, i| model.setHeaderData(i, Qt::Horizontal, Qt::Variant.new(name)) }
+  end
+  
+  def address_select_street(x)
+    return if x == 0
+    @ui.address_select_street.clear
+    @ui.address_select_street.addItem("Не задано", Qt::Variant.new("0"))
+    S11::Kladr.getStreetByCity(@ui.address_select_city.currentVariant).each{ |val| @ui.address_select_street.addItem(val["name"], Qt::Variant.new(val["CODE"])) }
+  end
+  
+  def address_select_city_ui_fill(x)
+    return if x == 0
+    @ui.address_select_city.clear
+    @ui.address_select_city.addItem("Не задано", Qt::Variant.new("0"))
+    S11::Kladr.getCityByArea(@ui.address_select_area.currentVariant).each{ |val| @ui.address_select_city.addItem(val["name"], Qt::Variant.new(val["GNINMB"])) }
+  end
+  
+  def address_select_area_ui_fill
+    return if !@ui.address_select_area.count.zero?
+    @ui.address_select_area.addItem("Не задано", Qt::Variant.new("0"))
+    S11::Kladr.getAreas.all.each{ |val| @ui.address_select_area.addItem(val["name"], Qt::Variant.new(val["prefix"])) }
   end
   
   def document_checkBox_ui_fill
