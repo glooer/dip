@@ -1,7 +1,7 @@
 class Search_window < Qt::MainWindow
   attr_reader :limit
 
-  slots "id_checkBox_change(int)", "ok_search_button_clicked()", "birthDate_checkBox_change(int)", "document_checkBox_ui_fill()", "oncick_export_to_csv()", "address_select_area_ui_fill()", "address_select_city_ui_fill(int)", "address_select_street(int)"
+  slots "id_checkBox_change(int)", "ok_search_button_clicked()", "birthDate_checkBox_change(int)", "document_checkBox_ui_fill()", "oncick_export_to_csv()", "address_select_area_ui_fill()", "address_select_city_ui_fill(int)", "address_select_street(int)", "event_type_ui_fill()"
 
   def initialize
     super
@@ -17,6 +17,9 @@ class Search_window < Qt::MainWindow
     connect(@ui.birthDate_checkBox, SIGNAL("stateChanged(int)"), SLOT("birthDate_checkBox_change(int)"))
     connect(@ui.document_checkBox, SIGNAL("stateChanged(int)"), SLOT("document_checkBox_ui_fill()"))
     connect(@ui.address_checkBox, SIGNAL("stateChanged(int)"), SLOT("address_select_area_ui_fill()"))
+    
+    #вкладка фильтров обращение
+    connect(@ui.event_type_checkBox, SIGNAL("stateChanged(int)"), SLOT("event_type_ui_fill()"))
     
     connect(@ui.address_select_area, SIGNAL("currentIndexChanged(int)"), SLOT("address_select_city_ui_fill(int)"))
     connect(@ui.address_select_city, SIGNAL("currentIndexChanged(int)"), SLOT("address_select_street(int)"))
@@ -74,9 +77,22 @@ class Search_window < Qt::MainWindow
     end
     
     #адрес
-    if @ui.address_checkBox.checked?
-      db = db.joins{ clientAddress.outer }.where("ClientAddress.type = ?", @ui.address_type_reg.checked? ? 1 : 0)
+    db = db.joins{ clientAddress.outer }.where("ClientAddress.type = ?", @ui.address_type_reg.checked? ? 1 : 0) if @ui.address_checkBox.checked?
+    
+    
+    
+    #event
+    db = db.joins(:event).where(event: { eventType_id: @ui.event_type_selecter.currentVariant }) if @ui.event_type_checkBox.checked?
+    
+    if @ui.event_setDate_checkBox.checked?
+      event_start = @ui.event_setDate_start.to_dates
+      event_end = @ui.event_setDate_end.to_dates
+      
+      db = db.joins(:event).where(event: { setDate: event_start..event_end })
     end
+    
+    
+    
     
     db
   end
@@ -204,6 +220,11 @@ class Search_window < Qt::MainWindow
     S11::RbAccountingSystem.find_each{ |val| @ui.id_selecter.addItem(val["name"], Qt::Variant.new(val["id"])) }
   end
   
+  def event_type_ui_fill
+    return if !@ui.event_type_selecter.count.zero?
+    S11::EventType.select("name, id").find_each{ |val| @ui.event_type_selecter.addItem(val["name"], Qt::Variant.new(val["id"])) }
+  end
+  
   def birthDate_checkBox_change(state)
     @ui.birthDate_edit_start.enabled = state
     @ui.birthDate_checkBox_end.enabled = state
@@ -215,5 +236,8 @@ class Search_window < Qt::MainWindow
     @ui.id_selecter.enabled = state
     @ui.id_edit.enabled = state
   end
+  
+  
+  
 
 end

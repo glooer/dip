@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'search_window.ui'
 **
-** Created: ¬т 24. май 17:22:11 2016
+** Created: ѕт 27. май 01:38:34 2016
 **      by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -92,7 +92,33 @@ class Ui_Search_window
     attr_reader :address_korp
     attr_reader :address_text_flat
     attr_reader :address_flat
+    attr_reader :horizontalSpacer_4
     attr_reader :verticalSpacer_2
+    attr_reader :tab_2
+    attr_reader :gridLayout_3
+    attr_reader :scrollArea_2
+    attr_reader :scrollAreaWidgetContents_2
+    attr_reader :gridLayout_6
+    attr_reader :gridLayout_5
+    attr_reader :event_setDate_start
+    attr_reader :event_setDate_checkBox
+    attr_reader :event_setDate_end
+    attr_reader :verticalSpacer
+    attr_reader :verticalLayout_5
+    attr_reader :event_nextEventDate_checkBox
+    attr_reader :event_nextEventDate_start
+    attr_reader :event_nextEventDate_end
+    attr_reader :verticalLayout_3
+    attr_reader :event_execDate_less
+    attr_reader :verticalLayout_2
+    attr_reader :event_type_checkBox
+    attr_reader :event_type_selecter
+    attr_reader :verticalLayout_4
+    attr_reader :event_execDate_checkBox
+    attr_reader :event_execDate_start
+    attr_reader :event_execDate_end
+    attr_reader :verticalLayout_6
+    attr_reader :checkBox
     attr_reader :menubar
     attr_reader :menu
     attr_reader :menu_2
@@ -108,7 +134,10 @@ class Ui_Search_window
     search_window.resize(1171, 878)
     search_window.styleSheet = ".QComboBox:disabled {\n" \
 "	background-color: rgba(240, 240, 240, 0)\n" \
-"}"
+"}\n" \
+"\n" \
+"QScrollArea { background: transparent; }\n" \
+"QScrollArea > QWidget > QWidget { background: transparent; }"
     @menu_Client_lastName = Qt::Action.new(search_window)
     @menu_Client_lastName.objectName = "menu_Client_lastName"
     @menu_Client_lastName.checkable = true
@@ -231,8 +260,7 @@ class Ui_Search_window
     @scrollArea.objectName = "scrollArea"
     @scrollArea.enabled = true
     @scrollArea.autoFillBackground = false
-    @scrollArea.styleSheet = "QScrollArea { background: transparent; }\n" \
-"QScrollArea > QWidget > QWidget { background: transparent; }"
+    @scrollArea.styleSheet = ""
     @scrollArea.frameShape = Qt::Frame::NoFrame
     @scrollArea.frameShadow = Qt::Frame::Plain
     @scrollArea.lineWidth = 0
@@ -503,6 +531,13 @@ class Ui_Search_window
     @address_home = Qt::LineEdit.new(@scrollAreaWidgetContents)
     @address_home.objectName = "address_home"
     @address_home.enabled = false
+    @sizePolicy2 = Qt::SizePolicy.new(Qt::SizePolicy::Preferred, Qt::SizePolicy::Fixed)
+    @sizePolicy2.setHorizontalStretch(0)
+    @sizePolicy2.setVerticalStretch(0)
+    @sizePolicy2.heightForWidth = @address_home.sizePolicy.hasHeightForWidth
+    @address_home.sizePolicy = @sizePolicy2
+    @address_home.minimumSize = Qt::Size.new(50, 0)
+    @address_home.maximumSize = Qt::Size.new(50, 16777215)
 
     @horizontalLayout_2.addWidget(@address_home)
 
@@ -515,6 +550,12 @@ class Ui_Search_window
     @address_korp = Qt::LineEdit.new(@scrollAreaWidgetContents)
     @address_korp.objectName = "address_korp"
     @address_korp.enabled = false
+    @sizePolicy3 = Qt::SizePolicy.new(Qt::SizePolicy::Expanding, Qt::SizePolicy::Minimum)
+    @sizePolicy3.setHorizontalStretch(0)
+    @sizePolicy3.setVerticalStretch(0)
+    @sizePolicy3.heightForWidth = @address_korp.sizePolicy.hasHeightForWidth
+    @address_korp.sizePolicy = @sizePolicy3
+    @address_korp.maximumSize = Qt::Size.new(50, 16777215)
 
     @horizontalLayout_2.addWidget(@address_korp)
 
@@ -527,8 +568,13 @@ class Ui_Search_window
     @address_flat = Qt::LineEdit.new(@scrollAreaWidgetContents)
     @address_flat.objectName = "address_flat"
     @address_flat.enabled = false
+    @address_flat.maximumSize = Qt::Size.new(50, 16777215)
 
     @horizontalLayout_2.addWidget(@address_flat)
+
+    @horizontalSpacer_4 = Qt::SpacerItem.new(40, 20, Qt::SizePolicy::Expanding, Qt::SizePolicy::Minimum)
+
+    @horizontalLayout_2.addItem(@horizontalSpacer_4)
 
 
     @address_Layout.addLayout(@horizontalLayout_2, 4, 0, 1, 3)
@@ -544,7 +590,139 @@ class Ui_Search_window
 
     @gridLayout_4.addWidget(@scrollArea, 0, 0, 1, 1)
 
-    @tabWidget_2.addTab(@tab, Qt::Application.translate("Search_window", "\320\236\321\201\320\275\320\276\320\262\320\275\320\276\320\265", nil, Qt::Application::UnicodeUTF8))
+    @tabWidget_2.addTab(@tab, Qt::Application.translate("Search_window", "\320\232\320\260\321\200\321\202\320\276\321\202\320\265\320\272\320\260", nil, Qt::Application::UnicodeUTF8))
+    @tab_2 = Qt::Widget.new()
+    @tab_2.objectName = "tab_2"
+    @gridLayout_3 = Qt::GridLayout.new(@tab_2)
+    @gridLayout_3.objectName = "gridLayout_3"
+    @gridLayout_3.setContentsMargins(0, 0, 0, 0)
+    @scrollArea_2 = Qt::ScrollArea.new(@tab_2)
+    @scrollArea_2.objectName = "scrollArea_2"
+    @scrollArea_2.frameShape = Qt::Frame::NoFrame
+    @scrollArea_2.widgetResizable = true
+    @scrollAreaWidgetContents_2 = Qt::Widget.new()
+    @scrollAreaWidgetContents_2.objectName = "scrollAreaWidgetContents_2"
+    @scrollAreaWidgetContents_2.geometry = Qt::Rect.new(0, 0, 307, 760)
+    @gridLayout_6 = Qt::GridLayout.new(@scrollAreaWidgetContents_2)
+    @gridLayout_6.objectName = "gridLayout_6"
+    @gridLayout_5 = Qt::GridLayout.new()
+    @gridLayout_5.objectName = "gridLayout_5"
+    @event_setDate_start = Qt::DateEdit.new(@scrollAreaWidgetContents_2)
+    @event_setDate_start.objectName = "event_setDate_start"
+    @event_setDate_start.enabled = false
+    @event_setDate_start.wrapping = false
+    @event_setDate_start.calendarPopup = true
+
+    @gridLayout_5.addWidget(@event_setDate_start, 1, 0, 1, 1)
+
+    @event_setDate_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
+    @event_setDate_checkBox.objectName = "event_setDate_checkBox"
+
+    @gridLayout_5.addWidget(@event_setDate_checkBox, 0, 0, 1, 1)
+
+    @event_setDate_end = Qt::DateEdit.new(@scrollAreaWidgetContents_2)
+    @event_setDate_end.objectName = "event_setDate_end"
+    @event_setDate_end.enabled = false
+    @event_setDate_end.calendarPopup = true
+
+    @gridLayout_5.addWidget(@event_setDate_end, 2, 0, 1, 1)
+
+
+    @gridLayout_6.addLayout(@gridLayout_5, 1, 0, 1, 1)
+
+    @verticalSpacer = Qt::SpacerItem.new(20, 40, Qt::SizePolicy::Minimum, Qt::SizePolicy::Expanding)
+
+    @gridLayout_6.addItem(@verticalSpacer, 6, 0, 1, 1)
+
+    @verticalLayout_5 = Qt::VBoxLayout.new()
+    @verticalLayout_5.objectName = "verticalLayout_5"
+    @event_nextEventDate_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
+    @event_nextEventDate_checkBox.objectName = "event_nextEventDate_checkBox"
+
+    @verticalLayout_5.addWidget(@event_nextEventDate_checkBox)
+
+    @event_nextEventDate_start = Qt::DateEdit.new(@scrollAreaWidgetContents_2)
+    @event_nextEventDate_start.objectName = "event_nextEventDate_start"
+    @event_nextEventDate_start.enabled = false
+    @event_nextEventDate_start.calendarPopup = true
+
+    @verticalLayout_5.addWidget(@event_nextEventDate_start)
+
+    @event_nextEventDate_end = Qt::DateEdit.new(@scrollAreaWidgetContents_2)
+    @event_nextEventDate_end.objectName = "event_nextEventDate_end"
+    @event_nextEventDate_end.enabled = false
+    @event_nextEventDate_end.calendarPopup = true
+
+    @verticalLayout_5.addWidget(@event_nextEventDate_end)
+
+
+    @gridLayout_6.addLayout(@verticalLayout_5, 4, 0, 1, 1)
+
+    @verticalLayout_3 = Qt::VBoxLayout.new()
+    @verticalLayout_3.objectName = "verticalLayout_3"
+    @event_execDate_less = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
+    @event_execDate_less.objectName = "event_execDate_less"
+
+    @verticalLayout_3.addWidget(@event_execDate_less)
+
+
+    @gridLayout_6.addLayout(@verticalLayout_3, 2, 0, 1, 1)
+
+    @verticalLayout_2 = Qt::VBoxLayout.new()
+    @verticalLayout_2.objectName = "verticalLayout_2"
+    @event_type_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
+    @event_type_checkBox.objectName = "event_type_checkBox"
+
+    @verticalLayout_2.addWidget(@event_type_checkBox)
+
+    @event_type_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_2)
+    @event_type_selecter.objectName = "event_type_selecter"
+    @event_type_selecter.enabled = false
+
+    @verticalLayout_2.addWidget(@event_type_selecter)
+
+
+    @gridLayout_6.addLayout(@verticalLayout_2, 0, 0, 1, 1)
+
+    @verticalLayout_4 = Qt::VBoxLayout.new()
+    @verticalLayout_4.objectName = "verticalLayout_4"
+    @event_execDate_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
+    @event_execDate_checkBox.objectName = "event_execDate_checkBox"
+
+    @verticalLayout_4.addWidget(@event_execDate_checkBox)
+
+    @event_execDate_start = Qt::DateEdit.new(@scrollAreaWidgetContents_2)
+    @event_execDate_start.objectName = "event_execDate_start"
+    @event_execDate_start.enabled = false
+    @event_execDate_start.calendarPopup = true
+
+    @verticalLayout_4.addWidget(@event_execDate_start)
+
+    @event_execDate_end = Qt::DateEdit.new(@scrollAreaWidgetContents_2)
+    @event_execDate_end.objectName = "event_execDate_end"
+    @event_execDate_end.enabled = false
+    @event_execDate_end.calendarPopup = true
+
+    @verticalLayout_4.addWidget(@event_execDate_end)
+
+
+    @gridLayout_6.addLayout(@verticalLayout_4, 3, 0, 1, 1)
+
+    @verticalLayout_6 = Qt::VBoxLayout.new()
+    @verticalLayout_6.objectName = "verticalLayout_6"
+    @checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
+    @checkBox.objectName = "checkBox"
+
+    @verticalLayout_6.addWidget(@checkBox)
+
+
+    @gridLayout_6.addLayout(@verticalLayout_6, 5, 0, 1, 1)
+
+    @scrollArea_2.setWidget(@scrollAreaWidgetContents_2)
+
+    @gridLayout_3.addWidget(@scrollArea_2, 0, 0, 1, 1)
+
+    @tabWidget_2.addTab(@tab_2, Qt::Application.translate("Search_window", "\320\236\320\261\321\200\320\260\321\211\320\265\320\275\320\270\320\265", nil, Qt::Application::UnicodeUTF8))
 
     @gridLayout_2.addWidget(@tabWidget_2, 0, 1, 1, 1)
 
@@ -618,6 +796,13 @@ class Ui_Search_window
     Qt::Object.connect(@address_checkBox, SIGNAL('clicked(bool)'), @address_flat, SLOT('setEnabled(bool)'))
     Qt::Object.connect(@address_checkBox, SIGNAL('clicked(bool)'), @address_home, SLOT('setEnabled(bool)'))
     Qt::Object.connect(@address_checkBox, SIGNAL('clicked(bool)'), @address_korp, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@event_type_checkBox, SIGNAL('clicked(bool)'), @event_type_selecter, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@event_setDate_checkBox, SIGNAL('clicked(bool)'), @event_setDate_end, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@event_setDate_checkBox, SIGNAL('clicked(bool)'), @event_setDate_start, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@event_execDate_checkBox, SIGNAL('clicked(bool)'), @event_execDate_end, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@event_execDate_checkBox, SIGNAL('clicked(bool)'), @event_execDate_start, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@event_nextEventDate_checkBox, SIGNAL('clicked(bool)'), @event_nextEventDate_end, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@event_nextEventDate_checkBox, SIGNAL('clicked(bool)'), @event_nextEventDate_start, SLOT('setEnabled(bool)'))
 
     @tabWidget_2.setCurrentIndex(0)
 
@@ -668,7 +853,14 @@ class Ui_Search_window
     @address_text_home.text = Qt::Application.translate("Search_window", "\320\224\320\276\320\274", nil, Qt::Application::UnicodeUTF8)
     @address_text_korp.text = Qt::Application.translate("Search_window", "\320\232\320\276\321\200\320\277", nil, Qt::Application::UnicodeUTF8)
     @address_text_flat.text = Qt::Application.translate("Search_window", "\320\232\320\262", nil, Qt::Application::UnicodeUTF8)
-    @tabWidget_2.setTabText(@tabWidget_2.indexOf(@tab), Qt::Application.translate("Search_window", "\320\236\321\201\320\275\320\276\320\262\320\275\320\276\320\265", nil, Qt::Application::UnicodeUTF8))
+    @tabWidget_2.setTabText(@tabWidget_2.indexOf(@tab), Qt::Application.translate("Search_window", "\320\232\320\260\321\200\321\202\320\276\321\202\320\265\320\272\320\260", nil, Qt::Application::UnicodeUTF8))
+    @event_setDate_checkBox.text = Qt::Application.translate("Search_window", "\320\224\320\260\321\202\320\260 \320\275\320\260\320\267\320\275\320\260\321\207\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
+    @event_nextEventDate_checkBox.text = Qt::Application.translate("Search_window", "\320\224\320\260\321\202\320\260 \321\201\320\273\320\265\320\264\321\203\321\216\321\211\320\265\320\271 \321\217\320\262\320\272\320\270", nil, Qt::Application::UnicodeUTF8)
+    @event_execDate_less.text = Qt::Application.translate("Search_window", "\320\235\320\265 \320\262\321\213\320\277\320\276\320\273\320\275\320\265\320\275\320\276", nil, Qt::Application::UnicodeUTF8)
+    @event_type_checkBox.text = Qt::Application.translate("Search_window", "\320\242\320\270\320\277", nil, Qt::Application::UnicodeUTF8)
+    @event_execDate_checkBox.text = Qt::Application.translate("Search_window", "\320\224\320\260\321\202\320\260 \320\262\321\213\320\277\320\276\320\273\320\275\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
+    @checkBox.text = Qt::Application.translate("Search_window", "CheckBox", nil, Qt::Application::UnicodeUTF8)
+    @tabWidget_2.setTabText(@tabWidget_2.indexOf(@tab_2), Qt::Application.translate("Search_window", "\320\236\320\261\321\200\320\260\321\211\320\265\320\275\320\270\320\265", nil, Qt::Application::UnicodeUTF8))
     @menu.title = Qt::Application.translate("Search_window", "\320\241\321\202\320\276\320\273\320\261\321\206\321\213", nil, Qt::Application::UnicodeUTF8)
     @menu_2.title = Qt::Application.translate("Search_window", "\320\237\320\260\321\206\320\270\320\265\320\275\321\202", nil, Qt::Application::UnicodeUTF8)
     @menu_3.title = Qt::Application.translate("Search_window", "\320\220\320\264\321\200\320\265\321\201", nil, Qt::Application::UnicodeUTF8)

@@ -22,6 +22,9 @@ module S11
     has_many :clientDocument, foreign_key: "client_id"
     has_many :rbDocumentType, through: :clientDocument#не тестировал.
     
+    
+    has_many :event, foreign_key: "client_id"
+    
     def self.joins_ares
       joins{ kladr.outer }.joins("LEFT OUTER JOIN (SELECT `kladr`.`KLADR`.`prefix`, CONCAT(`kladr`.`KLADR`.`NAME`, ' ', `kladr`.`KLADR`.`SOCR`) as AREA FROM `kladr`.`KLADR` WHERE `kladr`.`KLADR`.`parent` = '' GROUP BY `kladr`.`KLADR`.`prefix`) as kladrAREA ON kladrAREA.prefix = `kladr`.`KLADR`.`prefix`")
     end
@@ -34,7 +37,7 @@ module S11
     #  joins("LEFT JOIN ClientAddress ON ClientAddress.client_id = Client.id AND ClientAddress.id = (SELECT MAX(id) FROM ClientAddress AS CA WHERE CA.Type=#{q} and CA.client_id = Client.id)")
     #end
     # что за address_id == 14 ???
-    has_many :clientAddress, -> { where("ClientAddress.id IN (SELECT MAX(id) FROM ClientAddress AS CA WHERE CA.client_id = Client.id and CA.address_id != 14 GROUP BY type)") }
+    has_many :clientAddress, -> { where("ClientAddress.id IN (SELECT MAX(id) FROM ClientAddress AS CA WHERE CA.client_id = Client.id GROUP BY type)") }
     has_many :address, :through => :clientAddress
     has_many :addressHouse, :through => :address
     has_many :street, through: :addressHouse, table_name: "kladr.STREET", foreign_key: "CODE", primary_key: "KLADRStreetCode"
