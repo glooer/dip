@@ -34,7 +34,8 @@ class Qt::StandardItemModel
     for i in (0...self.rowCount)
       x = []
       for j in (0...self.columnCount)
-        x << self.item(i, j).text
+        #x << self.item(i, j).text
+        x << self.index(i, j).data(Qt::DisplayRole).toString
       end
       r << x
     end
