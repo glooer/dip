@@ -91,6 +91,23 @@ class Search_window < Qt::MainWindow
       db = db.joins(:event).where(event: { setDate: event_start..event_end })
     end
     
+    db = db.joins(:event).where(event: { execDate: nil }) if @ui.event_execDate_less.checked?
+    
+    if @ui.event_execDate_checkBox.checked?
+      event_start = @ui.event_execDate_start.to_dates
+      event_end = @ui.event_execDate_end.to_dates
+      
+      db = db.joins(:event).where(event: { execDate: event_start..event_end })
+    end
+    
+    
+    if @ui.event_nextEventDate_checkBox.checked?
+      event_start = @ui.event_nextEventDate_start.to_dates
+      event_end = @ui.event_nextEventDate_end.to_dates
+      
+      db = db.joins(:event).where(event: { nextEventDate: event_start..event_end })
+    end
+    
     
     
     
