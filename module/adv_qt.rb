@@ -8,6 +8,14 @@ class Qt::ComboBox
   def currentVariant
     self.itemData(self.currentIndex).toInt.to_s
   end
+  
+  def empty?
+    self.count.zero?
+  end
+  
+  def any?
+    !self.empty?
+  end
 end
 
 class Qt::LineEdit

@@ -90,7 +90,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="tab">
            <property name="styleSheet">
@@ -795,9 +795,16 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="5" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_6">
                   <item>
-                   <widget class="QCheckBox" name="checkBox">
+                   <widget class="QCheckBox" name="orgStructure_checkBox">
                     <property name="text">
-                     <string>CheckBox</string>
+                     <string>Подразделение</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="orgStructure_selecter">
+                    <property name="enabled">
+                     <bool>false</bool>
                     </property>
                    </widget>
                   </item>
@@ -856,8 +863,30 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
      <addaction name="menu_Address_city"/>
      <addaction name="menu_Address_area"/>
     </widget>
+    <widget class="QMenu" name="menu_event">
+     <property name="title">
+      <string>События</string>
+     </property>
+     <widget class="QMenu" name="menu_7">
+      <property name="title">
+       <string>Договор</string>
+      </property>
+      <addaction name="menu_Event_contract_name"/>
+      <addaction name="menu_Event_contract_resolution"/>
+      <addaction name="menu_Event_contract_finance_name"/>
+     </widget>
+     <addaction name="menu_Event_type"/>
+     <addaction name="menu_7"/>
+     <addaction name="menu_Event_setDate"/>
+     <addaction name="menu_Event_execDate"/>
+     <addaction name="menu_Event_result"/>
+     <addaction name="menu_Event_nextEventDate"/>
+     <addaction name="menu_Event_MES"/>
+     <addaction name="menu_Event_rangeDate"/>
+    </widget>
     <addaction name="menu_2"/>
     <addaction name="menu_3"/>
+    <addaction name="menu_event"/>
    </widget>
    <widget class="QMenu" name="menu_4">
     <property name="title">
@@ -1055,6 +1084,89 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
    </property>
    <property name="text">
     <string>CSV</string>
+   </property>
+  </action>
+  <action name="menu_Event_type">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Тип события</string>
+   </property>
+  </action>
+  <action name="menu_Event_contract_name">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Номер</string>
+   </property>
+  </action>
+  <action name="menu_Event_contract_resolution">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Постановление</string>
+   </property>
+  </action>
+  <action name="menu_Event_contract_finance_name">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Источник финансирования</string>
+   </property>
+  </action>
+  <action name="menu_Event_setDate">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Дата начала</string>
+   </property>
+  </action>
+  <action name="menu_Event_execDate">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Дата выполнения</string>
+   </property>
+  </action>
+  <action name="menu_Event_result">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Результат</string>
+   </property>
+  </action>
+  <action name="menu_Event_nextEventDate">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Дата следующей явки</string>
+   </property>
+  </action>
+  <action name="menu_Event_MES">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>МЭС</string>
+   </property>
+  </action>
+  <action name="menu_Event_rangeDate">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Длительность лечения</string>
    </property>
   </action>
  </widget>
@@ -1521,6 +1633,22 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
     <hint type="destinationlabel">
      <x>922</x>
      <y>316</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>orgStructure_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>orgStructure_selecter</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1003</x>
+     <y>364</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1003</x>
+     <y>388</y>
     </hint>
    </hints>
   </connection>

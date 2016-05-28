@@ -1,7 +1,7 @@
 class Search_window < Qt::MainWindow
   attr_reader :limit
 
-  slots "id_checkBox_change(int)", "ok_search_button_clicked()", "birthDate_checkBox_change(int)", "document_checkBox_ui_fill()", "oncick_export_to_csv()", "address_select_area_ui_fill()", "address_select_city_ui_fill(int)", "address_select_street(int)", "event_type_ui_fill()"
+  slots "id_checkBox_change(int)", "ok_search_button_clicked()", "birthDate_checkBox_change(int)", "document_checkBox_ui_fill()", "oncick_export_to_csv()", "address_select_area_ui_fill()", "address_select_city_ui_fill(int)", "address_select_street(int)", "event_type_ui_fill()", "orgStructure_checkBox_ui_fill()"
 
   def initialize
     super
@@ -17,6 +17,8 @@ class Search_window < Qt::MainWindow
     connect(@ui.birthDate_checkBox, SIGNAL("stateChanged(int)"), SLOT("birthDate_checkBox_change(int)"))
     connect(@ui.document_checkBox, SIGNAL("stateChanged(int)"), SLOT("document_checkBox_ui_fill()"))
     connect(@ui.address_checkBox, SIGNAL("stateChanged(int)"), SLOT("address_select_area_ui_fill()"))
+    
+    connect(@ui.orgStructure_checkBox, SIGNAL("stateChanged(int)"), SLOT("orgStructure_checkBox_ui_fill()"))
     
     #вкладка фильтров обращение
     connect(@ui.event_type_checkBox, SIGNAL("stateChanged(int)"), SLOT("event_type_ui_fill()"))
@@ -106,6 +108,10 @@ class Search_window < Qt::MainWindow
       event_end = @ui.event_nextEventDate_end.to_dates
       
       db = db.joins(:event).where(event: { nextEventDate: event_start..event_end })
+    end
+    
+    if @ui.orgStructure_checkBox.checked?
+    
     end
     
     
@@ -207,27 +213,27 @@ class Search_window < Qt::MainWindow
   end
   
   def address_select_street(x)
-    return if x == 0
+    return if x.zero?
     @ui.address_select_street.clear
     @ui.address_select_street.addItem("Не задано", Qt::Variant.new("0"))
     S11::Kladr.getStreetByCity(@ui.address_select_city.currentVariant).each{ |val| @ui.address_select_street.addItem(val["name"], Qt::Variant.new(val["CODE"])) }
   end
   
   def address_select_city_ui_fill(x)
-    return if x == 0
+    return if x.zero?
     @ui.address_select_city.clear
     @ui.address_select_city.addItem("Не задано", Qt::Variant.new("0"))
     S11::Kladr.getCityByArea(@ui.address_select_area.currentVariant).each{ |val| @ui.address_select_city.addItem(val["name"], Qt::Variant.new(val["GNINMB"])) }
   end
   
   def address_select_area_ui_fill
-    return if !@ui.address_select_area.count.zero?
+    return if @ui.address_select_area.any?
     @ui.address_select_area.addItem("Не задано", Qt::Variant.new("0"))
     S11::Kladr.getAreas.all.each{ |val| @ui.address_select_area.addItem(val["name"], Qt::Variant.new(val["prefix"])) }
   end
   
   def document_checkBox_ui_fill
-    return if !@ui.document_selecter.count.zero?
+    return if @ui.document_selecter.any?
     @ui.document_selecter.addItem("Не задано", Qt::Variant.new("0"))
     S11::RbDocumentType.find_each{ |val| @ui.document_selecter.addItem(val["name"], Qt::Variant.new(val["id"])) }
   end
@@ -238,9 +244,14 @@ class Search_window < Qt::MainWindow
   end
   
   def event_type_ui_fill
-    return if !@ui.event_type_selecter.count.zero?
+    return if @ui.event_type_selecter.any?
     S11::EventType.select("name, id").find_each{ |val| @ui.event_type_selecter.addItem(val["name"], Qt::Variant.new(val["id"])) }
   end
+  
+  def orgStructure_checkBox_ui_fill
+    return if @ui.orgStructure_selecter.any?
+    S11::OrgStructure.select("code, id").find_each{ |val| @ui.orgStructure_selecter.addItem(val["code"], Qt::Variant.new(val["id"])) }
+  end  
   
   def birthDate_checkBox_change(state)
     @ui.birthDate_edit_start.enabled = state

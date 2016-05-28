@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'search_window.ui'
 **
-** Created: ѕт 27. май 01:38:34 2016
+** Created: —б 28. май 23:20:07 2016
 **      by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -25,6 +25,16 @@ class Ui_Search_window
     attr_reader :menu_Client_age
     attr_reader :menu_Address_area
     attr_reader :export_csv
+    attr_reader :menu_Event_type
+    attr_reader :menu_Event_contract_name
+    attr_reader :menu_Event_contract_resolution
+    attr_reader :menu_Event_contract_finance_name
+    attr_reader :menu_Event_setDate
+    attr_reader :menu_Event_execDate
+    attr_reader :menu_Event_result
+    attr_reader :menu_Event_nextEventDate
+    attr_reader :menu_Event_MES
+    attr_reader :menu_Event_rangeDate
     attr_reader :centralwidget
     attr_reader :gridLayout
     attr_reader :splitter
@@ -118,11 +128,14 @@ class Ui_Search_window
     attr_reader :event_execDate_start
     attr_reader :event_execDate_end
     attr_reader :verticalLayout_6
-    attr_reader :checkBox
+    attr_reader :orgStructure_checkBox
+    attr_reader :orgStructure_selecter
     attr_reader :menubar
     attr_reader :menu
     attr_reader :menu_2
     attr_reader :menu_3
+    attr_reader :menu_event
+    attr_reader :menu_7
     attr_reader :menu_4
     attr_reader :menu_5
     attr_reader :statusbar
@@ -203,6 +216,37 @@ class Ui_Search_window
     @export_csv = Qt::Action.new(search_window)
     @export_csv.objectName = "export_csv"
     @export_csv.enabled = true
+    @menu_Event_type = Qt::Action.new(search_window)
+    @menu_Event_type.objectName = "menu_Event_type"
+    @menu_Event_type.checkable = true
+    @menu_Event_type.checked = false
+    @menu_Event_contract_name = Qt::Action.new(search_window)
+    @menu_Event_contract_name.objectName = "menu_Event_contract_name"
+    @menu_Event_contract_name.checkable = true
+    @menu_Event_contract_resolution = Qt::Action.new(search_window)
+    @menu_Event_contract_resolution.objectName = "menu_Event_contract_resolution"
+    @menu_Event_contract_resolution.checkable = true
+    @menu_Event_contract_finance_name = Qt::Action.new(search_window)
+    @menu_Event_contract_finance_name.objectName = "menu_Event_contract_finance_name"
+    @menu_Event_contract_finance_name.checkable = true
+    @menu_Event_setDate = Qt::Action.new(search_window)
+    @menu_Event_setDate.objectName = "menu_Event_setDate"
+    @menu_Event_setDate.checkable = true
+    @menu_Event_execDate = Qt::Action.new(search_window)
+    @menu_Event_execDate.objectName = "menu_Event_execDate"
+    @menu_Event_execDate.checkable = true
+    @menu_Event_result = Qt::Action.new(search_window)
+    @menu_Event_result.objectName = "menu_Event_result"
+    @menu_Event_result.checkable = true
+    @menu_Event_nextEventDate = Qt::Action.new(search_window)
+    @menu_Event_nextEventDate.objectName = "menu_Event_nextEventDate"
+    @menu_Event_nextEventDate.checkable = true
+    @menu_Event_MES = Qt::Action.new(search_window)
+    @menu_Event_MES.objectName = "menu_Event_MES"
+    @menu_Event_MES.checkable = true
+    @menu_Event_rangeDate = Qt::Action.new(search_window)
+    @menu_Event_rangeDate.objectName = "menu_Event_rangeDate"
+    @menu_Event_rangeDate.checkable = true
     @centralwidget = Qt::Widget.new(search_window)
     @centralwidget.objectName = "centralwidget"
     @gridLayout = Qt::GridLayout.new(@centralwidget)
@@ -710,10 +754,16 @@ class Ui_Search_window
 
     @verticalLayout_6 = Qt::VBoxLayout.new()
     @verticalLayout_6.objectName = "verticalLayout_6"
-    @checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
-    @checkBox.objectName = "checkBox"
+    @orgStructure_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
+    @orgStructure_checkBox.objectName = "orgStructure_checkBox"
 
-    @verticalLayout_6.addWidget(@checkBox)
+    @verticalLayout_6.addWidget(@orgStructure_checkBox)
+
+    @orgStructure_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_2)
+    @orgStructure_selecter.objectName = "orgStructure_selecter"
+    @orgStructure_selecter.enabled = false
+
+    @verticalLayout_6.addWidget(@orgStructure_selecter)
 
 
     @gridLayout_6.addLayout(@verticalLayout_6, 5, 0, 1, 1)
@@ -740,6 +790,10 @@ class Ui_Search_window
     @menu_2.objectName = "menu_2"
     @menu_3 = Qt::Menu.new(@menu)
     @menu_3.objectName = "menu_3"
+    @menu_event = Qt::Menu.new(@menu)
+    @menu_event.objectName = "menu_event"
+    @menu_7 = Qt::Menu.new(@menu_event)
+    @menu_7.objectName = "menu_7"
     @menu_4 = Qt::Menu.new(@menubar)
     @menu_4.objectName = "menu_4"
     @menu_5 = Qt::Menu.new(@menu_4)
@@ -754,6 +808,7 @@ class Ui_Search_window
     @menubar.addAction(@menu_4.menuAction())
     @menu.addAction(@menu_2.menuAction())
     @menu.addAction(@menu_3.menuAction())
+    @menu.addAction(@menu_event.menuAction())
     @menu_2.addSeparator()
     @menu_2.addAction(@menu_Client_id)
     @menu_2.addAction(@menu_Client_lastName)
@@ -770,6 +825,17 @@ class Ui_Search_window
     @menu_3.addAction(@menu_Address_street)
     @menu_3.addAction(@menu_Address_city)
     @menu_3.addAction(@menu_Address_area)
+    @menu_event.addAction(@menu_Event_type)
+    @menu_event.addAction(@menu_7.menuAction())
+    @menu_event.addAction(@menu_Event_setDate)
+    @menu_event.addAction(@menu_Event_execDate)
+    @menu_event.addAction(@menu_Event_result)
+    @menu_event.addAction(@menu_Event_nextEventDate)
+    @menu_event.addAction(@menu_Event_MES)
+    @menu_event.addAction(@menu_Event_rangeDate)
+    @menu_7.addAction(@menu_Event_contract_name)
+    @menu_7.addAction(@menu_Event_contract_resolution)
+    @menu_7.addAction(@menu_Event_contract_finance_name)
     @menu_4.addAction(@menu_5.menuAction())
     @menu_5.addAction(@export_csv)
 
@@ -803,8 +869,9 @@ class Ui_Search_window
     Qt::Object.connect(@event_execDate_checkBox, SIGNAL('clicked(bool)'), @event_execDate_start, SLOT('setEnabled(bool)'))
     Qt::Object.connect(@event_nextEventDate_checkBox, SIGNAL('clicked(bool)'), @event_nextEventDate_end, SLOT('setEnabled(bool)'))
     Qt::Object.connect(@event_nextEventDate_checkBox, SIGNAL('clicked(bool)'), @event_nextEventDate_start, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@orgStructure_checkBox, SIGNAL('clicked(bool)'), @orgStructure_selecter, SLOT('setEnabled(bool)'))
 
-    @tabWidget_2.setCurrentIndex(0)
+    @tabWidget_2.setCurrentIndex(1)
 
 
     Qt::MetaObject.connectSlotsByName(search_window)
@@ -833,6 +900,16 @@ class Ui_Search_window
     @menu_Client_age.text = Qt::Application.translate("Search_window", "\320\222\320\276\320\267\321\200\320\260\321\201\321\202", nil, Qt::Application::UnicodeUTF8)
     @menu_Address_area.text = Qt::Application.translate("Search_window", "\320\236\320\261\320\273\320\260\321\201\321\202\321\214", nil, Qt::Application::UnicodeUTF8)
     @export_csv.text = Qt::Application.translate("Search_window", "CSV", nil, Qt::Application::UnicodeUTF8)
+    @menu_Event_type.text = Qt::Application.translate("Search_window", "\320\242\320\270\320\277 \321\201\320\276\320\261\321\213\321\202\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
+    @menu_Event_contract_name.text = Qt::Application.translate("Search_window", "\320\235\320\276\320\274\320\265\321\200", nil, Qt::Application::UnicodeUTF8)
+    @menu_Event_contract_resolution.text = Qt::Application.translate("Search_window", "\320\237\320\276\321\201\321\202\320\260\320\275\320\276\320\262\320\273\320\265\320\275\320\270\320\265", nil, Qt::Application::UnicodeUTF8)
+    @menu_Event_contract_finance_name.text = Qt::Application.translate("Search_window", "\320\230\321\201\321\202\320\276\321\207\320\275\320\270\320\272 \321\204\320\270\320\275\320\260\320\275\321\201\320\270\321\200\320\276\320\262\320\260\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
+    @menu_Event_setDate.text = Qt::Application.translate("Search_window", "\320\224\320\260\321\202\320\260 \320\275\320\260\321\207\320\260\320\273\320\260", nil, Qt::Application::UnicodeUTF8)
+    @menu_Event_execDate.text = Qt::Application.translate("Search_window", "\320\224\320\260\321\202\320\260 \320\262\321\213\320\277\320\276\320\273\320\275\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
+    @menu_Event_result.text = Qt::Application.translate("Search_window", "\320\240\320\265\320\267\321\203\320\273\321\214\321\202\320\260\321\202", nil, Qt::Application::UnicodeUTF8)
+    @menu_Event_nextEventDate.text = Qt::Application.translate("Search_window", "\320\224\320\260\321\202\320\260 \321\201\320\273\320\265\320\264\321\203\321\216\321\211\320\265\320\271 \321\217\320\262\320\272\320\270", nil, Qt::Application::UnicodeUTF8)
+    @menu_Event_MES.text = Qt::Application.translate("Search_window", "\320\234\320\255\320\241", nil, Qt::Application::UnicodeUTF8)
+    @menu_Event_rangeDate.text = Qt::Application.translate("Search_window", "\320\224\320\273\320\270\321\202\320\265\320\273\321\214\320\275\320\276\321\201\321\202\321\214 \320\273\320\265\321\207\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
     @pushButton_2.text = Qt::Application.translate("Search_window", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nil, Qt::Application::UnicodeUTF8)
     @ok_search_button.text = Qt::Application.translate("Search_window", "\320\237\321\200\320\270\320\274\320\265\320\275\320\270\321\202\321\214", nil, Qt::Application::UnicodeUTF8)
     @id_checkBox.text = Qt::Application.translate("Search_window", "\320\232\320\276\320\264", nil, Qt::Application::UnicodeUTF8)
@@ -859,11 +936,13 @@ class Ui_Search_window
     @event_execDate_less.text = Qt::Application.translate("Search_window", "\320\235\320\265 \320\262\321\213\320\277\320\276\320\273\320\275\320\265\320\275\320\276", nil, Qt::Application::UnicodeUTF8)
     @event_type_checkBox.text = Qt::Application.translate("Search_window", "\320\242\320\270\320\277", nil, Qt::Application::UnicodeUTF8)
     @event_execDate_checkBox.text = Qt::Application.translate("Search_window", "\320\224\320\260\321\202\320\260 \320\262\321\213\320\277\320\276\320\273\320\275\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
-    @checkBox.text = Qt::Application.translate("Search_window", "CheckBox", nil, Qt::Application::UnicodeUTF8)
+    @orgStructure_checkBox.text = Qt::Application.translate("Search_window", "\320\237\320\276\320\264\321\200\320\260\320\267\320\264\320\265\320\273\320\265\320\275\320\270\320\265", nil, Qt::Application::UnicodeUTF8)
     @tabWidget_2.setTabText(@tabWidget_2.indexOf(@tab_2), Qt::Application.translate("Search_window", "\320\236\320\261\321\200\320\260\321\211\320\265\320\275\320\270\320\265", nil, Qt::Application::UnicodeUTF8))
     @menu.title = Qt::Application.translate("Search_window", "\320\241\321\202\320\276\320\273\320\261\321\206\321\213", nil, Qt::Application::UnicodeUTF8)
     @menu_2.title = Qt::Application.translate("Search_window", "\320\237\320\260\321\206\320\270\320\265\320\275\321\202", nil, Qt::Application::UnicodeUTF8)
     @menu_3.title = Qt::Application.translate("Search_window", "\320\220\320\264\321\200\320\265\321\201", nil, Qt::Application::UnicodeUTF8)
+    @menu_event.title = Qt::Application.translate("Search_window", "\320\241\320\276\320\261\321\213\321\202\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
+    @menu_7.title = Qt::Application.translate("Search_window", "\320\224\320\276\320\263\320\276\320\262\320\276\321\200", nil, Qt::Application::UnicodeUTF8)
     @menu_4.title = Qt::Application.translate("Search_window", "\320\240\320\265\320\267\321\203\320\273\321\214\321\202\320\260\321\202\321\213 \320\267\320\260\320\277\321\200\320\276\321\201\320\260", nil, Qt::Application::UnicodeUTF8)
     @menu_5.title = Qt::Application.translate("Search_window", "\320\255\320\272\321\201\320\277\320\276\321\200\321\202", nil, Qt::Application::UnicodeUTF8)
     end # retranslateUi
