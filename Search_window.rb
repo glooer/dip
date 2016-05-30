@@ -266,7 +266,7 @@ class Search_window < Qt::MainWindow
   
   def orgStructure_checkBox_ui_fill
     return if @ui.orgStructure_selecter.any?
-    S11::OrgStructure.select("code, id").find_each{ |val| @ui.orgStructure_selecter.addItem(val["code"], Qt::Variant.new(val["id"])) }
+    S11::OrgStructure.select("code, id").where(hasHospitalBeds: 1).find_each{ |val| @ui.orgStructure_selecter.addItem(val["code"], Qt::Variant.new(val["id"])) }
   end  
   
   def birthDate_checkBox_change(state)
