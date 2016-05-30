@@ -3,7 +3,7 @@ module S11
     self.table_name = "Client"
     
     def self.with_sex(as = "Пол")
-      select("IF(Client.sex = 1, 'М', 'Ж') as #{as}")
+      select("IF(Client.sex = 1, 'М', 'Ж') as '#{as}'")
     end
     
     def self.with_age(as = "Возраст")
@@ -24,6 +24,14 @@ module S11
     
     
     has_many :event, foreign_key: "client_id"
+    has_many :eventType, :through => :event
+    has_many :rbResult, :through => :event
+    has_many :contract, :through => :event
+    has_many :rbFinance, :through => :contract
+    
+    def self.with_eventRange(as = "Длительность лечения")
+      select("DATEDIFF( Event.execDate, Event.setDate ) as '#{as}'")
+    end
     
     def self.joins_ares
       joins{ kladr.outer }.joins("LEFT OUTER JOIN (SELECT `kladr`.`KLADR`.`prefix`, CONCAT(`kladr`.`KLADR`.`NAME`, ' ', `kladr`.`KLADR`.`SOCR`) as AREA FROM `kladr`.`KLADR` WHERE `kladr`.`KLADR`.`parent` = '' GROUP BY `kladr`.`KLADR`.`prefix`) as kladrAREA ON kladrAREA.prefix = `kladr`.`KLADR`.`prefix`")

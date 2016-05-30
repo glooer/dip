@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'search_window.ui'
 **
-** Created: —б 28. май 23:20:07 2016
+** Created: ѕн 30. май 11:27:13 2016
 **      by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -321,6 +321,7 @@ class Ui_Search_window
     @id_layout.objectName = "id_layout"
     @id_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents)
     @id_checkBox.objectName = "id_checkBox"
+    @id_checkBox.checked = false
 
     @id_layout.addWidget(@id_checkBox, 0, 0, 1, 1)
 
@@ -646,7 +647,7 @@ class Ui_Search_window
     @scrollArea_2.widgetResizable = true
     @scrollAreaWidgetContents_2 = Qt::Widget.new()
     @scrollAreaWidgetContents_2.objectName = "scrollAreaWidgetContents_2"
-    @scrollAreaWidgetContents_2.geometry = Qt::Rect.new(0, 0, 307, 760)
+    @scrollAreaWidgetContents_2.geometry = Qt::Rect.new(0, 0, 159, 360)
     @gridLayout_6 = Qt::GridLayout.new(@scrollAreaWidgetContents_2)
     @gridLayout_6.objectName = "gridLayout_6"
     @gridLayout_5 = Qt::GridLayout.new()
@@ -871,7 +872,7 @@ class Ui_Search_window
     Qt::Object.connect(@event_nextEventDate_checkBox, SIGNAL('clicked(bool)'), @event_nextEventDate_start, SLOT('setEnabled(bool)'))
     Qt::Object.connect(@orgStructure_checkBox, SIGNAL('clicked(bool)'), @orgStructure_selecter, SLOT('setEnabled(bool)'))
 
-    @tabWidget_2.setCurrentIndex(1)
+    @tabWidget_2.setCurrentIndex(0)
 
 
     Qt::MetaObject.connectSlotsByName(search_window)
@@ -882,7 +883,7 @@ class Ui_Search_window
     end
 
     def retranslateUi(search_window)
-    search_window.windowTitle = Qt::Application.translate("Search_window", "MainWindow", nil, Qt::Application::UnicodeUTF8)
+    search_window.windowTitle = Qt::Application.translate("Search_window", "\320\241\321\202\320\260\321\202\320\270\321\201\321\202\320\270\320\272\320\260", nil, Qt::Application::UnicodeUTF8)
     @menu_Client_lastName.text = Qt::Application.translate("Search_window", "\320\244\320\260\320\274\320\270\320\273\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
     @menu_Client_firstName.text = Qt::Application.translate("Search_window", "\320\230\320\274\321\217", nil, Qt::Application::UnicodeUTF8)
     @menu_Client_patrName.text = Qt::Application.translate("Search_window", "\320\236\321\202\321\207\320\265\321\201\321\202\320\262\320\276", nil, Qt::Application::UnicodeUTF8)
@@ -913,6 +914,7 @@ class Ui_Search_window
     @pushButton_2.text = Qt::Application.translate("Search_window", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nil, Qt::Application::UnicodeUTF8)
     @ok_search_button.text = Qt::Application.translate("Search_window", "\320\237\321\200\320\270\320\274\320\265\320\275\320\270\321\202\321\214", nil, Qt::Application::UnicodeUTF8)
     @id_checkBox.text = Qt::Application.translate("Search_window", "\320\232\320\276\320\264", nil, Qt::Application::UnicodeUTF8)
+    @id_edit.text = Qt::Application.translate("Search_window", "70650", nil, Qt::Application::UnicodeUTF8)
     @lastName_checkBox.text = Qt::Application.translate("Search_window", "\320\244\320\260\320\274\320\270\320\273\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
     @firstName_checkBox.text = Qt::Application.translate("Search_window", "\320\230\320\274\321\217", nil, Qt::Application::UnicodeUTF8)
     @patrName_checkBox.text = Qt::Application.translate("Search_window", "\320\236\321\202\321\207\320\265\321\201\321\202\320\262\320\276", nil, Qt::Application::UnicodeUTF8)

@@ -10,7 +10,7 @@ class Search_window < Qt::MainWindow
     
     @limit = 1_000
     
-    ok_search_button_clicked
+    
     connect(@ui.ok_search_button, SIGNAL("clicked()"), SLOT("ok_search_button_clicked()"))
     
     connect(@ui.id_checkBox, SIGNAL("stateChanged(int)"), SLOT("id_checkBox_change(int)"))
@@ -28,6 +28,11 @@ class Search_window < Qt::MainWindow
     
     connect(@ui.export_csv, SIGNAL("triggered()"), SLOT("oncick_export_to_csv()"))
     
+    
+    #...
+    @ui.id_checkBox.checked = true
+    ok_search_button_clicked
+    #....
   end
 
   
@@ -153,6 +158,17 @@ class Search_window < Qt::MainWindow
     db = db.select("kladr.KLADR.name as 'Город'").joins{ kladr.outer } if @ui.menu_Address_city.checked?
     db = db.with_ares if @ui.menu_Address_area.checked?
     
+    #
+    #события
+    db = db.select("EventType.name as 'Тип события'").joins(:eventType) if @ui.menu_Event_type.checked?
+    db = db.select("Event.setDate as 'Дата начала события'").joins(:event) if @ui.menu_Event_setDate.checked?
+    db = db.select("Event.execDate as 'Дата окончания события'").joins(:event) if @ui.menu_Event_execDate.checked?
+    db = db.select("rbResult.name as 'Результат события'").joins{ rbResult.outer } if @ui.menu_Event_result.checked?
+    db = db.select("Event.prevEventDate as 'Дата следующий явки'").joins(:event) if @ui.menu_Event_nextEventDate.checked?
+    db = db.with_eventRange.joins(:event) if @ui.menu_Event_rangeDate.checked?
+    db = db.select("Contract.number as 'Код оплаты'").joins{ contract.outer } if @ui.menu_Event_contract_name.checked? #код оплаты? точно?
+    db = db.select("Contract.resolution as 'Постановление договора'").joins{ contract.outer } if @ui.menu_Event_contract_resolution.checked?
+    db = db.select("rbFinance.name as 'Источник финансирования'").joins{ rbFinance.outer } if @ui.menu_Event_contract_finance_name.checked?
     
     db
     #
