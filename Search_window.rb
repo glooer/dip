@@ -146,8 +146,18 @@ class Search_window < Qt::MainWindow
     db = db.with_sex if @ui.menu_Client_sex.checked?  #вернет пол (просто такая особенность activeRecord, когда нельзя просто взять и добавить if в select, по этому приходится заранее подготовленую фунцию использовать, а ещё activeRecord контролирует типы, и по этому сходит с ума когда видит что sex равен не числу а строке)
     db = db.select("Client.SNILS as 'СНИЛС'") if @ui.menu_Client_SNILS.checked?
     db = db.select("rbBloodType.name as 'Группа крови'").joins{ rbBloodType.outer } if @ui.menu_Client_bloodType.checked?
+    #клиент - социальный статус
+    #не очень хорошо конечно забивать так числа, но это проблема будущего меня
+    db = db.with_socStatus(7, "Место проживания") if @ui.menu_Client_socStatus_rezidence.checked?
+    db = db.with_socStatus(8, "Гражданство") if @ui.menu_Client_socStatus_citizenship.checked?
+    db = db.with_socStatus(6, "Инвалидность") if @ui.menu_Client_socStatus_disability.checked?
+    db = db.with_socStatus(1, "Льгота") if @ui.menu_Client_socStatus_benefit.checked?
+    db = db.with_socStatus(35, "Дееспособность") if @ui.menu_Client_socStatus_capacity.checked?
 
-    
+    if @ui.menu_Action_sub.checked?
+      #db = db.joins(:action).with_department.where("(Action.`actionType_id` IN (SELECT ActionType.id FROM ActionType WHERE ActionType.class=0))")
+      db = db.joins(:actionType).with_department.where(actionType: {"class": 2}).where("ActionType.code LIKE (?)", "А16%")
+    end
     #адрес
     # !!!записи начнут дублироваться, ибо есть адрес прописки и есть проживания
     #db = db.with_addressType.joins( :clientAddress ) if @ui.menu_Address_type.checked? 
@@ -169,6 +179,8 @@ class Search_window < Qt::MainWindow
     db = db.select("Contract.number as 'Код оплаты'").joins{ contract.outer } if @ui.menu_Event_contract_name.checked? #код оплаты? точно?
     db = db.select("Contract.resolution as 'Постановление договора'").joins{ contract.outer } if @ui.menu_Event_contract_resolution.checked?
     db = db.select("rbFinance.name as 'Источник финансирования'").joins{ rbFinance.outer } if @ui.menu_Event_contract_finance_name.checked?
+    db = db.select("mes.MES.code as 'МЭС (код)'").joins{ mes.outer } if @ui.menu_Event_MES_code.checked?
+    db = db.select("mes.MES.name as 'МЭС (название)'").joins{ mes.outer } if @ui.menu_Event_MES_name.checked?
     
     db
     #

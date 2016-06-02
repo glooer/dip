@@ -28,6 +28,11 @@ module S11
     has_many :rbResult, :through => :event
     has_many :contract, :through => :event
     has_many :rbFinance, :through => :contract
+    has_many :mes, :through => :event
+    
+    
+    has_many :action, :through => :event
+    has_many :actionType, :through => :action
     
     def self.with_eventRange(as = "Длительность лечения")
       select("DATEDIFF( Event.execDate, Event.setDate ) as '#{as}'")
@@ -45,7 +50,7 @@ module S11
     #  joins("LEFT JOIN ClientAddress ON ClientAddress.client_id = Client.id AND ClientAddress.id = (SELECT MAX(id) FROM ClientAddress AS CA WHERE CA.Type=#{q} and CA.client_id = Client.id)")
     #end
     # что за address_id == 14 ???
-    has_many :clientAddress, -> { where("ClientAddress.id IN (SELECT MAX(id) FROM ClientAddress AS CA WHERE CA.client_id = Client.id GROUP BY type)") }
+    has_many :clientAddress, -> { where("ClientAddress.id IN (SELECT id FROM ClientAddress AS CA WHERE CA.client_id = Client.id GROUP BY type)") }
     has_many :address, :through => :clientAddress
     has_many :addressHouse, :through => :address
     has_many :street, through: :addressHouse, table_name: "kladr.STREET", foreign_key: "CODE", primary_key: "KLADRStreetCode"
@@ -58,5 +63,37 @@ module S11
     #has_many :kladr, through: :addressHouse, table_name: "kladr.KLADR", foreign_key: "CODE", primary_key: "KLADRCode"
     
     has_many :clientContact, foreign_key: "client_id"
+    
+    def self.with_socStatus(id, name)
+      select("(SELECT SOC.name FROM ClientSocStatus as CSS INNER JOIN rbSocStatusType as SOC ON CSS.socStatusType_id = SOC.id WHERE CSS.client_id = Client.id AND CSS.socStatusClass_id = #{id} LIMIT 1) as '#{name}'")
+    end
+    
+    def self.with_department
+    '''
+      select("(SELECT OS.name
+    FROM ActionPropertyType AS APT
+    INNER JOIN ActionProperty AS AP ON AP.type_id=APT.id
+    INNER JOIN ActionProperty_OrgStructure AS APOS ON APOS.id=AP.id
+    INNER JOIN OrgStructure AS OS ON OS.id=APOS.value
+    WHERE APT.actionType_id=Action.actionType_id AND AP.action_id=Action.id AND APT.deleted=0 AND APT.name LIKE Отделение
+    AND OS.deleted=0 LIMIT 1) as Отделение")
+    '''
+    select("(SELECT OS.name
+    FROM ActionPropertyType AS APT
+    INNER JOIN ActionProperty AS AP ON AP.type_id=APT.id
+    INNER JOIN ActionProperty_OrgStructure AS APOS ON APOS.id=AP.id
+    INNER JOIN OrgStructure AS OS ON OS.id=APOS.value
+    WHERE APT.actionType_id=Action.actionType_id AND AP.action_id=Action.id AND APT.deleted=0 AND APT.name LIKE 'Направлен в отделение'
+    AND OS.deleted=0 LIMIT 1) AS nameOrgStructure")
+    
+    end
+    
+    
+    
+    
+    
+    has_many :clientSocStatus, -> { where("ClientSocStatus.id IN (SELECT MAX(id) FROM ClientSocStatus as CSS WHERE CSS.client_id = ClientSocStatus.client_id GROUP BY CSS.socStatusClass_id, CSS.client_id)") }, foreign_key: "client_id"
+    
+    has_many :rbSocStatusType, :through => :clientSocStatus
   end
 end
