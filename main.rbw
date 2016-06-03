@@ -18,6 +18,7 @@ require "csv"
 require "./module/export.rb"
 require "./module/rb.rb"
 require "./module/crutch.rb"
+require "./module/QaTreeWidgetActionType.rb"
 
 
 

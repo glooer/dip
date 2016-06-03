@@ -32,6 +32,8 @@ class Search_window < Qt::MainWindow
     #...
     @ui.id_checkBox.checked = true
     ok_search_button_clicked
+    
+    @ui.action_type_tree.addWidget(QaTreeWidgetActionType.new)
     #....
   end
 

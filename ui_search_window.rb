@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'search_window.ui'
 **
-** Created: Чт 2. июн 06:37:54 2016
+** Created: Чт 2. июн 12:27:07 2016
 **      by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -141,6 +141,11 @@ class Ui_Search_window
     attr_reader :gridLayout_7
     attr_reader :scrollArea_3
     attr_reader :scrollAreaWidgetContents_3
+    attr_reader :gridLayout_8
+    attr_reader :verticalLayout_7
+    attr_reader :action_type_class
+    attr_reader :verticalSpacer_3
+    attr_reader :action_type_tree
     attr_reader :menubar
     attr_reader :menu
     attr_reader :menu_2
@@ -814,13 +819,35 @@ class Ui_Search_window
     @tab_3.objectName = "tab_3"
     @gridLayout_7 = Qt::GridLayout.new(@tab_3)
     @gridLayout_7.objectName = "gridLayout_7"
+    @gridLayout_7.setContentsMargins(0, 0, 0, 0)
     @scrollArea_3 = Qt::ScrollArea.new(@tab_3)
     @scrollArea_3.objectName = "scrollArea_3"
     @scrollArea_3.frameShape = Qt::Frame::NoFrame
     @scrollArea_3.widgetResizable = true
     @scrollAreaWidgetContents_3 = Qt::Widget.new()
     @scrollAreaWidgetContents_3.objectName = "scrollAreaWidgetContents_3"
-    @scrollAreaWidgetContents_3.geometry = Qt::Rect.new(0, 0, 289, 742)
+    @scrollAreaWidgetContents_3.geometry = Qt::Rect.new(0, 0, 307, 760)
+    @gridLayout_8 = Qt::GridLayout.new(@scrollAreaWidgetContents_3)
+    @gridLayout_8.objectName = "gridLayout_8"
+    @verticalLayout_7 = Qt::VBoxLayout.new()
+    @verticalLayout_7.objectName = "verticalLayout_7"
+    @action_type_class = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
+    @action_type_class.objectName = "action_type_class"
+
+    @verticalLayout_7.addWidget(@action_type_class)
+
+
+    @gridLayout_8.addLayout(@verticalLayout_7, 0, 0, 1, 1)
+
+    @verticalSpacer_3 = Qt::SpacerItem.new(20, 40, Qt::SizePolicy::Minimum, Qt::SizePolicy::Expanding)
+
+    @gridLayout_8.addItem(@verticalSpacer_3, 2, 0, 1, 1)
+
+    @action_type_tree = Qt::VBoxLayout.new()
+    @action_type_tree.objectName = "action_type_tree"
+
+    @gridLayout_8.addLayout(@action_type_tree, 1, 0, 1, 1)
+
     @scrollArea_3.setWidget(@scrollAreaWidgetContents_3)
 
     @gridLayout_7.addWidget(@scrollArea_3, 0, 0, 1, 1)
@@ -941,6 +968,7 @@ class Ui_Search_window
     Qt::Object.connect(@orgStructure_checkBox, SIGNAL('clicked(bool)'), @orgStructure_selecter, SLOT('setEnabled(bool)'))
 
     @tabWidget_2.setCurrentIndex(2)
+    @action_type_class.setCurrentIndex(2)
 
 
     Qt::MetaObject.connectSlotsByName(search_window)
@@ -1015,6 +1043,10 @@ class Ui_Search_window
     @event_execDate_checkBox.text = Qt::Application.translate("Search_window", "\320\224\320\260\321\202\320\260 \320\262\321\213\320\277\320\276\320\273\320\275\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
     @orgStructure_checkBox.text = Qt::Application.translate("Search_window", "\320\237\320\276\320\264\321\200\320\260\320\267\320\264\320\265\320\273\320\265\320\275\320\270\320\265", nil, Qt::Application::UnicodeUTF8)
     @tabWidget_2.setTabText(@tabWidget_2.indexOf(@tab_2), Qt::Application.translate("Search_window", "\320\236\320\261\321\200\320\260\321\211\320\265\320\275\320\270\320\265", nil, Qt::Application::UnicodeUTF8))
+    @action_type_class.insertItems(0, [Qt::Application.translate("Search_window", "\320\241\321\202\320\260\321\202\321\203\321\201", nil, Qt::Application::UnicodeUTF8),
+        Qt::Application.translate("Search_window", "\320\224\320\270\320\260\320\263\320\275\320\276\321\201\321\202\320\270\320\272\320\260", nil, Qt::Application::UnicodeUTF8),
+        Qt::Application.translate("Search_window", "\320\233\320\265\321\207\320\265\320\275\320\270\320\265", nil, Qt::Application::UnicodeUTF8),
+        Qt::Application.translate("Search_window", "\320\237\321\200\320\276\321\207\320\270\320\265 \320\274\320\265\321\200\320\276\320\277\321\200\320\270\321\217\321\202\320\270\321\217", nil, Qt::Application::UnicodeUTF8)])
     @tabWidget_2.setTabText(@tabWidget_2.indexOf(@tab_3), Qt::Application.translate("Search_window", "\320\224\320\265\320\271\321\201\321\202\320\262\320\270\321\217", nil, Qt::Application::UnicodeUTF8))
     @menu.title = Qt::Application.translate("Search_window", "\320\241\321\202\320\276\320\273\320\261\321\206\321\213", nil, Qt::Application::UnicodeUTF8)
     @menu_2.title = Qt::Application.translate("Search_window", "\320\237\320\260\321\206\320\270\320\265\320\275\321\202", nil, Qt::Application::UnicodeUTF8)
