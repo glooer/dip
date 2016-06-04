@@ -32,8 +32,9 @@ class Search_window < Qt::MainWindow
     #...
     @ui.id_checkBox.checked = true
     ok_search_button_clicked
-    
-    @ui.action_type_tree.addWidget(QaTreeWidgetActionType.new)
+    @action_type_tree_fields = QaTreeWidgetActionType.new
+    @ui.action_type_tree.addWidget(@action_type_tree_fields)
+    @action_type_tree_fields.setData(S11::ActionType.select("id, group_id, code, name").where("class = 2").all.as_json)
     #....
   end
 

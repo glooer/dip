@@ -1,41 +1,63 @@
-class QaTreeWidgetActionType < Qt::ComboBox
+class UTreeView < Qt::TreeView
+  
   def initialize *args
     super
-    setView Qt::TreeView.new self
-    view.viewport.installEventFilter self 
-    view.headerHidden = true
-    view.setMinimumSize 200, 400;
-    @skipHideTree = false
-    
-    '''
-    item1 = Qt::StandardItem.new "One" 
-    item2 = Qt::StandardItem.new "Two" 
-    item3 = Qt::StandardItem.new "Three" 
-    item4 = Qt::StandardItem.new "Four"
-    view.model.appendRow item1 
-    item1.appendRow item2 
-    item2.appendRow item3 
-    view.model.appendRow item4 
-    '''
+    #self.movable = false
+    self.headerHidden = true
+    connect(self, SIGNAL("expanded(QModelIndex)"), args.first, SLOT("sss(QModelIndex)"))
+    connect(self, SIGNAL("collapsed(QModelIndex)"), args.first, SLOT("sss(QModelIndex)"))
+  end
+end
+
+class QaTreeWidgetActionType < Qt::ComboBox
+  slots "sss(QModelIndex)"
+
+  def sss i
+    @skipedHide = true
   end
   
-  def loadData table
+  def initialize *args
+    super  
+    setView UTreeView.new self
+    #view.viewport.installEventFilter self
+    acceptDrops = false
+    view.setMinimumSize 600, 300
+
+    sizeAdjustPolicy = Qt::ComboBox::AdjustToMinimumContentsLengthWithIcon
+    #setMaximumSize 290, 700
+    @skipedHide = false
     
   end
   
-  def eventFilter object, event
-    if (object.class.name == "Qt::Widget" and event.type == Qt::Event::MouseButtonPress)
-      @skipHideTree = true
-    end
-    nil
-  end
+  #def eventFilter object, event
+  #  if event.type == Qt::Event::MouseButtonPress
+  #    @skipedHide = true
+  #  end
+  #  nil
+  #end
   
   def hidePopup
-    if @skipHideTree
-      @skipHideTree = false
+    if @skipedHide
+      @skipedHide = false
     else
       super
     end
   end
   
+  def setData matrix 
+    generateData matrix.inject({}){ |h, col| h.update col.delete("id") => col }, nil, view.model
+  end
+  
+  private
+  def generateData cat, parent, model = view.model
+    cat.each do |k, v|
+      if v["group_id"] == parent
+        x = Qt::StandardItem.new "#{v["code"]} | #{v["name"]}"
+        model.appendRow x
+        cat.delete k
+        generateData cat, k, x
+      end
+    end
+  end
+
 end
