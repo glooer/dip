@@ -147,7 +147,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                  <x>0</x>
                  <y>0</y>
                  <width>290</width>
-                 <height>848</height>
+                 <height>844</height>
                 </rect>
                </property>
                <property name="styleSheet">
@@ -303,19 +303,26 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                  </layout>
                 </item>
                 <item>
-                 <layout class="QGridLayout" name="gridLayout_19">
+                 <layout class="QGridLayout" name="age_layout">
                   <item row="0" column="0">
-                   <widget class="QCheckBox" name="checkBox_39">
+                   <widget class="QCheckBox" name="age_checkBox">
                     <property name="text">
                      <string>Возраст</string>
                     </property>
                    </widget>
                   </item>
                   <item row="0" column="1">
-                   <widget class="QSpinBox" name="spinBox"/>
+                   <widget class="QSpinBox" name="age_edit_start">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
                   </item>
                   <item row="1" column="1">
-                   <widget class="QSpinBox" name="spinBox_2">
+                   <widget class="QSpinBox" name="age_edit_end">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="maximum">
                      <number>150</number>
                     </property>
@@ -325,7 +332,10 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                    </widget>
                   </item>
                   <item row="1" column="0">
-                   <widget class="QCheckBox" name="checkBox_40">
+                   <widget class="QCheckBox" name="age_checkBox_end">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="text">
                      <string>по</string>
                     </property>
@@ -1097,9 +1107,9 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>-128</y>
+                 <y>-114</y>
                  <width>290</width>
-                 <height>888</height>
+                 <height>874</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_6">
@@ -1497,25 +1507,25 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>-106</y>
+                 <y>0</y>
                  <width>290</width>
-                 <height>866</height>
+                 <height>871</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_8">
                 <item row="3" column="0">
-                 <layout class="QVBoxLayout" name="verticalLayout_8">
+                 <layout class="QVBoxLayout" name="action_directionDate_layout">
                   <item>
-                   <widget class="QCheckBox" name="checkBox">
+                   <widget class="QCheckBox" name="action_directionDate_checkBox">
                     <property name="text">
                      <string>Дата назначения</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <layout class="QHBoxLayout" name="horizontalLayout_3">
+                   <layout class="QHBoxLayout" name="action_directionDate_range_layout">
                     <item>
-                     <widget class="QDateEdit" name="dateEdit_2">
+                     <widget class="QDateEdit" name="action_directionDate_start">
                       <property name="enabled">
                        <bool>false</bool>
                       </property>
@@ -1525,7 +1535,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QDateEdit" name="dateEdit">
+                     <widget class="QDateEdit" name="action_directionDate_end">
                       <property name="enabled">
                        <bool>false</bool>
                       </property>
@@ -1538,13 +1548,17 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                   </item>
                  </layout>
                 </item>
-                <item row="1" column="0">
-                 <layout class="QVBoxLayout" name="action_type_tree"/>
-                </item>
                 <item row="0" column="0">
-                 <layout class="QVBoxLayout" name="verticalLayout_7">
+                 <layout class="QVBoxLayout" name="actionType_layout">
                   <item>
-                   <widget class="QComboBox" name="action_type_class">
+                   <widget class="QCheckBox" name="actionType_checkBox">
+                    <property name="text">
+                     <string>Тип действия</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="actionType_class">
                     <property name="currentIndex">
                      <number>2</number>
                     </property>
@@ -1569,6 +1583,9 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                      </property>
                     </item>
                    </widget>
+                  </item>
+                  <item>
+                   <layout class="QVBoxLayout" name="action_type_tree"/>
                   </item>
                  </layout>
                 </item>
@@ -1749,16 +1766,16 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                  </layout>
                 </item>
                 <item row="4" column="0">
-                 <layout class="QVBoxLayout" name="verticalLayout_9">
+                 <layout class="QVBoxLayout" name="action_setPerson_id_orgStructure_layout">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_2">
+                   <widget class="QCheckBox" name="action_setPerson_id_orgStructure_checkBox">
                     <property name="text">
                      <string>Подразделение назначившего</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox">
+                   <widget class="QComboBox" name="action_setPerson_id_orgStructure_selecter">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -2838,6 +2855,86 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
     <hint type="destinationlabel">
      <x>1003</x>
      <y>388</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>age_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>age_edit_start</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>925</x>
+     <y>326</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1063</x>
+     <y>326</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>age_checkBox_end</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>age_edit_end</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>925</x>
+     <y>350</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1063</x>
+     <y>350</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_directionDate_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>action_directionDate_end</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>994</x>
+     <y>130</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1063</x>
+     <y>154</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_directionDate_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>action_directionDate_start</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>994</x>
+     <y>130</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>926</x>
+     <y>154</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_setPerson_id_orgStructure_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>action_setPerson_id_orgStructure_selecter</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>994</x>
+     <y>181</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>994</x>
+     <y>204</y>
     </hint>
    </hints>
   </connection>

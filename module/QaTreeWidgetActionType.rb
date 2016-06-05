@@ -1,62 +1,22 @@
-class UTreeView < Qt::TreeView
-  
-  def initialize *args
-    super
-    #self.movable = false
-    self.headerHidden = true
-    connect(self, SIGNAL("expanded(QModelIndex)"), args.first, SLOT("sss(QModelIndex)"))
-    connect(self, SIGNAL("collapsed(QModelIndex)"), args.first, SLOT("sss(QModelIndex)"))
-  end
-end
+class QaTreeWidgetActionType < QaTreeWidget
+  slots "action_type_class_changed(int)"
 
-class QaTreeWidgetActionType < Qt::ComboBox
-  slots "sss(QModelIndex)"
-
-  def sss i
-    @skipedHide = true
+  def action_type_class_changed i
+    if @model_cache[i]
+      view.model = @model_cache[i]
+    else
+      setData(S11::ActionType.select([:id, :group_id, :code, :name]).where(class: i, showInForm: 1).all.as_json)
+      @model_cache[i] = view.model 
+    end
   end
   
   def initialize *args
     super  
-    setView UTreeView.new self
-    #view.viewport.installEventFilter self
-    acceptDrops = false
-    view.setMinimumSize 600, 300
-
-    sizeAdjustPolicy = Qt::ComboBox::AdjustToMinimumContentsLengthWithIcon
-    #setMaximumSize 290, 700
-    @skipedHide = false
-    
-  end
+   end
   
-  #def eventFilter object, event
-  #  if event.type == Qt::Event::MouseButtonPress
-  #    @skipedHide = true
-  #  end
-  #  nil
-  #end
-  
-  def hidePopup
-    if @skipedHide
-      @skipedHide = false
-    else
-      super
-    end
-  end
-  
-  def setData matrix 
-    generateData matrix.inject({}){ |h, col| h.update col.delete("id") => col }, nil, view.model
-  end
-  
-  private
-  def generateData cat, parent, model = view.model
-    cat.each do |k, v|
-      if v["group_id"] == parent
-        x = Qt::StandardItem.new "#{v["code"]} | #{v["name"]}"
-        model.appendRow x
-        cat.delete k
-        generateData cat, k, x
-      end
+  def setData matrix
+    generateData(matrix.inject({}){ |h, col| h.update col.delete("id") => col }, nil, "group_id", view.model) do |value| 
+      "#{value["code"]} | #{value["name"]}"
     end
   end
 

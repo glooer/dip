@@ -1,7 +1,7 @@
 class Search_window < Qt::MainWindow
   attr_reader :limit
 
-  slots "id_checkBox_change(int)", "ok_search_button_clicked()", "birthDate_checkBox_change(int)", "document_checkBox_ui_fill()", "oncick_export_to_csv()", "address_select_area_ui_fill()", "address_select_city_ui_fill(int)", "address_select_street(int)", "event_type_ui_fill()", "orgStructure_checkBox_ui_fill()"
+  slots "id_checkBox_change(int)", "ok_search_button_clicked()", "birthDate_checkBox_change(int)", "document_checkBox_ui_fill()", "oncick_export_to_csv()", "address_select_area_ui_fill()", "address_select_city_ui_fill(int)", "address_select_street(int)", "event_type_ui_fill()", "orgStructure_checkBox_ui_fill()", "age_checkBox_change(int)", "action_setPerson_id_orgStructure_fill()"
 
   def initialize
     super
@@ -11,10 +11,17 @@ class Search_window < Qt::MainWindow
     @limit = 1_000
     
     
+    #...
+    @ui_user = {}
+    @ui_user["action_type_tree_fields"] = QaTreeWidgetActionType.new
+    @ui.action_type_tree.addWidget(@ui_user["action_type_tree_fields"])
+    #...
+    
     connect(@ui.ok_search_button, SIGNAL("clicked()"), SLOT("ok_search_button_clicked()"))
     
     connect(@ui.id_checkBox, SIGNAL("stateChanged(int)"), SLOT("id_checkBox_change(int)"))
     connect(@ui.birthDate_checkBox, SIGNAL("stateChanged(int)"), SLOT("birthDate_checkBox_change(int)"))
+    connect(@ui.age_checkBox, SIGNAL("stateChanged(int)"), SLOT("age_checkBox_change(int)"))
     connect(@ui.document_checkBox, SIGNAL("stateChanged(int)"), SLOT("document_checkBox_ui_fill()"))
     connect(@ui.address_checkBox, SIGNAL("stateChanged(int)"), SLOT("address_select_area_ui_fill()"))
     
@@ -28,13 +35,15 @@ class Search_window < Qt::MainWindow
     
     connect(@ui.export_csv, SIGNAL("triggered()"), SLOT("oncick_export_to_csv()"))
     
+    #вкладка действия
+    connect(@ui.actionType_class, SIGNAL("currentIndexChanged(int)"), @ui_user["action_type_tree_fields"], SLOT("action_type_class_changed(int)"))
+    connect(@ui.action_setPerson_id_orgStructure_checkBox, SIGNAL("stateChanged(int)"), SLOT("action_setPerson_id_orgStructure_fill()"))
     
     #...
     @ui.id_checkBox.checked = true
     ok_search_button_clicked
-    @action_type_tree_fields = QaTreeWidgetActionType.new
-    @ui.action_type_tree.addWidget(@action_type_tree_fields)
-    @action_type_tree_fields.setData(S11::ActionType.select("id, group_id, code, name").where("class = 2").all.as_json)
+    
+    #@action_type_tree_fields.setData(S11::ActionType.select("id, group_id, code, name").where("class = 2").all.as_json)
     #....
   end
 
@@ -43,11 +52,11 @@ class Search_window < Qt::MainWindow
     if @ui.id_checkBox.checked?
       #эта проверка не нужна, ибо в базе есть жесть в виде идшников "83141к", а вдруг они норм...
       #if (id = @ui.id_edit.text.to_i) > 0
-      id = @ui.id_edit.text.force_encoding("UTF-8")
+      id = @ui.id_edit.textf
       if (ids = @ui.id_selecter.currentVariant) == "0"
-        db = db.where("Client.id = ?", id)
+        db = db.where id: id
       else
-        db = db.joins( :clientIdentification ).where("ClientIdentification.identifier = ? and ClientIdentification.accountingSystem_id = ?", id, ids)
+        db = db.joins( :clientIdentification ).where clientIdentification: {identifier: id, accountingSystem_id: ids}
       end
       
       #else #когда в id_edit не число или число меньше 1
@@ -55,39 +64,50 @@ class Search_window < Qt::MainWindow
       #end
     end
 
-
-    db = db.where("Client.lastName = ?", @ui.lastName_edit.textf) if @ui.lastName_checkBox.checked?
-    db = db.where("Client.firstName = ?", @ui.firstName_edit.textf) if @ui.firstName_checkBox.checked?
-    db = db.where("Client.patrName = ?", @ui.patrName_edit.textf) if @ui.patrName_checkBox.checked?
+    
+    db = db.where lastName: @ui.lastName_edit.textf if @ui.lastName_checkBox.checked?
+    db = db.where firstName: @ui.firstName_edit.textf if @ui.firstName_checkBox.checked?
+    db = db.where patrName: @ui.patrName_edit.textf if @ui.patrName_checkBox.checked?
     
     if @ui.birthDate_checkBox.checked?
       date_start = @ui.birthDate_edit_start.to_dates
       if @ui.birthDate_checkBox_end.checked?
         date_end = @ui.birthDate_edit_end.to_dates 
-        db = db.where "Client.birthDate >= ? and Client.birthDate <= ?", date_start, date_end
+        db = db.where birthDate: date_start..date_end
       else
-        db = db.where "Client.birthDate = ?", date_start
+        db = db.where birthDate: date_start
       end    
     end
     
-    db = db.where("Client.sex = ?", @ui.sex_female.checked? ? 2 : 1) if @ui.sex_checkBox.checked? #ибо нефиг галку ставить если не используешь...
-    db = db.joins{ clientContact.outer }.where("ClientContact.contact = ?", @ui.contact_edit.textf) if @ui.contact_checkBox.checked?
-    db = db.where("Client.SNILS = ?", @ui.snils_edit.textf) if @ui.snils_checkBox.checked?
+    if @ui.age_checkBox.checked?
+      age_date_end = Time.now.to_date.prev_year(@ui.age_edit_start.value)
+      if @ui.age_checkBox_end.checked?
+        age_date_start = Time.now.to_date.prev_year(@ui.age_edit_end.value + 1).next_day(1)
+      else
+        age_date_start = Time.now.to_date.prev_year(@ui.age_edit_start.value + 1).next_day(1)
+      end
+      
+      db = db.where birthDate: (age_date_start..age_date_end)
+    end
+    
+    db = db.where sex: (@ui.sex_female.checked? ? 2 : 1) if @ui.sex_checkBox.checked? #ибо нефиг галку ставить если не используешь...
+    db = db.joins{ clientContact.outer }.where clientContact: {contact: @ui.contact_edit.textf} if @ui.contact_checkBox.checked?
+    db = db.where SNILS: @ui.snils_edit.textf if @ui.snils_checkBox.checked?
     
     
     if @ui.document_checkBox.checked?
       number = @ui.document_number.textf
       serial = @ui.document_serial.textf
       
-      db = db.joins(:clientDocument).where("ClientDocument.number = ? and ClientDocument.serial = ?", number, serial)
+      db = db.joins(:clientDocument).where clientDocument: {number: number, serial: serial}
       
       if (ids = @ui.document_selecter.currentVariant) == "0"
-        db = db.where("ClientDocument.documentType_id = ?", ids)
+        db = db.where clientDocument: {documentType_id: ids}
       end
     end
     
     #адрес
-    db = db.joins{ clientAddress.outer }.where("ClientAddress.type = ?", @ui.address_type_reg.checked? ? 1 : 0) if @ui.address_checkBox.checked?
+    db = db.joins{ clientAddress.outer }.where clientAddress: {type: (@ui.address_type_reg.checked? ? 1 : 0)} if @ui.address_checkBox.checked?
     
     
     
@@ -124,6 +144,18 @@ class Search_window < Qt::MainWindow
     
     
     
+    #действия(action)
+    db = db.joins(:actionType)
+    if @ui.actionType_checkBox.checked?
+      db = db.where("`ActionType`.`code` LIKE '#{@ui_user["action_type_tree_fields"].currentText.scan(/(^.*)\s\|/).flatten.first.force_encoding("UTF-8")}%'")
+    else #одно из действий будет выбрано по умолчанию, иначе всё будет работать очень очень медленно и выводить чаще всего не нужные данные
+      db = db.where("`ActionType`.`code` LIKE 'А16%'")
+    end
+    
+    if @ui.action_directionDate_checkBox.checked?
+      db = db.joins(:action).where action: {directionDate: (@ui.action_directionDate_start.to_dates..@ui.action_directionDate_end.to_dates)}
+    end
+    
     
     db
   end
@@ -159,7 +191,7 @@ class Search_window < Qt::MainWindow
 
     if @ui.menu_Action_sub.checked?
       #db = db.joins(:action).with_department.where("(Action.`actionType_id` IN (SELECT ActionType.id FROM ActionType WHERE ActionType.class=0))")
-      db = db.joins(:actionType).with_department.where(actionType: {"class": 2}).where("ActionType.code LIKE (?)", "А16%")
+      db = db.joins(:actionType).with_department
     end
     #адрес
     # !!!записи начнут дублироваться, ибо есть адрес прописки и есть проживания
@@ -189,14 +221,7 @@ class Search_window < Qt::MainWindow
     #
   end
   
-  def db_generator(select, where)
-    []
-  end
-  
   def ok_search_button_clicked
-    #show_main_table(db_generator(parse_ui_select, parse_ui_where)) 
-    
-    #show_main_table parse_ui_select(S11::Client).take(limit).as_json
     db = S11::Client
     db_with_select = parse_ui_select(db)
     db_with_select_and_where = parse_ui_where(db_with_select)
@@ -281,13 +306,24 @@ class Search_window < Qt::MainWindow
   
   def orgStructure_checkBox_ui_fill
     return if @ui.orgStructure_selecter.any?
-    S11::OrgStructure.select("code, id").where(hasHospitalBeds: 1).find_each{ |val| @ui.orgStructure_selecter.addItem(val["code"], Qt::Variant.new(val["id"])) }
+    S11::OrgStructure.select([:code, :id]).where(hasHospitalBeds: 1).find_each{ |val| @ui.orgStructure_selecter.addItem(val["code"], Qt::Variant.new(val["id"])) }
   end  
+  
+  def action_setPerson_id_orgStructure_fill
+    p 123
+    p @ui_user["action_type_tree_fields"].currentText
+  end
   
   def birthDate_checkBox_change(state)
     @ui.birthDate_edit_start.enabled = state
     @ui.birthDate_checkBox_end.enabled = state
     @ui.birthDate_edit_end.enabled = state if @ui.birthDate_checkBox_end.checked?
+  end
+  
+  def age_checkBox_change(state)
+    @ui.age_edit_start.enabled = state
+    @ui.age_checkBox_end.enabled = state
+    @ui.age_edit_end.enabled = state if @ui.age_checkBox_end.checked?
   end
   
   def id_checkBox_change(state)
