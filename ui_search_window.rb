@@ -535,7 +535,7 @@ class Ui_Search_window
 
     @lastName_layout.addWidget(@lastName_checkBox)
 
-    @lastName_edit = Qt::LineEdit.new(@scrollAreaWidgetContents)
+    @lastName_edit = Qt::.new(@scrollAreaWidgetContents)
     @lastName_edit.objectName = "lastName_edit"
     @lastName_edit.enabled = false
 

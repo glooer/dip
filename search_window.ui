@@ -147,7 +147,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                  <x>0</x>
                  <y>0</y>
                  <width>290</width>
-                 <height>844</height>
+                 <height>826</height>
                 </rect>
                </property>
                <property name="styleSheet">
@@ -507,7 +507,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                      <x>0</x>
                      <y>0</y>
                      <width>272</width>
-                     <height>163</height>
+                     <height>145</height>
                     </rect>
                    </property>
                    <attribute name="label">
@@ -725,8 +725,8 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>272</width>
-                     <height>135</height>
+                     <width>173</width>
+                     <height>117</height>
                     </rect>
                    </property>
                    <property name="sizePolicy">
@@ -817,6 +817,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                    </layout>
                   </widget>
                   <widget class="QWidget" name="page_3">
+                   <property name="geometry">
+                    <rect>
+                     <x>0</x>
+                     <y>0</y>
+                     <width>166</width>
+                     <height>91</height>
+                    </rect>
+                   </property>
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
                      <horstretch>0</horstretch>
@@ -887,6 +895,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                    </layout>
                   </widget>
                   <widget class="QWidget" name="page_4">
+                   <property name="geometry">
+                    <rect>
+                     <x>0</x>
+                     <y>0</y>
+                     <width>207</width>
+                     <height>68</height>
+                    </rect>
+                   </property>
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
                      <horstretch>0</horstretch>
@@ -957,6 +973,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                    </layout>
                   </widget>
                   <widget class="QWidget" name="page_5">
+                   <property name="geometry">
+                    <rect>
+                     <x>0</x>
+                     <y>0</y>
+                     <width>164</width>
+                     <height>68</height>
+                    </rect>
+                   </property>
                    <attribute name="label">
                     <string>Контингент</string>
                    </attribute>
@@ -1107,7 +1131,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>-114</y>
+                 <y>0</y>
                  <width>290</width>
                  <height>874</height>
                 </rect>
@@ -1507,7 +1531,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>0</y>
+                 <y>-111</y>
                  <width>290</width>
                  <height>871</height>
                 </rect>
@@ -1605,14 +1629,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="9" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_12">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_7">
+                   <widget class="QCheckBox" name="action_endDate_checkBox">
                     <property name="text">
                      <string>Дата выполнения</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QDateTimeEdit" name="dateTimeEdit">
+                   <widget class="QDateTimeEdit" name="action_endDate_start">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1622,7 +1646,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QDateTimeEdit" name="dateTimeEdit_2">
+                   <widget class="QDateTimeEdit" name="action_endDate_end">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1643,17 +1667,47 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="8" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_11">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_6">
+                   <widget class="QCheckBox" name="action_status_checkBox">
                     <property name="text">
                      <string>Состояние</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_4">
+                   <widget class="QComboBox" name="action_status_selecter">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
+                    <item>
+                     <property name="text">
+                      <string>Начато</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Ожидание</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Закончено</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Отменено</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Без результата</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Назначено</string>
+                     </property>
+                    </item>
                    </widget>
                   </item>
                  </layout>
@@ -1661,14 +1715,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="6" column="0">
                  <layout class="QGridLayout" name="gridLayout_9">
                   <item row="0" column="0">
-                   <widget class="QCheckBox" name="checkBox_4">
+                   <widget class="QCheckBox" name="action_setPerson_id_checkBox">
                     <property name="text">
                      <string>Назначил</string>
                     </property>
                    </widget>
                   </item>
                   <item row="0" column="1">
-                   <widget class="QCheckBox" name="checkBox_5">
+                   <widget class="QCheckBox" name="action_isUrgent_checkBox">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1678,7 +1732,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                    </widget>
                   </item>
                   <item row="1" column="0" colspan="2">
-                   <widget class="QComboBox" name="comboBox_3">
+                   <widget class="QComboBox" name="action_setPerson_id_selecter">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1689,7 +1743,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="17" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_19">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_14">
+                   <widget class="QCheckBox" name="action_contract_checkBox">
                     <property name="text">
                      <string>Договор</string>
                     </property>
@@ -1698,14 +1752,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                   <item>
                    <layout class="QHBoxLayout" name="horizontalLayout_4">
                     <item>
-                     <widget class="QLineEdit" name="lineEdit_2">
+                     <widget class="QLineEdit" name="action_contract_edit">
                       <property name="enabled">
                        <bool>false</bool>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QToolButton" name="toolButton">
+                     <widget class="QToolButton" name="action_contract_edit_button">
                       <property name="enabled">
                        <bool>false</bool>
                       </property>
@@ -1721,7 +1775,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="18" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_20">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_15">
+                   <widget class="QCheckBox" name="action_MKB_checkBox">
                     <property name="text">
                      <string>Коды диагнозов по МКБ</string>
                     </property>
@@ -1730,14 +1784,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                   <item>
                    <layout class="QHBoxLayout" name="horizontalLayout_6">
                     <item>
-                     <widget class="QLineEdit" name="lineEdit_3">
+                     <widget class="QLineEdit" name="action_MKB_start">
                       <property name="enabled">
                        <bool>false</bool>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="lineEdit_4">
+                     <widget class="QLineEdit" name="action_MKB_end">
                       <property name="enabled">
                        <bool>false</bool>
                       </property>
@@ -1750,14 +1804,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="5" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_10">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_3">
+                   <widget class="QCheckBox" name="action_setPerson_id_speciality_checkBox">
                     <property name="text">
                      <string>Специальность назначившего</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_2">
+                   <widget class="QComboBox" name="action_setPerson_id_speciality_selecter">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1861,14 +1915,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="16" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_18">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_13">
+                   <widget class="QCheckBox" name="action_finance_id_checkBox">
                     <property name="text">
                      <string>Тип финансирования</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_10">
+                   <widget class="QComboBox" name="action_finance_id_selecter">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1904,7 +1958,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="7" column="0">
                  <layout class="QGridLayout" name="gridLayout_20">
                   <item row="1" column="0">
-                   <widget class="QDateEdit" name="dateEdit_8">
+                   <widget class="QDateEdit" name="action_plannedEndDate_start">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1914,7 +1968,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                    </widget>
                   </item>
                   <item row="1" column="1">
-                   <widget class="QDateEdit" name="dateEdit_9">
+                   <widget class="QDateEdit" name="action_plannedEndDate_end">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1924,7 +1978,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                    </widget>
                   </item>
                   <item row="0" column="0" colspan="2">
-                   <widget class="QCheckBox" name="checkBox_41">
+                   <widget class="QCheckBox" name="action_plannedEndDate_checkBox">
                     <property name="text">
                      <string>Плановая дата выполнения</string>
                     </property>
