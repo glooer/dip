@@ -1,15 +1,15 @@
 class Search_window < Qt::MainWindow
-  attr_reader :limit
+  attr_accessor :limit
 
-  slots "id_checkBox_change(int)", "ok_search_button_clicked()", "birthDate_checkBox_change(int)", "document_checkBox_ui_fill()", "oncick_export_to_csv()", "address_select_area_ui_fill()", "address_select_city_ui_fill(int)", "address_select_street(int)", "event_type_ui_fill()", "orgStructure_checkBox_ui_fill()", "age_checkBox_change(int)", "action_setPerson_id_orgStructure_fill()"
+  slots "id_checkBox_change(int)", "ok_search_button_clicked()", "birthDate_checkBox_change(int)", "document_checkBox_ui_fill()", "oncick_export_to_csv()", "address_select_area_ui_fill()", "address_select_city_ui_fill(int)", "address_select_street(int)", "event_type_ui_fill()", "orgStructure_checkBox_ui_fill()", "age_checkBox_change(int)", "action_setPerson_id_orgStructure_fill()", "db_limit_change(QString)"
 
   def initialize
     super
     @ui = Ui_Search_window.new
     @ui.setupUi(self)
     
-    @limit = 1_000
-    
+    #@limit = 1_000
+    @limit = @ui.db_limit_selecter.currentText
     
     #...
     @ui_user = {}
@@ -18,6 +18,7 @@ class Search_window < Qt::MainWindow
     #...
     
     connect(@ui.ok_search_button, SIGNAL("clicked()"), SLOT("ok_search_button_clicked()"))
+    connect(@ui.db_limit_selecter, SIGNAL("currentIndexChanged(QString)"), SLOT("db_limit_change(QString)"))
     
     connect(@ui.id_checkBox, SIGNAL("stateChanged(int)"), SLOT("id_checkBox_change(int)"))
     connect(@ui.birthDate_checkBox, SIGNAL("stateChanged(int)"), SLOT("birthDate_checkBox_change(int)"))
@@ -25,7 +26,7 @@ class Search_window < Qt::MainWindow
     connect(@ui.document_checkBox, SIGNAL("stateChanged(int)"), SLOT("document_checkBox_ui_fill()"))
     connect(@ui.address_checkBox, SIGNAL("stateChanged(int)"), SLOT("address_select_area_ui_fill()"))
     
-    connect(@ui.orgStructure_checkBox, SIGNAL("stateChanged(int)"), SLOT("orgStructure_checkBox_ui_fill()"))
+    #connect(@ui.orgStructure_checkBox, SIGNAL("stateChanged(int)"), SLOT("orgStructure_checkBox_ui_fill()"))
     
     #вкладка фильтров обращение
     connect(@ui.event_type_checkBox, SIGNAL("stateChanged(int)"), SLOT("event_type_ui_fill()"))
@@ -45,6 +46,10 @@ class Search_window < Qt::MainWindow
     
     #@action_type_tree_fields.setData(S11::ActionType.select("id, group_id, code, name").where("class = 2").all.as_json)
     #....
+  end
+  
+  def db_limit_change(count)
+    @limit = count.to_i
   end
 
   
@@ -138,9 +143,9 @@ class Search_window < Qt::MainWindow
       db = db.joins(:event).where(event: { nextEventDate: event_start..event_end })
     end
     
-    if @ui.orgStructure_checkBox.checked?
+    #if @ui.orgStructure_checkBox.checked?
     
-    end
+    #end
     
     
     

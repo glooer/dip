@@ -22,34 +22,136 @@ QScrollArea { background: transparent; }
 QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>1</horstretch>
+     <verstretch>1</verstretch>
+    </sizepolicy>
+   </property>
    <layout class="QGridLayout" name="gridLayout">
+    <property name="leftMargin">
+     <number>6</number>
+    </property>
+    <property name="topMargin">
+     <number>6</number>
+    </property>
+    <property name="rightMargin">
+     <number>6</number>
+    </property>
+    <property name="bottomMargin">
+     <number>6</number>
+    </property>
     <item row="0" column="0">
      <widget class="QSplitter" name="splitter">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="QTableView" name="tableView">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>1</horstretch>
-         <verstretch>1</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="alternatingRowColors">
-        <bool>true</bool>
-       </property>
-       <attribute name="verticalHeaderVisible">
-        <bool>false</bool>
-       </attribute>
-       <attribute name="verticalHeaderDefaultSectionSize">
-        <number>23</number>
-       </attribute>
-       <attribute name="verticalHeaderHighlightSections">
-        <bool>false</bool>
-       </attribute>
+      <property name="opaqueResize">
+       <bool>true</bool>
+      </property>
+      <property name="handleWidth">
+       <number>5</number>
+      </property>
+      <property name="childrenCollapsible">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget">
+       <layout class="QVBoxLayout" name="verticalLayout_7">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
+        </property>
+        <item>
+         <widget class="QTableView" name="tableView">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>1</horstretch>
+            <verstretch>1</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_11">
+          <item>
+           <widget class="QToolButton" name="toolButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>&lt;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="toolButton_3">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QComboBox" name="db_limit_selecter">
+            <item>
+             <property name="text">
+              <string>10</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>100</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>1000</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="layoutWidget">
        <layout class="QGridLayout" name="gridLayout_2">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetMinimumSize</enum>
+        </property>
         <item row="1" column="1">
          <layout class="QHBoxLayout" name="horizontalLayout_5">
           <item>
@@ -90,7 +192,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="tab">
            <property name="styleSheet">
@@ -146,7 +248,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>290</width>
+                 <width>609</width>
                  <height>826</height>
                 </rect>
                </property>
@@ -506,7 +608,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>272</width>
+                     <width>591</width>
                      <height>145</height>
                     </rect>
                    </property>
@@ -1132,8 +1234,8 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>290</width>
-                 <height>874</height>
+                 <width>609</width>
+                 <height>850</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_6">
@@ -1187,18 +1289,11 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                  </layout>
                 </item>
                 <item row="5" column="0">
-                 <layout class="QVBoxLayout" name="verticalLayout_6">
+                 <layout class="QVBoxLayout" name="event_orgStructure_layout">
                   <item>
-                   <widget class="QCheckBox" name="orgStructure_checkBox">
+                   <widget class="QCheckBox" name="event_orgStructure_checkBox">
                     <property name="text">
                      <string>Подразделение</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QComboBox" name="orgStructure_selecter">
-                    <property name="enabled">
-                     <bool>false</bool>
                     </property>
                    </widget>
                   </item>
@@ -1531,8 +1626,8 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>-111</y>
-                 <width>290</width>
+                 <y>0</y>
+                 <width>609</width>
                  <height>871</height>
                 </rect>
                </property>
@@ -2893,22 +2988,6 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
     <hint type="destinationlabel">
      <x>922</x>
      <y>316</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>orgStructure_checkBox</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>orgStructure_selecter</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1003</x>
-     <y>364</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1003</x>
-     <y>388</y>
     </hint>
    </hints>
   </connection>

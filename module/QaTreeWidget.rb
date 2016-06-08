@@ -54,17 +54,30 @@ class QaTreeWidget < Qt::ComboBox
     end
   end
   
+  def currentVariant
+    return nil if currentItem.nil?
+    currentItem.data.toString
+  end
+  
+  def currentItem
+    return nil if view.selectedIndexes.first.nil?
+    model.itemFromIndex(view.selectedIndexes.first)
+  end
+  
   def setData matrix
-    generateData(matrix.inject({}){ |h, col| h.update col.delete("id") => col }, nil, "group_id", view.model) do |value| 
-      "#{value["code"]} | #{value["name"]}"
-    end
+    #generateData(matrix.inject({}){ |h, col| h.update col.delete("id") => col }, nil, "group_id", view.model) do |key, value| 
+      #"#{value["code"]} | #{value["name"]}"
+    #  x = Qt::StandardItem.new "#{value["code"]} | #{value["name"]}"
+     # x.setData(Qt::Variant(key))
+    #  x
+    #end
   end
   
   private
   def generateData cat, parent, parent_field_name, model = view.model, &block
     cat.each do |k, v|
       if v[parent_field_name] == parent
-        x = Qt::StandardItem.new yield(v)
+        x = yield(k, v)
         model.appendRow x
         cat.delete k
         generateData cat, k, parent_field_name, x, &block

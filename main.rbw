@@ -22,6 +22,7 @@ require "./module/rb.rb"
 require "./module/crutch.rb"
 require "./module/QaTreeWidget.rb"
 require "./module/QaTreeWidgetActionType.rb"
+require "./module/QaTreeWidgetLPU.rb"
 
 
 

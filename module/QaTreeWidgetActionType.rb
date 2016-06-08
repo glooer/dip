@@ -15,8 +15,11 @@ class QaTreeWidgetActionType < QaTreeWidget
    end
   
   def setData matrix
-    generateData(matrix.inject({}){ |h, col| h.update col.delete("id") => col }, nil, "group_id", view.model) do |value| 
-      "#{value["code"]} | #{value["name"]}"
+    view.model.appendRow Qt::StandardItem.new "Не выбрано"
+    generateData(matrix.inject({}){ |h, col| h.update col.delete("id") => col }, nil, "group_id", view.model) do |key, value| 
+      x = Qt::StandardItem.new "#{value["code"]} | #{value["name"]}"
+      x.setData(Qt::Variant.new(key))
+      x
     end
   end
 

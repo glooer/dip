@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'search_window.ui'
 **
-** Created: Âñ 5. èþí 11:32:12 2016
+** Created: Ñð 8. èþí 17:07:21 2016
 **      by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -45,7 +45,15 @@ class Ui_Search_window
     attr_reader :centralwidget
     attr_reader :gridLayout
     attr_reader :splitter
+    attr_reader :verticalLayoutWidget
+    attr_reader :verticalLayout_7
     attr_reader :tableView
+    attr_reader :horizontalLayout_11
+    attr_reader :toolButton
+    attr_reader :comboBox
+    attr_reader :toolButton_3
+    attr_reader :horizontalSpacer_5
+    attr_reader :db_limit_selecter
     attr_reader :layoutWidget
     attr_reader :gridLayout_2
     attr_reader :horizontalLayout_5
@@ -178,9 +186,8 @@ class Ui_Search_window
     attr_reader :event_execDate_checkBox
     attr_reader :event_execDate_start
     attr_reader :event_execDate_end
-    attr_reader :verticalLayout_6
-    attr_reader :orgStructure_checkBox
-    attr_reader :orgStructure_selecter
+    attr_reader :event_orgStructure_layout
+    attr_reader :event_orgStructure_checkBox
     attr_reader :gridLayout_5
     attr_reader :event_setDate_start
     attr_reader :event_setDate_checkBox
@@ -240,29 +247,29 @@ class Ui_Search_window
     attr_reader :action_type_tree
     attr_reader :verticalSpacer_3
     attr_reader :verticalLayout_12
-    attr_reader :checkBox_7
-    attr_reader :dateTimeEdit
-    attr_reader :dateTimeEdit_2
+    attr_reader :action_endDate_checkBox
+    attr_reader :action_endDate_start
+    attr_reader :action_endDate_end
     attr_reader :verticalLayout_11
-    attr_reader :checkBox_6
-    attr_reader :comboBox_4
+    attr_reader :action_status_checkBox
+    attr_reader :action_status_selecter
     attr_reader :gridLayout_9
-    attr_reader :checkBox_4
-    attr_reader :checkBox_5
-    attr_reader :comboBox_3
+    attr_reader :action_setPerson_id_checkBox
+    attr_reader :action_isUrgent_checkBox
+    attr_reader :action_setPerson_id_selecter
     attr_reader :verticalLayout_19
-    attr_reader :checkBox_14
+    attr_reader :action_contract_checkBox
     attr_reader :horizontalLayout_4
-    attr_reader :lineEdit_2
-    attr_reader :toolButton
+    attr_reader :action_contract_edit
+    attr_reader :action_contract_edit_button
     attr_reader :verticalLayout_20
-    attr_reader :checkBox_15
+    attr_reader :action_MKB_checkBox
     attr_reader :horizontalLayout_6
-    attr_reader :lineEdit_3
-    attr_reader :lineEdit_4
+    attr_reader :action_MKB_start
+    attr_reader :action_MKB_end
     attr_reader :verticalLayout_10
-    attr_reader :checkBox_3
-    attr_reader :comboBox_2
+    attr_reader :action_setPerson_id_speciality_checkBox
+    attr_reader :action_setPerson_id_speciality_selecter
     attr_reader :action_setPerson_id_orgStructure_layout
     attr_reader :action_setPerson_id_orgStructure_checkBox
     attr_reader :action_setPerson_id_orgStructure_selecter
@@ -279,16 +286,16 @@ class Ui_Search_window
     attr_reader :checkBox_12
     attr_reader :lineEdit
     attr_reader :verticalLayout_18
-    attr_reader :checkBox_13
-    attr_reader :comboBox_10
+    attr_reader :action_finance_id_checkBox
+    attr_reader :action_finance_id_selecter
     attr_reader :verticalLayout_13
     attr_reader :checkBox_8
     attr_reader :comboBox_5
     attr_reader :checkBox_16
     attr_reader :gridLayout_20
-    attr_reader :dateEdit_8
-    attr_reader :dateEdit_9
-    attr_reader :checkBox_41
+    attr_reader :action_plannedEndDate_start
+    attr_reader :action_plannedEndDate_end
+    attr_reader :action_plannedEndDate_checkBox
     attr_reader :menubar
     attr_reader :menu
     attr_reader :menu_2
@@ -433,24 +440,78 @@ class Ui_Search_window
     @menu_Event_MES_name.checkable = true
     @centralwidget = Qt::Widget.new(search_window)
     @centralwidget.objectName = "centralwidget"
-    @gridLayout = Qt::GridLayout.new(@centralwidget)
-    @gridLayout.objectName = "gridLayout"
-    @splitter = Qt::Splitter.new(@centralwidget)
-    @splitter.objectName = "splitter"
-    @splitter.orientation = Qt::Horizontal
-    @tableView = Qt::TableView.new(@splitter)
-    @tableView.objectName = "tableView"
-    @sizePolicy = Qt::SizePolicy.new(Qt::SizePolicy::Expanding, Qt::SizePolicy::Expanding)
+    @sizePolicy = Qt::SizePolicy.new(Qt::SizePolicy::Preferred, Qt::SizePolicy::Preferred)
     @sizePolicy.setHorizontalStretch(1)
     @sizePolicy.setVerticalStretch(1)
+    @sizePolicy.heightForWidth = @centralwidget.sizePolicy.hasHeightForWidth
+    @centralwidget.sizePolicy = @sizePolicy
+    @gridLayout = Qt::GridLayout.new(@centralwidget)
+    @gridLayout.objectName = "gridLayout"
+    @gridLayout.setContentsMargins(6, 6, 6, 6)
+    @splitter = Qt::Splitter.new(@centralwidget)
+    @splitter.objectName = "splitter"
+    @sizePolicy1 = Qt::SizePolicy.new(Qt::SizePolicy::Preferred, Qt::SizePolicy::Preferred)
+    @sizePolicy1.setHorizontalStretch(0)
+    @sizePolicy1.setVerticalStretch(0)
+    @sizePolicy1.heightForWidth = @splitter.sizePolicy.hasHeightForWidth
+    @splitter.sizePolicy = @sizePolicy1
+    @splitter.layoutDirection = Qt::LeftToRight
+    @splitter.lineWidth = 0
+    @splitter.orientation = Qt::Horizontal
+    @splitter.opaqueResize = true
+    @splitter.handleWidth = 5
+    @splitter.childrenCollapsible = true
+    @verticalLayoutWidget = Qt::Widget.new(@splitter)
+    @verticalLayoutWidget.objectName = "verticalLayoutWidget"
+    @verticalLayout_7 = Qt::VBoxLayout.new(@verticalLayoutWidget)
+    @verticalLayout_7.objectName = "verticalLayout_7"
+    @verticalLayout_7.sizeConstraint = Qt::Layout::SetDefaultConstraint
+    @verticalLayout_7.setContentsMargins(0, 0, 0, 0)
+    @tableView = Qt::TableView.new(@verticalLayoutWidget)
+    @tableView.objectName = "tableView"
     @sizePolicy.heightForWidth = @tableView.sizePolicy.hasHeightForWidth
     @tableView.sizePolicy = @sizePolicy
-    @tableView.alternatingRowColors = true
-    @splitter.addWidget(@tableView)
+
+    @verticalLayout_7.addWidget(@tableView)
+
+    @horizontalLayout_11 = Qt::HBoxLayout.new()
+    @horizontalLayout_11.objectName = "horizontalLayout_11"
+    @toolButton = Qt::ToolButton.new(@verticalLayoutWidget)
+    @toolButton.objectName = "toolButton"
+    @toolButton.enabled = false
+
+    @horizontalLayout_11.addWidget(@toolButton)
+
+    @comboBox = Qt::ComboBox.new(@verticalLayoutWidget)
+    @comboBox.objectName = "comboBox"
+    @comboBox.enabled = false
+
+    @horizontalLayout_11.addWidget(@comboBox)
+
+    @toolButton_3 = Qt::ToolButton.new(@verticalLayoutWidget)
+    @toolButton_3.objectName = "toolButton_3"
+    @toolButton_3.enabled = false
+
+    @horizontalLayout_11.addWidget(@toolButton_3)
+
+    @horizontalSpacer_5 = Qt::SpacerItem.new(40, 20, Qt::SizePolicy::Expanding, Qt::SizePolicy::Minimum)
+
+    @horizontalLayout_11.addItem(@horizontalSpacer_5)
+
+    @db_limit_selecter = Qt::ComboBox.new(@verticalLayoutWidget)
+    @db_limit_selecter.objectName = "db_limit_selecter"
+
+    @horizontalLayout_11.addWidget(@db_limit_selecter)
+
+
+    @verticalLayout_7.addLayout(@horizontalLayout_11)
+
+    @splitter.addWidget(@verticalLayoutWidget)
     @layoutWidget = Qt::Widget.new(@splitter)
     @layoutWidget.objectName = "layoutWidget"
     @gridLayout_2 = Qt::GridLayout.new(@layoutWidget)
     @gridLayout_2.objectName = "gridLayout_2"
+    @gridLayout_2.sizeConstraint = Qt::Layout::SetMinimumSize
     @gridLayout_2.setContentsMargins(0, 0, 0, 0)
     @horizontalLayout_5 = Qt::HBoxLayout.new()
     @horizontalLayout_5.objectName = "horizontalLayout_5"
@@ -473,11 +534,11 @@ class Ui_Search_window
 
     @tabWidget_2 = Qt::TabWidget.new(@layoutWidget)
     @tabWidget_2.objectName = "tabWidget_2"
-    @sizePolicy1 = Qt::SizePolicy.new(Qt::SizePolicy::Minimum, Qt::SizePolicy::Expanding)
-    @sizePolicy1.setHorizontalStretch(0)
-    @sizePolicy1.setVerticalStretch(0)
-    @sizePolicy1.heightForWidth = @tabWidget_2.sizePolicy.hasHeightForWidth
-    @tabWidget_2.sizePolicy = @sizePolicy1
+    @sizePolicy2 = Qt::SizePolicy.new(Qt::SizePolicy::Minimum, Qt::SizePolicy::Expanding)
+    @sizePolicy2.setHorizontalStretch(0)
+    @sizePolicy2.setVerticalStretch(0)
+    @sizePolicy2.heightForWidth = @tabWidget_2.sizePolicy.hasHeightForWidth
+    @tabWidget_2.sizePolicy = @sizePolicy2
     @tab = Qt::Widget.new()
     @tab.objectName = "tab"
     @tab.styleSheet = ""
@@ -497,7 +558,7 @@ class Ui_Search_window
     @scrollArea.widgetResizable = true
     @scrollAreaWidgetContents = Qt::Widget.new()
     @scrollAreaWidgetContents.objectName = "scrollAreaWidgetContents"
-    @scrollAreaWidgetContents.geometry = Qt::Rect.new(0, 0, 290, 844)
+    @scrollAreaWidgetContents.geometry = Qt::Rect.new(0, 0, 609, 826)
     @scrollAreaWidgetContents.styleSheet = ""
     @verticalLayout = Qt::VBoxLayout.new(@scrollAreaWidgetContents)
     @verticalLayout.objectName = "verticalLayout"
@@ -535,7 +596,7 @@ class Ui_Search_window
 
     @lastName_layout.addWidget(@lastName_checkBox)
 
-    @lastName_edit = Qt::.new(@scrollAreaWidgetContents)
+    @lastName_edit = Qt::LineEdit.new(@scrollAreaWidgetContents)
     @lastName_edit.objectName = "lastName_edit"
     @lastName_edit.enabled = false
 
@@ -645,7 +706,7 @@ class Ui_Search_window
     @sex_layout.addWidget(@sex_checkBox)
 
     @sex_group_layout = Qt::HBoxLayout.new()
-    @sex_group_layout.objectName = ""
+    @sex_group_layout.objectName = "sex_group_layout"
     @horizontalSpacer_2 = Qt::SpacerItem.new(40, 20, Qt::SizePolicy::Expanding, Qt::SizePolicy::Minimum)
 
     @sex_group_layout.addItem(@horizontalSpacer_2)
@@ -753,14 +814,14 @@ class Ui_Search_window
 
     @toolBox = Qt::ToolBox.new(@scrollAreaWidgetContents)
     @toolBox.objectName = "toolBox"
-    @sizePolicy2 = Qt::SizePolicy.new(Qt::SizePolicy::Preferred, Qt::SizePolicy::Minimum)
-    @sizePolicy2.setHorizontalStretch(0)
-    @sizePolicy2.setVerticalStretch(0)
-    @sizePolicy2.heightForWidth = @toolBox.sizePolicy.hasHeightForWidth
-    @toolBox.sizePolicy = @sizePolicy2
+    @sizePolicy3 = Qt::SizePolicy.new(Qt::SizePolicy::Preferred, Qt::SizePolicy::Minimum)
+    @sizePolicy3.setHorizontalStretch(0)
+    @sizePolicy3.setVerticalStretch(0)
+    @sizePolicy3.heightForWidth = @toolBox.sizePolicy.hasHeightForWidth
+    @toolBox.sizePolicy = @sizePolicy3
     @page = Qt::Widget.new()
     @page.objectName = "page"
-    @page.geometry = Qt::Rect.new(0, 0, 272, 163)
+    @page.geometry = Qt::Rect.new(0, 0, 591, 145)
     @gridLayout_14 = Qt::GridLayout.new(@page)
     @gridLayout_14.objectName = "gridLayout_14"
     @gridLayout_14.setContentsMargins(0, 0, 0, 0)
@@ -777,11 +838,11 @@ class Ui_Search_window
     @address_home = Qt::LineEdit.new(@page)
     @address_home.objectName = "address_home"
     @address_home.enabled = false
-    @sizePolicy3 = Qt::SizePolicy.new(Qt::SizePolicy::Preferred, Qt::SizePolicy::Fixed)
-    @sizePolicy3.setHorizontalStretch(0)
-    @sizePolicy3.setVerticalStretch(0)
-    @sizePolicy3.heightForWidth = @address_home.sizePolicy.hasHeightForWidth
-    @address_home.sizePolicy = @sizePolicy3
+    @sizePolicy4 = Qt::SizePolicy.new(Qt::SizePolicy::Preferred, Qt::SizePolicy::Fixed)
+    @sizePolicy4.setHorizontalStretch(0)
+    @sizePolicy4.setVerticalStretch(0)
+    @sizePolicy4.heightForWidth = @address_home.sizePolicy.hasHeightForWidth
+    @address_home.sizePolicy = @sizePolicy4
     @address_home.minimumSize = Qt::Size.new(50, 0)
     @address_home.maximumSize = Qt::Size.new(50, 16777215)
 
@@ -796,11 +857,11 @@ class Ui_Search_window
     @address_korp = Qt::LineEdit.new(@page)
     @address_korp.objectName = "address_korp"
     @address_korp.enabled = false
-    @sizePolicy4 = Qt::SizePolicy.new(Qt::SizePolicy::Expanding, Qt::SizePolicy::Minimum)
-    @sizePolicy4.setHorizontalStretch(0)
-    @sizePolicy4.setVerticalStretch(0)
-    @sizePolicy4.heightForWidth = @address_korp.sizePolicy.hasHeightForWidth
-    @address_korp.sizePolicy = @sizePolicy4
+    @sizePolicy5 = Qt::SizePolicy.new(Qt::SizePolicy::Expanding, Qt::SizePolicy::Minimum)
+    @sizePolicy5.setHorizontalStretch(0)
+    @sizePolicy5.setVerticalStretch(0)
+    @sizePolicy5.heightForWidth = @address_korp.sizePolicy.hasHeightForWidth
+    @address_korp.sizePolicy = @sizePolicy5
     @address_korp.maximumSize = Qt::Size.new(50, 16777215)
 
     @horizontalLayout_2.addWidget(@address_korp)
@@ -884,9 +945,9 @@ class Ui_Search_window
     @toolBox.addItem(@page, Qt::Application.translate("Search_window", "\320\220\320\264\321\200\320\265\321\201", nil, Qt::Application::UnicodeUTF8))
     @page_2 = Qt::Widget.new()
     @page_2.objectName = "page_2"
-    @page_2.geometry = Qt::Rect.new(0, 0, 272, 135)
-    @sizePolicy2.heightForWidth = @page_2.sizePolicy.hasHeightForWidth
-    @page_2.sizePolicy = @sizePolicy2
+    @page_2.geometry = Qt::Rect.new(0, 0, 173, 117)
+    @sizePolicy3.heightForWidth = @page_2.sizePolicy.hasHeightForWidth
+    @page_2.sizePolicy = @sizePolicy3
     @gridLayout_15 = Qt::GridLayout.new(@page_2)
     @gridLayout_15.objectName = "gridLayout_15"
     @gridLayout_15.setContentsMargins(0, 0, 0, 0)
@@ -945,8 +1006,9 @@ class Ui_Search_window
     @toolBox.addItem(@page_2, Qt::Application.translate("Search_window", "\320\241\321\202\321\200\320\260\321\205\320\276\320\262\320\276\320\271 \320\277\320\276\320\273\320\270\321\201", nil, Qt::Application::UnicodeUTF8))
     @page_3 = Qt::Widget.new()
     @page_3.objectName = "page_3"
-    @sizePolicy2.heightForWidth = @page_3.sizePolicy.hasHeightForWidth
-    @page_3.sizePolicy = @sizePolicy2
+    @page_3.geometry = Qt::Rect.new(0, 0, 166, 91)
+    @sizePolicy3.heightForWidth = @page_3.sizePolicy.hasHeightForWidth
+    @page_3.sizePolicy = @sizePolicy3
     @verticalLayout_29 = Qt::VBoxLayout.new(@page_3)
     @verticalLayout_29.objectName = "verticalLayout_29"
     @verticalLayout_29.setContentsMargins(0, 0, 0, 0)
@@ -989,8 +1051,9 @@ class Ui_Search_window
     @toolBox.addItem(@page_3, Qt::Application.translate("Search_window", "\320\241\320\276\321\206\320\270\320\260\320\273\321\214\320\275\321\213\320\271 \321\201\321\202\320\260\321\202\321\203\321\201", nil, Qt::Application::UnicodeUTF8))
     @page_4 = Qt::Widget.new()
     @page_4.objectName = "page_4"
-    @sizePolicy2.heightForWidth = @page_4.sizePolicy.hasHeightForWidth
-    @page_4.sizePolicy = @sizePolicy2
+    @page_4.geometry = Qt::Rect.new(0, 0, 207, 68)
+    @sizePolicy3.heightForWidth = @page_4.sizePolicy.hasHeightForWidth
+    @page_4.sizePolicy = @sizePolicy3
     @gridLayout_17 = Qt::GridLayout.new(@page_4)
     @gridLayout_17.objectName = "gridLayout_17"
     @gridLayout_17.setContentsMargins(0, 0, 0, 0)
@@ -1033,6 +1096,7 @@ class Ui_Search_window
     @toolBox.addItem(@page_4, Qt::Application.translate("Search_window", "\320\234\320\265\321\201\321\202\320\276 \320\275\320\260\321\205\320\276\320\266\320\264\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8))
     @page_5 = Qt::Widget.new()
     @page_5.objectName = "page_5"
+    @page_5.geometry = Qt::Rect.new(0, 0, 164, 68)
     @horizontalLayout_10 = Qt::HBoxLayout.new(@page_5)
     @horizontalLayout_10.objectName = "horizontalLayout_10"
     @horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
@@ -1130,7 +1194,7 @@ class Ui_Search_window
     @scrollArea_2.widgetResizable = true
     @scrollAreaWidgetContents_2 = Qt::Widget.new()
     @scrollAreaWidgetContents_2.objectName = "scrollAreaWidgetContents_2"
-    @scrollAreaWidgetContents_2.geometry = Qt::Rect.new(0, -114, 290, 874)
+    @scrollAreaWidgetContents_2.geometry = Qt::Rect.new(0, 0, 609, 850)
     @gridLayout_6 = Qt::GridLayout.new(@scrollAreaWidgetContents_2)
     @gridLayout_6.objectName = "gridLayout_6"
     @verticalLayout_2 = Qt::VBoxLayout.new()
@@ -1173,21 +1237,15 @@ class Ui_Search_window
 
     @gridLayout_6.addLayout(@verticalLayout_4, 3, 0, 1, 1)
 
-    @verticalLayout_6 = Qt::VBoxLayout.new()
-    @verticalLayout_6.objectName = "verticalLayout_6"
-    @orgStructure_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
-    @orgStructure_checkBox.objectName = "orgStructure_checkBox"
+    @event_orgStructure_layout = Qt::VBoxLayout.new()
+    @event_orgStructure_layout.objectName = "event_orgStructure_layout"
+    @event_orgStructure_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
+    @event_orgStructure_checkBox.objectName = "event_orgStructure_checkBox"
 
-    @verticalLayout_6.addWidget(@orgStructure_checkBox)
-
-    @orgStructure_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_2)
-    @orgStructure_selecter.objectName = "orgStructure_selecter"
-    @orgStructure_selecter.enabled = false
-
-    @verticalLayout_6.addWidget(@orgStructure_selecter)
+    @event_orgStructure_layout.addWidget(@event_orgStructure_checkBox)
 
 
-    @gridLayout_6.addLayout(@verticalLayout_6, 5, 0, 1, 1)
+    @gridLayout_6.addLayout(@event_orgStructure_layout, 5, 0, 1, 1)
 
     @gridLayout_5 = Qt::GridLayout.new()
     @gridLayout_5.objectName = "gridLayout_5"
@@ -1440,7 +1498,7 @@ class Ui_Search_window
     @scrollArea_3.widgetResizable = true
     @scrollAreaWidgetContents_3 = Qt::Widget.new()
     @scrollAreaWidgetContents_3.objectName = "scrollAreaWidgetContents_3"
-    @scrollAreaWidgetContents_3.geometry = Qt::Rect.new(0, 0, 290, 871)
+    @scrollAreaWidgetContents_3.geometry = Qt::Rect.new(0, 0, 609, 871)
     @gridLayout_8 = Qt::GridLayout.new(@scrollAreaWidgetContents_3)
     @gridLayout_8.objectName = "gridLayout_8"
     @action_directionDate_layout = Qt::VBoxLayout.new()
@@ -1498,87 +1556,87 @@ class Ui_Search_window
 
     @verticalLayout_12 = Qt::VBoxLayout.new()
     @verticalLayout_12.objectName = "verticalLayout_12"
-    @checkBox_7 = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
-    @checkBox_7.objectName = "checkBox_7"
+    @action_endDate_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
+    @action_endDate_checkBox.objectName = "action_endDate_checkBox"
 
-    @verticalLayout_12.addWidget(@checkBox_7)
+    @verticalLayout_12.addWidget(@action_endDate_checkBox)
 
-    @dateTimeEdit = Qt::DateTimeEdit.new(@scrollAreaWidgetContents_3)
-    @dateTimeEdit.objectName = "dateTimeEdit"
-    @dateTimeEdit.enabled = false
-    @dateTimeEdit.calendarPopup = true
+    @action_endDate_start = Qt::DateTimeEdit.new(@scrollAreaWidgetContents_3)
+    @action_endDate_start.objectName = "action_endDate_start"
+    @action_endDate_start.enabled = false
+    @action_endDate_start.calendarPopup = true
 
-    @verticalLayout_12.addWidget(@dateTimeEdit)
+    @verticalLayout_12.addWidget(@action_endDate_start)
 
-    @dateTimeEdit_2 = Qt::DateTimeEdit.new(@scrollAreaWidgetContents_3)
-    @dateTimeEdit_2.objectName = "dateTimeEdit_2"
-    @dateTimeEdit_2.enabled = false
-    @dateTimeEdit_2.time = Qt::Time.new(23, 59, 59)
-    @dateTimeEdit_2.calendarPopup = true
+    @action_endDate_end = Qt::DateTimeEdit.new(@scrollAreaWidgetContents_3)
+    @action_endDate_end.objectName = "action_endDate_end"
+    @action_endDate_end.enabled = false
+    @action_endDate_end.time = Qt::Time.new(23, 59, 59)
+    @action_endDate_end.calendarPopup = true
 
-    @verticalLayout_12.addWidget(@dateTimeEdit_2)
+    @verticalLayout_12.addWidget(@action_endDate_end)
 
 
     @gridLayout_8.addLayout(@verticalLayout_12, 9, 0, 1, 1)
 
     @verticalLayout_11 = Qt::VBoxLayout.new()
     @verticalLayout_11.objectName = "verticalLayout_11"
-    @checkBox_6 = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
-    @checkBox_6.objectName = "checkBox_6"
+    @action_status_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
+    @action_status_checkBox.objectName = "action_status_checkBox"
 
-    @verticalLayout_11.addWidget(@checkBox_6)
+    @verticalLayout_11.addWidget(@action_status_checkBox)
 
-    @comboBox_4 = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
-    @comboBox_4.objectName = "comboBox_4"
-    @comboBox_4.enabled = false
+    @action_status_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
+    @action_status_selecter.objectName = "action_status_selecter"
+    @action_status_selecter.enabled = false
 
-    @verticalLayout_11.addWidget(@comboBox_4)
+    @verticalLayout_11.addWidget(@action_status_selecter)
 
 
     @gridLayout_8.addLayout(@verticalLayout_11, 8, 0, 1, 1)
 
     @gridLayout_9 = Qt::GridLayout.new()
     @gridLayout_9.objectName = "gridLayout_9"
-    @checkBox_4 = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
-    @checkBox_4.objectName = "checkBox_4"
+    @action_setPerson_id_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
+    @action_setPerson_id_checkBox.objectName = "action_setPerson_id_checkBox"
 
-    @gridLayout_9.addWidget(@checkBox_4, 0, 0, 1, 1)
+    @gridLayout_9.addWidget(@action_setPerson_id_checkBox, 0, 0, 1, 1)
 
-    @checkBox_5 = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
-    @checkBox_5.objectName = "checkBox_5"
-    @checkBox_5.enabled = false
+    @action_isUrgent_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
+    @action_isUrgent_checkBox.objectName = "action_isUrgent_checkBox"
+    @action_isUrgent_checkBox.enabled = false
 
-    @gridLayout_9.addWidget(@checkBox_5, 0, 1, 1, 1)
+    @gridLayout_9.addWidget(@action_isUrgent_checkBox, 0, 1, 1, 1)
 
-    @comboBox_3 = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
-    @comboBox_3.objectName = "comboBox_3"
-    @comboBox_3.enabled = false
+    @action_setPerson_id_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
+    @action_setPerson_id_selecter.objectName = "action_setPerson_id_selecter"
+    @action_setPerson_id_selecter.enabled = false
 
-    @gridLayout_9.addWidget(@comboBox_3, 1, 0, 1, 2)
+    @gridLayout_9.addWidget(@action_setPerson_id_selecter, 1, 0, 1, 2)
 
 
     @gridLayout_8.addLayout(@gridLayout_9, 6, 0, 1, 1)
 
     @verticalLayout_19 = Qt::VBoxLayout.new()
     @verticalLayout_19.objectName = "verticalLayout_19"
-    @checkBox_14 = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
-    @checkBox_14.objectName = "checkBox_14"
+    @action_contract_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
+    @action_contract_checkBox.objectName = "action_contract_checkBox"
 
-    @verticalLayout_19.addWidget(@checkBox_14)
+    @verticalLayout_19.addWidget(@action_contract_checkBox)
 
     @horizontalLayout_4 = Qt::HBoxLayout.new()
     @horizontalLayout_4.objectName = "horizontalLayout_4"
-    @lineEdit_2 = Qt::LineEdit.new(@scrollAreaWidgetContents_3)
-    @lineEdit_2.objectName = "lineEdit_2"
-    @lineEdit_2.enabled = false
+    @action_contract_edit = Qt::LineEdit.new(@scrollAreaWidgetContents_3)
+    @action_contract_edit.objectName = "action_contract_edit"
+    @action_contract_edit.enabled = false
 
-    @horizontalLayout_4.addWidget(@lineEdit_2)
+    @horizontalLayout_4.addWidget(@action_contract_edit)
 
-    @toolButton = Qt::ToolButton.new(@scrollAreaWidgetContents_3)
-    @toolButton.objectName = "toolButton"
-    @toolButton.enabled = false
+    @action_contract_edit_button = Qt::ToolButton.new(@scrollAreaWidgetContents_3)
+    @action_contract_edit_button.objectName = "action_contract_edit_button"
+    @action_contract_edit_button.enabled = false
 
-    @horizontalLayout_4.addWidget(@toolButton)
+    @horizontalLayout_4.addWidget(@action_contract_edit_button)
 
 
     @verticalLayout_19.addLayout(@horizontalLayout_4)
@@ -1588,24 +1646,24 @@ class Ui_Search_window
 
     @verticalLayout_20 = Qt::VBoxLayout.new()
     @verticalLayout_20.objectName = "verticalLayout_20"
-    @checkBox_15 = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
-    @checkBox_15.objectName = "checkBox_15"
+    @action_MKB_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
+    @action_MKB_checkBox.objectName = "action_MKB_checkBox"
 
-    @verticalLayout_20.addWidget(@checkBox_15)
+    @verticalLayout_20.addWidget(@action_MKB_checkBox)
 
     @horizontalLayout_6 = Qt::HBoxLayout.new()
     @horizontalLayout_6.objectName = "horizontalLayout_6"
-    @lineEdit_3 = Qt::LineEdit.new(@scrollAreaWidgetContents_3)
-    @lineEdit_3.objectName = "lineEdit_3"
-    @lineEdit_3.enabled = false
+    @action_MKB_start = Qt::LineEdit.new(@scrollAreaWidgetContents_3)
+    @action_MKB_start.objectName = "action_MKB_start"
+    @action_MKB_start.enabled = false
 
-    @horizontalLayout_6.addWidget(@lineEdit_3)
+    @horizontalLayout_6.addWidget(@action_MKB_start)
 
-    @lineEdit_4 = Qt::LineEdit.new(@scrollAreaWidgetContents_3)
-    @lineEdit_4.objectName = "lineEdit_4"
-    @lineEdit_4.enabled = false
+    @action_MKB_end = Qt::LineEdit.new(@scrollAreaWidgetContents_3)
+    @action_MKB_end.objectName = "action_MKB_end"
+    @action_MKB_end.enabled = false
 
-    @horizontalLayout_6.addWidget(@lineEdit_4)
+    @horizontalLayout_6.addWidget(@action_MKB_end)
 
 
     @verticalLayout_20.addLayout(@horizontalLayout_6)
@@ -1615,16 +1673,16 @@ class Ui_Search_window
 
     @verticalLayout_10 = Qt::VBoxLayout.new()
     @verticalLayout_10.objectName = "verticalLayout_10"
-    @checkBox_3 = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
-    @checkBox_3.objectName = "checkBox_3"
+    @action_setPerson_id_speciality_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
+    @action_setPerson_id_speciality_checkBox.objectName = "action_setPerson_id_speciality_checkBox"
 
-    @verticalLayout_10.addWidget(@checkBox_3)
+    @verticalLayout_10.addWidget(@action_setPerson_id_speciality_checkBox)
 
-    @comboBox_2 = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
-    @comboBox_2.objectName = "comboBox_2"
-    @comboBox_2.enabled = false
+    @action_setPerson_id_speciality_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
+    @action_setPerson_id_speciality_selecter.objectName = "action_setPerson_id_speciality_selecter"
+    @action_setPerson_id_speciality_selecter.enabled = false
 
-    @verticalLayout_10.addWidget(@comboBox_2)
+    @verticalLayout_10.addWidget(@action_setPerson_id_speciality_selecter)
 
 
     @gridLayout_8.addLayout(@verticalLayout_10, 5, 0, 1, 1)
@@ -1712,16 +1770,16 @@ class Ui_Search_window
 
     @verticalLayout_18 = Qt::VBoxLayout.new()
     @verticalLayout_18.objectName = "verticalLayout_18"
-    @checkBox_13 = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
-    @checkBox_13.objectName = "checkBox_13"
+    @action_finance_id_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
+    @action_finance_id_checkBox.objectName = "action_finance_id_checkBox"
 
-    @verticalLayout_18.addWidget(@checkBox_13)
+    @verticalLayout_18.addWidget(@action_finance_id_checkBox)
 
-    @comboBox_10 = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
-    @comboBox_10.objectName = "comboBox_10"
-    @comboBox_10.enabled = false
+    @action_finance_id_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
+    @action_finance_id_selecter.objectName = "action_finance_id_selecter"
+    @action_finance_id_selecter.enabled = false
 
-    @verticalLayout_18.addWidget(@comboBox_10)
+    @verticalLayout_18.addWidget(@action_finance_id_selecter)
 
 
     @gridLayout_8.addLayout(@verticalLayout_18, 16, 0, 1, 1)
@@ -1749,24 +1807,24 @@ class Ui_Search_window
 
     @gridLayout_20 = Qt::GridLayout.new()
     @gridLayout_20.objectName = "gridLayout_20"
-    @dateEdit_8 = Qt::DateEdit.new(@scrollAreaWidgetContents_3)
-    @dateEdit_8.objectName = "dateEdit_8"
-    @dateEdit_8.enabled = false
-    @dateEdit_8.calendarPopup = true
+    @action_plannedEndDate_start = Qt::DateEdit.new(@scrollAreaWidgetContents_3)
+    @action_plannedEndDate_start.objectName = "action_plannedEndDate_start"
+    @action_plannedEndDate_start.enabled = false
+    @action_plannedEndDate_start.calendarPopup = true
 
-    @gridLayout_20.addWidget(@dateEdit_8, 1, 0, 1, 1)
+    @gridLayout_20.addWidget(@action_plannedEndDate_start, 1, 0, 1, 1)
 
-    @dateEdit_9 = Qt::DateEdit.new(@scrollAreaWidgetContents_3)
-    @dateEdit_9.objectName = "dateEdit_9"
-    @dateEdit_9.enabled = false
-    @dateEdit_9.calendarPopup = true
+    @action_plannedEndDate_end = Qt::DateEdit.new(@scrollAreaWidgetContents_3)
+    @action_plannedEndDate_end.objectName = "action_plannedEndDate_end"
+    @action_plannedEndDate_end.enabled = false
+    @action_plannedEndDate_end.calendarPopup = true
 
-    @gridLayout_20.addWidget(@dateEdit_9, 1, 1, 1, 1)
+    @gridLayout_20.addWidget(@action_plannedEndDate_end, 1, 1, 1, 1)
 
-    @checkBox_41 = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
-    @checkBox_41.objectName = "checkBox_41"
+    @action_plannedEndDate_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
+    @action_plannedEndDate_checkBox.objectName = "action_plannedEndDate_checkBox"
 
-    @gridLayout_20.addWidget(@checkBox_41, 0, 0, 1, 2)
+    @gridLayout_20.addWidget(@action_plannedEndDate_checkBox, 0, 0, 1, 2)
 
 
     @gridLayout_8.addLayout(@gridLayout_20, 7, 0, 1, 1)
@@ -1888,14 +1946,13 @@ class Ui_Search_window
     Qt::Object.connect(@event_execDate_checkBox, SIGNAL('clicked(bool)'), @event_execDate_start, SLOT('setEnabled(bool)'))
     Qt::Object.connect(@event_nextEventDate_checkBox, SIGNAL('clicked(bool)'), @event_nextEventDate_end, SLOT('setEnabled(bool)'))
     Qt::Object.connect(@event_nextEventDate_checkBox, SIGNAL('clicked(bool)'), @event_nextEventDate_start, SLOT('setEnabled(bool)'))
-    Qt::Object.connect(@orgStructure_checkBox, SIGNAL('clicked(bool)'), @orgStructure_selecter, SLOT('setEnabled(bool)'))
     Qt::Object.connect(@age_checkBox, SIGNAL('clicked(bool)'), @age_edit_start, SLOT('setEnabled(bool)'))
     Qt::Object.connect(@age_checkBox_end, SIGNAL('clicked(bool)'), @age_edit_end, SLOT('setEnabled(bool)'))
     Qt::Object.connect(@action_directionDate_checkBox, SIGNAL('clicked(bool)'), @action_directionDate_end, SLOT('setEnabled(bool)'))
     Qt::Object.connect(@action_directionDate_checkBox, SIGNAL('clicked(bool)'), @action_directionDate_start, SLOT('setEnabled(bool)'))
     Qt::Object.connect(@action_setPerson_id_orgStructure_checkBox, SIGNAL('clicked(bool)'), @action_setPerson_id_orgStructure_selecter, SLOT('setEnabled(bool)'))
 
-    @tabWidget_2.setCurrentIndex(2)
+    @tabWidget_2.setCurrentIndex(1)
     @toolBox.setCurrentIndex(0)
     @actionType_class.setCurrentIndex(2)
 
@@ -1943,6 +2000,11 @@ class Ui_Search_window
     @menu_Action_sub.text = Qt::Application.translate("Search_window", "\320\237\320\276\320\264\321\200\320\260\320\267\320\264\320\265\320\273\320\265\320\275\320\270\320\265", nil, Qt::Application::UnicodeUTF8)
     @menu_Event_MES_code.text = Qt::Application.translate("Search_window", "\320\232\320\276\320\264", nil, Qt::Application::UnicodeUTF8)
     @menu_Event_MES_name.text = Qt::Application.translate("Search_window", "\320\235\320\260\320\267\320\262\320\260\320\275\320\270\320\265", nil, Qt::Application::UnicodeUTF8)
+    @toolButton.text = Qt::Application.translate("Search_window", "<", nil, Qt::Application::UnicodeUTF8)
+    @toolButton_3.text = Qt::Application.translate("Search_window", ">", nil, Qt::Application::UnicodeUTF8)
+    @db_limit_selecter.insertItems(0, [Qt::Application.translate("Search_window", "10", nil, Qt::Application::UnicodeUTF8),
+        Qt::Application.translate("Search_window", "100", nil, Qt::Application::UnicodeUTF8),
+        Qt::Application.translate("Search_window", "1000", nil, Qt::Application::UnicodeUTF8)])
     @pushButton_2.text = Qt::Application.translate("Search_window", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nil, Qt::Application::UnicodeUTF8)
     @ok_search_button.text = Qt::Application.translate("Search_window", "\320\237\321\200\320\270\320\274\320\265\320\275\320\270\321\202\321\214", nil, Qt::Application::UnicodeUTF8)
     @id_checkBox.text = Qt::Application.translate("Search_window", "\320\232\320\276\320\264", nil, Qt::Application::UnicodeUTF8)
@@ -1986,7 +2048,7 @@ class Ui_Search_window
     @tabWidget_2.setTabText(@tabWidget_2.indexOf(@tab), Qt::Application.translate("Search_window", "\320\232\320\260\321\200\321\202\320\276\321\202\320\265\320\272\320\260", nil, Qt::Application::UnicodeUTF8))
     @event_type_checkBox.text = Qt::Application.translate("Search_window", "\320\242\320\270\320\277", nil, Qt::Application::UnicodeUTF8)
     @event_execDate_checkBox.text = Qt::Application.translate("Search_window", "\320\224\320\260\321\202\320\260 \320\262\321\213\320\277\320\276\320\273\320\275\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
-    @orgStructure_checkBox.text = Qt::Application.translate("Search_window", "\320\237\320\276\320\264\321\200\320\260\320\267\320\264\320\265\320\273\320\265\320\275\320\270\320\265", nil, Qt::Application::UnicodeUTF8)
+    @event_orgStructure_checkBox.text = Qt::Application.translate("Search_window", "\320\237\320\276\320\264\321\200\320\260\320\267\320\264\320\265\320\273\320\265\320\275\320\270\320\265", nil, Qt::Application::UnicodeUTF8)
     @event_setDate_checkBox.text = Qt::Application.translate("Search_window", "\320\224\320\260\321\202\320\260 \320\275\320\260\320\267\320\275\320\260\321\207\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
     @event_execDate_less.text = Qt::Application.translate("Search_window", "\320\235\320\265 \320\262\321\213\320\277\320\276\320\273\320\275\320\265\320\275\320\276", nil, Qt::Application::UnicodeUTF8)
     @event_nextEventDate_checkBox.text = Qt::Application.translate("Search_window", "\320\224\320\260\321\202\320\260 \321\201\320\273\320\265\320\264\321\203\321\216\321\211\320\265\320\271 \321\217\320\262\320\272\320\270", nil, Qt::Application::UnicodeUTF8)
@@ -2010,23 +2072,29 @@ class Ui_Search_window
         Qt::Application.translate("Search_window", "\320\224\320\270\320\260\320\263\320\275\320\276\321\201\321\202\320\270\320\272\320\260", nil, Qt::Application::UnicodeUTF8),
         Qt::Application.translate("Search_window", "\320\233\320\265\321\207\320\265\320\275\320\270\320\265", nil, Qt::Application::UnicodeUTF8),
         Qt::Application.translate("Search_window", "\320\237\321\200\320\276\321\207\320\270\320\265 \320\274\320\265\321\200\320\276\320\277\321\200\320\270\321\217\321\202\320\270\321\217", nil, Qt::Application::UnicodeUTF8)])
-    @checkBox_7.text = Qt::Application.translate("Search_window", "\320\224\320\260\321\202\320\260 \320\262\321\213\320\277\320\276\320\273\320\275\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_6.text = Qt::Application.translate("Search_window", "\320\241\320\276\321\201\321\202\320\276\321\217\320\275\320\270\320\265", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_4.text = Qt::Application.translate("Search_window", "\320\235\320\260\320\267\320\275\320\260\321\207\320\270\320\273", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_5.text = Qt::Application.translate("Search_window", "\320\241\321\200\320\276\321\207\320\275\320\276", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_14.text = Qt::Application.translate("Search_window", "\320\224\320\276\320\263\320\276\320\262\320\276\321\200", nil, Qt::Application::UnicodeUTF8)
-    @toolButton.text = Qt::Application.translate("Search_window", "...", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_15.text = Qt::Application.translate("Search_window", "\320\232\320\276\320\264\321\213 \320\264\320\270\320\260\320\263\320\275\320\276\320\267\320\276\320\262 \320\277\320\276 \320\234\320\232\320\221", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_3.text = Qt::Application.translate("Search_window", "\320\241\320\277\320\265\321\206\320\270\320\260\320\273\321\214\320\275\320\276\321\201\321\202\321\214 \320\275\320\260\320\267\320\275\320\260\321\207\320\270\320\262\321\210\320\265\320\263\320\276", nil, Qt::Application::UnicodeUTF8)
+    @action_endDate_checkBox.text = Qt::Application.translate("Search_window", "\320\224\320\260\321\202\320\260 \320\262\321\213\320\277\320\276\320\273\320\275\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
+    @action_status_checkBox.text = Qt::Application.translate("Search_window", "\320\241\320\276\321\201\321\202\320\276\321\217\320\275\320\270\320\265", nil, Qt::Application::UnicodeUTF8)
+    @action_status_selecter.insertItems(0, [Qt::Application.translate("Search_window", "\320\235\320\260\321\207\320\260\321\202\320\276", nil, Qt::Application::UnicodeUTF8),
+        Qt::Application.translate("Search_window", "\320\236\320\266\320\270\320\264\320\260\320\275\320\270\320\265", nil, Qt::Application::UnicodeUTF8),
+        Qt::Application.translate("Search_window", "\320\227\320\260\320\272\320\276\320\275\321\207\320\265\320\275\320\276", nil, Qt::Application::UnicodeUTF8),
+        Qt::Application.translate("Search_window", "\320\236\321\202\320\274\320\265\320\275\320\265\320\275\320\276", nil, Qt::Application::UnicodeUTF8),
+        Qt::Application.translate("Search_window", "\320\221\320\265\320\267 \321\200\320\265\320\267\321\203\320\273\321\214\321\202\320\260\321\202\320\260", nil, Qt::Application::UnicodeUTF8),
+        Qt::Application.translate("Search_window", "\320\235\320\260\320\267\320\275\320\260\321\207\320\265\320\275\320\276", nil, Qt::Application::UnicodeUTF8)])
+    @action_setPerson_id_checkBox.text = Qt::Application.translate("Search_window", "\320\235\320\260\320\267\320\275\320\260\321\207\320\270\320\273", nil, Qt::Application::UnicodeUTF8)
+    @action_isUrgent_checkBox.text = Qt::Application.translate("Search_window", "\320\241\321\200\320\276\321\207\320\275\320\276", nil, Qt::Application::UnicodeUTF8)
+    @action_contract_checkBox.text = Qt::Application.translate("Search_window", "\320\224\320\276\320\263\320\276\320\262\320\276\321\200", nil, Qt::Application::UnicodeUTF8)
+    @action_contract_edit_button.text = Qt::Application.translate("Search_window", "...", nil, Qt::Application::UnicodeUTF8)
+    @action_MKB_checkBox.text = Qt::Application.translate("Search_window", "\320\232\320\276\320\264\321\213 \320\264\320\270\320\260\320\263\320\275\320\276\320\267\320\276\320\262 \320\277\320\276 \320\234\320\232\320\221", nil, Qt::Application::UnicodeUTF8)
+    @action_setPerson_id_speciality_checkBox.text = Qt::Application.translate("Search_window", "\320\241\320\277\320\265\321\206\320\270\320\260\320\273\321\214\320\275\320\276\321\201\321\202\321\214 \320\275\320\260\320\267\320\275\320\260\321\207\320\270\320\262\321\210\320\265\320\263\320\276", nil, Qt::Application::UnicodeUTF8)
     @action_setPerson_id_orgStructure_checkBox.text = Qt::Application.translate("Search_window", "\320\237\320\276\320\264\321\200\320\260\320\267\320\264\320\265\320\273\320\265\320\275\320\270\320\265 \320\275\320\260\320\267\320\275\320\260\321\207\320\270\320\262\321\210\320\265\320\263\320\276", nil, Qt::Application::UnicodeUTF8)
     @checkBox_9.text = Qt::Application.translate("Search_window", "\320\241\320\277\320\265\321\206\320\270\320\260\320\273\321\214\320\275\320\276\321\201\321\202\321\214 \320\270\321\201\320\277\320\276\320\273\320\275\320\270\321\202\320\265\320\273\321\217", nil, Qt::Application::UnicodeUTF8)
     @checkBox_10.text = Qt::Application.translate("Search_window", "\320\230\321\201\320\277\320\276\320\273\320\275\320\270\321\202\320\265\320\273\321\214", nil, Qt::Application::UnicodeUTF8)
     @checkBox_11.text = Qt::Application.translate("Search_window", "\320\220\321\201\321\201\320\270\321\201\321\202\320\265\320\275\321\202", nil, Qt::Application::UnicodeUTF8)
     @checkBox_12.text = Qt::Application.translate("Search_window", "\320\232\320\276\320\264 \321\200\320\260\320\261\320\276\321\202\321\213", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_13.text = Qt::Application.translate("Search_window", "\320\242\320\270\320\277 \321\204\320\270\320\275\320\260\320\275\321\201\320\270\321\200\320\276\320\262\320\260\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
+    @action_finance_id_checkBox.text = Qt::Application.translate("Search_window", "\320\242\320\270\320\277 \321\204\320\270\320\275\320\260\320\275\321\201\320\270\321\200\320\276\320\262\320\260\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
     @checkBox_8.text = Qt::Application.translate("Search_window", "\320\237\320\276\320\264\321\200\320\260\320\267\320\264\320\265\320\273\320\265\320\275\320\270\320\265 \320\270\321\201\320\277\320\276\320\273\320\275\320\270\321\202\320\265\320\273\321\217", nil, Qt::Application::UnicodeUTF8)
     @checkBox_16.text = Qt::Application.translate("Search_window", "\320\235\320\265\321\201\320\276\320\263\320\273\320\260\321\201\320\276\320\262\320\260\320\275\320\275\321\213\320\265", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_41.text = Qt::Application.translate("Search_window", "\320\237\320\273\320\260\320\275\320\276\320\262\320\260\321\217 \320\264\320\260\321\202\320\260 \320\262\321\213\320\277\320\276\320\273\320\275\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
+    @action_plannedEndDate_checkBox.text = Qt::Application.translate("Search_window", "\320\237\320\273\320\260\320\275\320\276\320\262\320\260\321\217 \320\264\320\260\321\202\320\260 \320\262\321\213\320\277\320\276\320\273\320\275\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
     @tabWidget_2.setTabText(@tabWidget_2.indexOf(@tab_3), Qt::Application.translate("Search_window", "\320\224\320\265\320\271\321\201\321\202\320\262\320\270\321\217", nil, Qt::Application::UnicodeUTF8))
     @menu.title = Qt::Application.translate("Search_window", "\320\241\321\202\320\276\320\273\320\261\321\206\321\213", nil, Qt::Application::UnicodeUTF8)
     @menu_2.title = Qt::Application.translate("Search_window", "\320\237\320\260\321\206\320\270\320\265\320\275\321\202", nil, Qt::Application::UnicodeUTF8)
