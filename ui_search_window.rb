@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'search_window.ui'
 **
-** Created: Ñð 8. èþí 17:07:21 2016
+** Created: ×ò 9. èþí 17:12:18 2016
 **      by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -188,6 +188,7 @@ class Ui_Search_window
     attr_reader :event_execDate_end
     attr_reader :event_orgStructure_layout
     attr_reader :event_orgStructure_checkBox
+    attr_reader :event_orgStructure_selecter
     attr_reader :gridLayout_5
     attr_reader :event_setDate_start
     attr_reader :event_setDate_checkBox
@@ -200,37 +201,37 @@ class Ui_Search_window
     attr_reader :event_nextEventDate_start
     attr_reader :event_nextEventDate_end
     attr_reader :verticalLayout_21
-    attr_reader :checkBox_17
-    attr_reader :comboBox_16
+    attr_reader :event_person_speciality_id_checkBox
+    attr_reader :event_person_speciality_id_selecter
     attr_reader :checkBox_29
     attr_reader :verticalLayout_22
-    attr_reader :checkBox_18
-    attr_reader :comboBox_15
+    attr_reader :event_person_id_checkBox
+    attr_reader :event_person_id_selecter
     attr_reader :verticalLayout_23
-    attr_reader :checkBox_19
-    attr_reader :comboBox_14
+    attr_reader :event_isPrimary_checkBox
+    attr_reader :event_isPrimary_selecter
     attr_reader :verticalLayout_25
-    attr_reader :checkBox_21
-    attr_reader :comboBox_12
+    attr_reader :event_lpu_checkBox
+    attr_reader :event_lpu_selecter
     attr_reader :verticalLayout_24
-    attr_reader :checkBox_20
-    attr_reader :comboBox_13
+    attr_reader :event_order_checkBox
+    attr_reader :event_order_selecter
     attr_reader :verticalLayout_27
-    attr_reader :checkBox_23
-    attr_reader :lineEdit_7
+    attr_reader :event_mes_id_checkBox
+    attr_reader :event_mes_id_edit
     attr_reader :verticalLayout_26
-    attr_reader :checkBox_22
-    attr_reader :comboBox_11
+    attr_reader :event_relegateOrg_id_checkBox
+    attr_reader :event_relegateOrg_id_selecter
     attr_reader :verticalLayout_28
-    attr_reader :checkBox_24
-    attr_reader :comboBox_9
+    attr_reader :event_result_id_checkBox
+    attr_reader :event_result_id_selecter
     attr_reader :gridLayout_11
-    attr_reader :checkBox_26
-    attr_reader :checkBox_25
-    attr_reader :lineEdit_6
-    attr_reader :lineEdit_5
-    attr_reader :checkBox_27
-    attr_reader :checkBox_28
+    attr_reader :event_diagnostic_next
+    attr_reader :event_diagnostic_prev
+    attr_reader :event_diagnostic_end
+    attr_reader :event_diagnostic_start
+    attr_reader :event_diagnostic_checkBox
+    attr_reader :event_org_id_exlude
     attr_reader :tab_3
     attr_reader :gridLayout_7
     attr_reader :scrollArea_3
@@ -244,7 +245,7 @@ class Ui_Search_window
     attr_reader :actionType_layout
     attr_reader :actionType_checkBox
     attr_reader :actionType_class
-    attr_reader :action_type_tree
+    attr_reader :actionType_tree_select
     attr_reader :verticalSpacer_3
     attr_reader :verticalLayout_12
     attr_reader :action_endDate_checkBox
@@ -274,24 +275,24 @@ class Ui_Search_window
     attr_reader :action_setPerson_id_orgStructure_checkBox
     attr_reader :action_setPerson_id_orgStructure_selecter
     attr_reader :verticalLayout_14
-    attr_reader :checkBox_9
-    attr_reader :comboBox_6
+    attr_reader :action_person_id_speciality_checkBox
+    attr_reader :action_person_id_speciality_selecter
     attr_reader :verticalLayout_15
-    attr_reader :checkBox_10
-    attr_reader :comboBox_7
+    attr_reader :action_person_id_checkBox
+    attr_reader :action_person_id_selecter
     attr_reader :verticalLayout_16
-    attr_reader :checkBox_11
-    attr_reader :comboBox_8
+    attr_reader :action_assistant_id_checkBox
+    attr_reader :action_assistant_id_selecter
     attr_reader :verticalLayout_17
-    attr_reader :checkBox_12
-    attr_reader :lineEdit
+    attr_reader :action_ActionProperty_Job_Ticket_checkBox
+    attr_reader :action_ActionProperty_Job_Ticket_edit
     attr_reader :verticalLayout_18
     attr_reader :action_finance_id_checkBox
     attr_reader :action_finance_id_selecter
     attr_reader :verticalLayout_13
-    attr_reader :checkBox_8
-    attr_reader :comboBox_5
-    attr_reader :checkBox_16
+    attr_reader :action_person_id_orgStructure_checkBox
+    attr_reader :action_person_id_orgStructure_tree_select
+    attr_reader :action_ActionType_isRequiredCoordination
     attr_reader :gridLayout_20
     attr_reader :action_plannedEndDate_start
     attr_reader :action_plannedEndDate_end
@@ -558,7 +559,7 @@ class Ui_Search_window
     @scrollArea.widgetResizable = true
     @scrollAreaWidgetContents = Qt::Widget.new()
     @scrollAreaWidgetContents.objectName = "scrollAreaWidgetContents"
-    @scrollAreaWidgetContents.geometry = Qt::Rect.new(0, 0, 609, 826)
+    @scrollAreaWidgetContents.geometry = Qt::Rect.new(0, 0, 626, 766)
     @scrollAreaWidgetContents.styleSheet = ""
     @verticalLayout = Qt::VBoxLayout.new(@scrollAreaWidgetContents)
     @verticalLayout.objectName = "verticalLayout"
@@ -945,7 +946,7 @@ class Ui_Search_window
     @toolBox.addItem(@page, Qt::Application.translate("Search_window", "\320\220\320\264\321\200\320\265\321\201", nil, Qt::Application::UnicodeUTF8))
     @page_2 = Qt::Widget.new()
     @page_2.objectName = "page_2"
-    @page_2.geometry = Qt::Rect.new(0, 0, 173, 117)
+    @page_2.geometry = Qt::Rect.new(0, 0, 591, 117)
     @sizePolicy3.heightForWidth = @page_2.sizePolicy.hasHeightForWidth
     @page_2.sizePolicy = @sizePolicy3
     @gridLayout_15 = Qt::GridLayout.new(@page_2)
@@ -1006,7 +1007,7 @@ class Ui_Search_window
     @toolBox.addItem(@page_2, Qt::Application.translate("Search_window", "\320\241\321\202\321\200\320\260\321\205\320\276\320\262\320\276\320\271 \320\277\320\276\320\273\320\270\321\201", nil, Qt::Application::UnicodeUTF8))
     @page_3 = Qt::Widget.new()
     @page_3.objectName = "page_3"
-    @page_3.geometry = Qt::Rect.new(0, 0, 166, 91)
+    @page_3.geometry = Qt::Rect.new(0, 0, 591, 91)
     @sizePolicy3.heightForWidth = @page_3.sizePolicy.hasHeightForWidth
     @page_3.sizePolicy = @sizePolicy3
     @verticalLayout_29 = Qt::VBoxLayout.new(@page_3)
@@ -1051,7 +1052,7 @@ class Ui_Search_window
     @toolBox.addItem(@page_3, Qt::Application.translate("Search_window", "\320\241\320\276\321\206\320\270\320\260\320\273\321\214\320\275\321\213\320\271 \321\201\321\202\320\260\321\202\321\203\321\201", nil, Qt::Application::UnicodeUTF8))
     @page_4 = Qt::Widget.new()
     @page_4.objectName = "page_4"
-    @page_4.geometry = Qt::Rect.new(0, 0, 207, 68)
+    @page_4.geometry = Qt::Rect.new(0, 0, 608, 69)
     @sizePolicy3.heightForWidth = @page_4.sizePolicy.hasHeightForWidth
     @page_4.sizePolicy = @sizePolicy3
     @gridLayout_17 = Qt::GridLayout.new(@page_4)
@@ -1096,7 +1097,7 @@ class Ui_Search_window
     @toolBox.addItem(@page_4, Qt::Application.translate("Search_window", "\320\234\320\265\321\201\321\202\320\276 \320\275\320\260\321\205\320\276\320\266\320\264\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8))
     @page_5 = Qt::Widget.new()
     @page_5.objectName = "page_5"
-    @page_5.geometry = Qt::Rect.new(0, 0, 164, 68)
+    @page_5.geometry = Qt::Rect.new(0, 0, 608, 69)
     @horizontalLayout_10 = Qt::HBoxLayout.new(@page_5)
     @horizontalLayout_10.objectName = "horizontalLayout_10"
     @horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
@@ -1194,7 +1195,7 @@ class Ui_Search_window
     @scrollArea_2.widgetResizable = true
     @scrollAreaWidgetContents_2 = Qt::Widget.new()
     @scrollAreaWidgetContents_2.objectName = "scrollAreaWidgetContents_2"
-    @scrollAreaWidgetContents_2.geometry = Qt::Rect.new(0, 0, 609, 850)
+    @scrollAreaWidgetContents_2.geometry = Qt::Rect.new(0, -8, 609, 874)
     @gridLayout_6 = Qt::GridLayout.new(@scrollAreaWidgetContents_2)
     @gridLayout_6.objectName = "gridLayout_6"
     @verticalLayout_2 = Qt::VBoxLayout.new()
@@ -1243,6 +1244,12 @@ class Ui_Search_window
     @event_orgStructure_checkBox.objectName = "event_orgStructure_checkBox"
 
     @event_orgStructure_layout.addWidget(@event_orgStructure_checkBox)
+
+    @event_orgStructure_selecter = PoTreeWidget.new(@scrollAreaWidgetContents_2)
+    @event_orgStructure_selecter.objectName = "event_orgStructure_selecter"
+    @event_orgStructure_selecter.enabled = false
+
+    @event_orgStructure_layout.addWidget(@event_orgStructure_selecter)
 
 
     @gridLayout_6.addLayout(@event_orgStructure_layout, 5, 0, 1, 1)
@@ -1312,16 +1319,16 @@ class Ui_Search_window
 
     @verticalLayout_21 = Qt::VBoxLayout.new()
     @verticalLayout_21.objectName = "verticalLayout_21"
-    @checkBox_17 = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
-    @checkBox_17.objectName = "checkBox_17"
+    @event_person_speciality_id_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
+    @event_person_speciality_id_checkBox.objectName = "event_person_speciality_id_checkBox"
 
-    @verticalLayout_21.addWidget(@checkBox_17)
+    @verticalLayout_21.addWidget(@event_person_speciality_id_checkBox)
 
-    @comboBox_16 = Qt::ComboBox.new(@scrollAreaWidgetContents_2)
-    @comboBox_16.objectName = "comboBox_16"
-    @comboBox_16.enabled = false
+    @event_person_speciality_id_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_2)
+    @event_person_speciality_id_selecter.objectName = "event_person_speciality_id_selecter"
+    @event_person_speciality_id_selecter.enabled = false
 
-    @verticalLayout_21.addWidget(@comboBox_16)
+    @verticalLayout_21.addWidget(@event_person_speciality_id_selecter)
 
 
     @gridLayout_6.addLayout(@verticalLayout_21, 6, 0, 1, 1)
@@ -1333,154 +1340,154 @@ class Ui_Search_window
 
     @verticalLayout_22 = Qt::VBoxLayout.new()
     @verticalLayout_22.objectName = "verticalLayout_22"
-    @checkBox_18 = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
-    @checkBox_18.objectName = "checkBox_18"
+    @event_person_id_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
+    @event_person_id_checkBox.objectName = "event_person_id_checkBox"
 
-    @verticalLayout_22.addWidget(@checkBox_18)
+    @verticalLayout_22.addWidget(@event_person_id_checkBox)
 
-    @comboBox_15 = Qt::ComboBox.new(@scrollAreaWidgetContents_2)
-    @comboBox_15.objectName = "comboBox_15"
-    @comboBox_15.enabled = false
+    @event_person_id_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_2)
+    @event_person_id_selecter.objectName = "event_person_id_selecter"
+    @event_person_id_selecter.enabled = false
 
-    @verticalLayout_22.addWidget(@comboBox_15)
+    @verticalLayout_22.addWidget(@event_person_id_selecter)
 
 
     @gridLayout_6.addLayout(@verticalLayout_22, 7, 0, 1, 1)
 
     @verticalLayout_23 = Qt::VBoxLayout.new()
     @verticalLayout_23.objectName = "verticalLayout_23"
-    @checkBox_19 = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
-    @checkBox_19.objectName = "checkBox_19"
+    @event_isPrimary_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
+    @event_isPrimary_checkBox.objectName = "event_isPrimary_checkBox"
 
-    @verticalLayout_23.addWidget(@checkBox_19)
+    @verticalLayout_23.addWidget(@event_isPrimary_checkBox)
 
-    @comboBox_14 = Qt::ComboBox.new(@scrollAreaWidgetContents_2)
-    @comboBox_14.objectName = "comboBox_14"
-    @comboBox_14.enabled = false
+    @event_isPrimary_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_2)
+    @event_isPrimary_selecter.objectName = "event_isPrimary_selecter"
+    @event_isPrimary_selecter.enabled = false
 
-    @verticalLayout_23.addWidget(@comboBox_14)
+    @verticalLayout_23.addWidget(@event_isPrimary_selecter)
 
 
     @gridLayout_6.addLayout(@verticalLayout_23, 8, 0, 1, 1)
 
     @verticalLayout_25 = Qt::VBoxLayout.new()
     @verticalLayout_25.objectName = "verticalLayout_25"
-    @checkBox_21 = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
-    @checkBox_21.objectName = "checkBox_21"
+    @event_lpu_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
+    @event_lpu_checkBox.objectName = "event_lpu_checkBox"
 
-    @verticalLayout_25.addWidget(@checkBox_21)
+    @verticalLayout_25.addWidget(@event_lpu_checkBox)
 
-    @comboBox_12 = Qt::ComboBox.new(@scrollAreaWidgetContents_2)
-    @comboBox_12.objectName = "comboBox_12"
-    @comboBox_12.enabled = false
+    @event_lpu_selecter = PoTreeWidget.new(@scrollAreaWidgetContents_2)
+    @event_lpu_selecter.objectName = "event_lpu_selecter"
+    @event_lpu_selecter.enabled = false
 
-    @verticalLayout_25.addWidget(@comboBox_12)
+    @verticalLayout_25.addWidget(@event_lpu_selecter)
 
 
     @gridLayout_6.addLayout(@verticalLayout_25, 12, 0, 1, 1)
 
     @verticalLayout_24 = Qt::VBoxLayout.new()
     @verticalLayout_24.objectName = "verticalLayout_24"
-    @checkBox_20 = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
-    @checkBox_20.objectName = "checkBox_20"
+    @event_order_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
+    @event_order_checkBox.objectName = "event_order_checkBox"
 
-    @verticalLayout_24.addWidget(@checkBox_20)
+    @verticalLayout_24.addWidget(@event_order_checkBox)
 
-    @comboBox_13 = Qt::ComboBox.new(@scrollAreaWidgetContents_2)
-    @comboBox_13.objectName = "comboBox_13"
-    @comboBox_13.enabled = false
+    @event_order_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_2)
+    @event_order_selecter.objectName = "event_order_selecter"
+    @event_order_selecter.enabled = false
 
-    @verticalLayout_24.addWidget(@comboBox_13)
+    @verticalLayout_24.addWidget(@event_order_selecter)
 
 
     @gridLayout_6.addLayout(@verticalLayout_24, 10, 0, 1, 1)
 
     @verticalLayout_27 = Qt::VBoxLayout.new()
     @verticalLayout_27.objectName = "verticalLayout_27"
-    @checkBox_23 = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
-    @checkBox_23.objectName = "checkBox_23"
+    @event_mes_id_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
+    @event_mes_id_checkBox.objectName = "event_mes_id_checkBox"
 
-    @verticalLayout_27.addWidget(@checkBox_23)
+    @verticalLayout_27.addWidget(@event_mes_id_checkBox)
 
-    @lineEdit_7 = Qt::LineEdit.new(@scrollAreaWidgetContents_2)
-    @lineEdit_7.objectName = "lineEdit_7"
-    @lineEdit_7.enabled = false
+    @event_mes_id_edit = Qt::LineEdit.new(@scrollAreaWidgetContents_2)
+    @event_mes_id_edit.objectName = "event_mes_id_edit"
+    @event_mes_id_edit.enabled = false
 
-    @verticalLayout_27.addWidget(@lineEdit_7)
+    @verticalLayout_27.addWidget(@event_mes_id_edit)
 
 
     @gridLayout_6.addLayout(@verticalLayout_27, 15, 0, 1, 1)
 
     @verticalLayout_26 = Qt::VBoxLayout.new()
     @verticalLayout_26.objectName = "verticalLayout_26"
-    @checkBox_22 = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
-    @checkBox_22.objectName = "checkBox_22"
+    @event_relegateOrg_id_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
+    @event_relegateOrg_id_checkBox.objectName = "event_relegateOrg_id_checkBox"
 
-    @verticalLayout_26.addWidget(@checkBox_22)
+    @verticalLayout_26.addWidget(@event_relegateOrg_id_checkBox)
 
-    @comboBox_11 = Qt::ComboBox.new(@scrollAreaWidgetContents_2)
-    @comboBox_11.objectName = "comboBox_11"
-    @comboBox_11.enabled = false
+    @event_relegateOrg_id_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_2)
+    @event_relegateOrg_id_selecter.objectName = "event_relegateOrg_id_selecter"
+    @event_relegateOrg_id_selecter.enabled = false
 
-    @verticalLayout_26.addWidget(@comboBox_11)
+    @verticalLayout_26.addWidget(@event_relegateOrg_id_selecter)
 
 
     @gridLayout_6.addLayout(@verticalLayout_26, 14, 0, 1, 1)
 
     @verticalLayout_28 = Qt::VBoxLayout.new()
     @verticalLayout_28.objectName = "verticalLayout_28"
-    @checkBox_24 = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
-    @checkBox_24.objectName = "checkBox_24"
+    @event_result_id_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
+    @event_result_id_checkBox.objectName = "event_result_id_checkBox"
 
-    @verticalLayout_28.addWidget(@checkBox_24)
+    @verticalLayout_28.addWidget(@event_result_id_checkBox)
 
-    @comboBox_9 = Qt::ComboBox.new(@scrollAreaWidgetContents_2)
-    @comboBox_9.objectName = "comboBox_9"
-    @comboBox_9.enabled = false
+    @event_result_id_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_2)
+    @event_result_id_selecter.objectName = "event_result_id_selecter"
+    @event_result_id_selecter.enabled = false
 
-    @verticalLayout_28.addWidget(@comboBox_9)
+    @verticalLayout_28.addWidget(@event_result_id_selecter)
 
 
     @gridLayout_6.addLayout(@verticalLayout_28, 16, 0, 1, 1)
 
     @gridLayout_11 = Qt::GridLayout.new()
     @gridLayout_11.objectName = "gridLayout_11"
-    @checkBox_26 = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
-    @checkBox_26.objectName = "checkBox_26"
-    @checkBox_26.enabled = false
+    @event_diagnostic_next = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
+    @event_diagnostic_next.objectName = "event_diagnostic_next"
+    @event_diagnostic_next.enabled = false
 
-    @gridLayout_11.addWidget(@checkBox_26, 1, 1, 1, 1)
+    @gridLayout_11.addWidget(@event_diagnostic_next, 1, 1, 1, 1)
 
-    @checkBox_25 = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
-    @checkBox_25.objectName = "checkBox_25"
-    @checkBox_25.enabled = false
+    @event_diagnostic_prev = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
+    @event_diagnostic_prev.objectName = "event_diagnostic_prev"
+    @event_diagnostic_prev.enabled = false
 
-    @gridLayout_11.addWidget(@checkBox_25, 1, 0, 1, 1)
+    @gridLayout_11.addWidget(@event_diagnostic_prev, 1, 0, 1, 1)
 
-    @lineEdit_6 = Qt::LineEdit.new(@scrollAreaWidgetContents_2)
-    @lineEdit_6.objectName = "lineEdit_6"
-    @lineEdit_6.enabled = false
+    @event_diagnostic_end = Qt::LineEdit.new(@scrollAreaWidgetContents_2)
+    @event_diagnostic_end.objectName = "event_diagnostic_end"
+    @event_diagnostic_end.enabled = false
 
-    @gridLayout_11.addWidget(@lineEdit_6, 2, 1, 1, 1)
+    @gridLayout_11.addWidget(@event_diagnostic_end, 2, 1, 1, 1)
 
-    @lineEdit_5 = Qt::LineEdit.new(@scrollAreaWidgetContents_2)
-    @lineEdit_5.objectName = "lineEdit_5"
-    @lineEdit_5.enabled = false
+    @event_diagnostic_start = Qt::LineEdit.new(@scrollAreaWidgetContents_2)
+    @event_diagnostic_start.objectName = "event_diagnostic_start"
+    @event_diagnostic_start.enabled = false
 
-    @gridLayout_11.addWidget(@lineEdit_5, 2, 0, 1, 1)
+    @gridLayout_11.addWidget(@event_diagnostic_start, 2, 0, 1, 1)
 
-    @checkBox_27 = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
-    @checkBox_27.objectName = "checkBox_27"
+    @event_diagnostic_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
+    @event_diagnostic_checkBox.objectName = "event_diagnostic_checkBox"
 
-    @gridLayout_11.addWidget(@checkBox_27, 0, 0, 1, 2)
+    @gridLayout_11.addWidget(@event_diagnostic_checkBox, 0, 0, 1, 2)
 
 
     @gridLayout_6.addLayout(@gridLayout_11, 17, 0, 1, 1)
 
-    @checkBox_28 = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
-    @checkBox_28.objectName = "checkBox_28"
+    @event_org_id_exlude = Qt::CheckBox.new(@scrollAreaWidgetContents_2)
+    @event_org_id_exlude.objectName = "event_org_id_exlude"
 
-    @gridLayout_6.addWidget(@checkBox_28, 13, 0, 1, 1)
+    @gridLayout_6.addWidget(@event_org_id_exlude, 13, 0, 1, 1)
 
     @scrollArea_2.setWidget(@scrollAreaWidgetContents_2)
 
@@ -1498,7 +1505,7 @@ class Ui_Search_window
     @scrollArea_3.widgetResizable = true
     @scrollAreaWidgetContents_3 = Qt::Widget.new()
     @scrollAreaWidgetContents_3.objectName = "scrollAreaWidgetContents_3"
-    @scrollAreaWidgetContents_3.geometry = Qt::Rect.new(0, 0, 609, 871)
+    @scrollAreaWidgetContents_3.geometry = Qt::Rect.new(0, 0, 609, 885)
     @gridLayout_8 = Qt::GridLayout.new(@scrollAreaWidgetContents_3)
     @gridLayout_8.objectName = "gridLayout_8"
     @action_directionDate_layout = Qt::VBoxLayout.new()
@@ -1539,13 +1546,15 @@ class Ui_Search_window
 
     @actionType_class = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
     @actionType_class.objectName = "actionType_class"
+    @actionType_class.enabled = false
 
     @actionType_layout.addWidget(@actionType_class)
 
-    @action_type_tree = Qt::VBoxLayout.new()
-    @action_type_tree.objectName = "action_type_tree"
+    @actionType_tree_select = PoTreeWidget.new(@scrollAreaWidgetContents_3)
+    @actionType_tree_select.objectName = "actionType_tree_select"
+    @actionType_tree_select.enabled = false
 
-    @actionType_layout.addLayout(@action_type_tree)
+    @actionType_layout.addWidget(@actionType_tree_select)
 
 
     @gridLayout_8.addLayout(@actionType_layout, 0, 0, 1, 1)
@@ -1604,7 +1613,7 @@ class Ui_Search_window
 
     @action_isUrgent_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
     @action_isUrgent_checkBox.objectName = "action_isUrgent_checkBox"
-    @action_isUrgent_checkBox.enabled = false
+    @action_isUrgent_checkBox.enabled = true
 
     @gridLayout_9.addWidget(@action_isUrgent_checkBox, 0, 1, 1, 1)
 
@@ -1694,7 +1703,7 @@ class Ui_Search_window
 
     @action_setPerson_id_orgStructure_layout.addWidget(@action_setPerson_id_orgStructure_checkBox)
 
-    @action_setPerson_id_orgStructure_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
+    @action_setPerson_id_orgStructure_selecter = PoTreeWidget.new(@scrollAreaWidgetContents_3)
     @action_setPerson_id_orgStructure_selecter.objectName = "action_setPerson_id_orgStructure_selecter"
     @action_setPerson_id_orgStructure_selecter.enabled = false
 
@@ -1705,65 +1714,65 @@ class Ui_Search_window
 
     @verticalLayout_14 = Qt::VBoxLayout.new()
     @verticalLayout_14.objectName = "verticalLayout_14"
-    @checkBox_9 = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
-    @checkBox_9.objectName = "checkBox_9"
-    @checkBox_9.enabled = true
+    @action_person_id_speciality_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
+    @action_person_id_speciality_checkBox.objectName = "action_person_id_speciality_checkBox"
+    @action_person_id_speciality_checkBox.enabled = true
 
-    @verticalLayout_14.addWidget(@checkBox_9)
+    @verticalLayout_14.addWidget(@action_person_id_speciality_checkBox)
 
-    @comboBox_6 = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
-    @comboBox_6.objectName = "comboBox_6"
-    @comboBox_6.enabled = false
+    @action_person_id_speciality_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
+    @action_person_id_speciality_selecter.objectName = "action_person_id_speciality_selecter"
+    @action_person_id_speciality_selecter.enabled = false
 
-    @verticalLayout_14.addWidget(@comboBox_6)
+    @verticalLayout_14.addWidget(@action_person_id_speciality_selecter)
 
 
     @gridLayout_8.addLayout(@verticalLayout_14, 11, 0, 1, 1)
 
     @verticalLayout_15 = Qt::VBoxLayout.new()
     @verticalLayout_15.objectName = "verticalLayout_15"
-    @checkBox_10 = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
-    @checkBox_10.objectName = "checkBox_10"
+    @action_person_id_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
+    @action_person_id_checkBox.objectName = "action_person_id_checkBox"
 
-    @verticalLayout_15.addWidget(@checkBox_10)
+    @verticalLayout_15.addWidget(@action_person_id_checkBox)
 
-    @comboBox_7 = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
-    @comboBox_7.objectName = "comboBox_7"
-    @comboBox_7.enabled = false
+    @action_person_id_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
+    @action_person_id_selecter.objectName = "action_person_id_selecter"
+    @action_person_id_selecter.enabled = false
 
-    @verticalLayout_15.addWidget(@comboBox_7)
+    @verticalLayout_15.addWidget(@action_person_id_selecter)
 
 
     @gridLayout_8.addLayout(@verticalLayout_15, 12, 0, 1, 1)
 
     @verticalLayout_16 = Qt::VBoxLayout.new()
     @verticalLayout_16.objectName = "verticalLayout_16"
-    @checkBox_11 = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
-    @checkBox_11.objectName = "checkBox_11"
+    @action_assistant_id_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
+    @action_assistant_id_checkBox.objectName = "action_assistant_id_checkBox"
 
-    @verticalLayout_16.addWidget(@checkBox_11)
+    @verticalLayout_16.addWidget(@action_assistant_id_checkBox)
 
-    @comboBox_8 = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
-    @comboBox_8.objectName = "comboBox_8"
-    @comboBox_8.enabled = false
+    @action_assistant_id_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
+    @action_assistant_id_selecter.objectName = "action_assistant_id_selecter"
+    @action_assistant_id_selecter.enabled = false
 
-    @verticalLayout_16.addWidget(@comboBox_8)
+    @verticalLayout_16.addWidget(@action_assistant_id_selecter)
 
 
     @gridLayout_8.addLayout(@verticalLayout_16, 13, 0, 1, 1)
 
     @verticalLayout_17 = Qt::VBoxLayout.new()
     @verticalLayout_17.objectName = "verticalLayout_17"
-    @checkBox_12 = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
-    @checkBox_12.objectName = "checkBox_12"
+    @action_ActionProperty_Job_Ticket_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
+    @action_ActionProperty_Job_Ticket_checkBox.objectName = "action_ActionProperty_Job_Ticket_checkBox"
 
-    @verticalLayout_17.addWidget(@checkBox_12)
+    @verticalLayout_17.addWidget(@action_ActionProperty_Job_Ticket_checkBox)
 
-    @lineEdit = Qt::LineEdit.new(@scrollAreaWidgetContents_3)
-    @lineEdit.objectName = "lineEdit"
-    @lineEdit.enabled = false
+    @action_ActionProperty_Job_Ticket_edit = Qt::LineEdit.new(@scrollAreaWidgetContents_3)
+    @action_ActionProperty_Job_Ticket_edit.objectName = "action_ActionProperty_Job_Ticket_edit"
+    @action_ActionProperty_Job_Ticket_edit.enabled = false
 
-    @verticalLayout_17.addWidget(@lineEdit)
+    @verticalLayout_17.addWidget(@action_ActionProperty_Job_Ticket_edit)
 
 
     @gridLayout_8.addLayout(@verticalLayout_17, 15, 0, 1, 1)
@@ -1786,24 +1795,24 @@ class Ui_Search_window
 
     @verticalLayout_13 = Qt::VBoxLayout.new()
     @verticalLayout_13.objectName = "verticalLayout_13"
-    @checkBox_8 = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
-    @checkBox_8.objectName = "checkBox_8"
+    @action_person_id_orgStructure_checkBox = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
+    @action_person_id_orgStructure_checkBox.objectName = "action_person_id_orgStructure_checkBox"
 
-    @verticalLayout_13.addWidget(@checkBox_8)
+    @verticalLayout_13.addWidget(@action_person_id_orgStructure_checkBox)
 
-    @comboBox_5 = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
-    @comboBox_5.objectName = "comboBox_5"
-    @comboBox_5.enabled = false
+    @action_person_id_orgStructure_tree_select = PoTreeWidget.new(@scrollAreaWidgetContents_3)
+    @action_person_id_orgStructure_tree_select.objectName = "action_person_id_orgStructure_tree_select"
+    @action_person_id_orgStructure_tree_select.enabled = false
 
-    @verticalLayout_13.addWidget(@comboBox_5)
+    @verticalLayout_13.addWidget(@action_person_id_orgStructure_tree_select)
 
 
     @gridLayout_8.addLayout(@verticalLayout_13, 10, 0, 1, 1)
 
-    @checkBox_16 = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
-    @checkBox_16.objectName = "checkBox_16"
+    @action_ActionType_isRequiredCoordination = Qt::CheckBox.new(@scrollAreaWidgetContents_3)
+    @action_ActionType_isRequiredCoordination.objectName = "action_ActionType_isRequiredCoordination"
 
-    @gridLayout_8.addWidget(@checkBox_16, 14, 0, 1, 1)
+    @gridLayout_8.addWidget(@action_ActionType_isRequiredCoordination, 14, 0, 1, 1)
 
     @gridLayout_20 = Qt::GridLayout.new()
     @gridLayout_20.objectName = "gridLayout_20"
@@ -1951,10 +1960,40 @@ class Ui_Search_window
     Qt::Object.connect(@action_directionDate_checkBox, SIGNAL('clicked(bool)'), @action_directionDate_end, SLOT('setEnabled(bool)'))
     Qt::Object.connect(@action_directionDate_checkBox, SIGNAL('clicked(bool)'), @action_directionDate_start, SLOT('setEnabled(bool)'))
     Qt::Object.connect(@action_setPerson_id_orgStructure_checkBox, SIGNAL('clicked(bool)'), @action_setPerson_id_orgStructure_selecter, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@action_setPerson_id_speciality_checkBox, SIGNAL('clicked(bool)'), @action_setPerson_id_speciality_selecter, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@action_setPerson_id_checkBox, SIGNAL('clicked(bool)'), @action_setPerson_id_selecter, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@action_plannedEndDate_checkBox, SIGNAL('clicked(bool)'), @action_plannedEndDate_end, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@action_plannedEndDate_checkBox, SIGNAL('clicked(bool)'), @action_plannedEndDate_start, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@action_status_checkBox, SIGNAL('clicked(bool)'), @action_status_selecter, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@action_endDate_checkBox, SIGNAL('clicked(bool)'), @action_endDate_end, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@action_endDate_checkBox, SIGNAL('clicked(bool)'), @action_endDate_start, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@action_MKB_checkBox, SIGNAL('clicked(bool)'), @action_MKB_end, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@action_MKB_checkBox, SIGNAL('clicked(bool)'), @action_MKB_start, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@action_contract_checkBox, SIGNAL('clicked(bool)'), @action_contract_edit, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@action_contract_checkBox, SIGNAL('clicked(bool)'), @action_contract_edit_button, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@action_finance_id_checkBox, SIGNAL('clicked(bool)'), @action_finance_id_selecter, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@action_ActionProperty_Job_Ticket_checkBox, SIGNAL('clicked(bool)'), @action_ActionProperty_Job_Ticket_edit, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@action_person_id_orgStructure_checkBox, SIGNAL('clicked(bool)'), @action_person_id_orgStructure_tree_select, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@action_person_id_speciality_checkBox, SIGNAL('clicked(bool)'), @action_person_id_speciality_selecter, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@action_person_id_checkBox, SIGNAL('clicked(bool)'), @action_person_id_selecter, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@action_assistant_id_checkBox, SIGNAL('clicked(bool)'), @action_assistant_id_selecter, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@event_orgStructure_checkBox, SIGNAL('clicked(bool)'), @event_orgStructure_selecter, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@event_person_speciality_id_checkBox, SIGNAL('clicked(bool)'), @event_person_speciality_id_selecter, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@event_person_id_checkBox, SIGNAL('clicked(bool)'), @event_person_id_selecter, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@event_isPrimary_checkBox, SIGNAL('clicked(bool)'), @event_isPrimary_selecter, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@event_order_checkBox, SIGNAL('clicked(bool)'), @event_order_selecter, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@event_lpu_checkBox, SIGNAL('clicked(bool)'), @event_lpu_selecter, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@event_relegateOrg_id_checkBox, SIGNAL('clicked(bool)'), @event_relegateOrg_id_selecter, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@event_mes_id_checkBox, SIGNAL('clicked(bool)'), @event_mes_id_edit, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@event_result_id_checkBox, SIGNAL('clicked(bool)'), @event_result_id_selecter, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@event_diagnostic_checkBox, SIGNAL('clicked(bool)'), @event_diagnostic_end, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@event_diagnostic_checkBox, SIGNAL('clicked(bool)'), @event_diagnostic_next, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@event_diagnostic_checkBox, SIGNAL('clicked(bool)'), @event_diagnostic_prev, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@event_diagnostic_checkBox, SIGNAL('clicked(bool)'), @event_diagnostic_start, SLOT('setEnabled(bool)'))
 
     @tabWidget_2.setCurrentIndex(1)
-    @toolBox.setCurrentIndex(0)
-    @actionType_class.setCurrentIndex(2)
+    @toolBox.setCurrentIndex(4)
+    @actionType_class.setCurrentIndex(-1)
 
 
     Qt::MetaObject.connectSlotsByName(search_window)
@@ -2052,19 +2091,19 @@ class Ui_Search_window
     @event_setDate_checkBox.text = Qt::Application.translate("Search_window", "\320\224\320\260\321\202\320\260 \320\275\320\260\320\267\320\275\320\260\321\207\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
     @event_execDate_less.text = Qt::Application.translate("Search_window", "\320\235\320\265 \320\262\321\213\320\277\320\276\320\273\320\275\320\265\320\275\320\276", nil, Qt::Application::UnicodeUTF8)
     @event_nextEventDate_checkBox.text = Qt::Application.translate("Search_window", "\320\224\320\260\321\202\320\260 \321\201\320\273\320\265\320\264\321\203\321\216\321\211\320\265\320\271 \321\217\320\262\320\272\320\270", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_17.text = Qt::Application.translate("Search_window", "\320\241\320\277\320\265\321\206\320\270\320\260\320\273\321\214\320\275\320\276\321\201\321\202\321\214", nil, Qt::Application::UnicodeUTF8)
+    @event_person_speciality_id_checkBox.text = Qt::Application.translate("Search_window", "\320\241\320\277\320\265\321\206\320\270\320\260\320\273\321\214\320\275\320\276\321\201\321\202\321\214", nil, Qt::Application::UnicodeUTF8)
     @checkBox_29.text = Qt::Application.translate("Search_window", "\320\241\320\276\321\201\321\202\320\276\320\270\321\202 \320\275\320\260 \320\224\320\235", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_18.text = Qt::Application.translate("Search_window", "\320\222\321\200\320\260\321\207", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_19.text = Qt::Application.translate("Search_window", "\320\242\320\270\320\277 \320\276\320\261\321\200\320\260\321\211\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_21.text = Qt::Application.translate("Search_window", "\320\233\320\237\320\243", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_20.text = Qt::Application.translate("Search_window", "\320\237\320\276\321\200\321\217\320\264\320\276\320\272 \320\276\320\261\321\200\320\260\321\211\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_23.text = Qt::Application.translate("Search_window", "\320\232\320\276\320\264 \320\234\320\255\320\241", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_22.text = Qt::Application.translate("Search_window", "\320\235\320\260\320\277\321\200\320\260\320\262\320\270\321\202\320\265\320\273\321\214", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_24.text = Qt::Application.translate("Search_window", "\320\240\320\265\320\267\321\203\320\273\321\214\321\202\320\260\321\202", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_26.text = Qt::Application.translate("Search_window", "\320\241\320\276\320\277\321\203\321\202\321\201\321\202\320\262\321\203\321\216\321\211\320\270\320\265", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_25.text = Qt::Application.translate("Search_window", "\320\237\321\200\320\265\320\264\320\262\320\260\321\200\320\270\321\202\320\265\320\273\321\214\320\275\321\213\320\265", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_27.text = Qt::Application.translate("Search_window", "\320\232\320\276\320\264\321\213 \320\264\320\270\320\260\320\263\320\275\320\276\320\267\320\276\320\262 \320\277\320\276 \320\234\320\232\320\221", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_28.text = Qt::Application.translate("Search_window", "\320\233\321\216\320\261\320\276\320\265 \320\233\320\237\320\243 \320\272\321\200\320\276\320\274\320\265 \320\261\320\260\320\267\320\276\320\262\320\276\320\263\320\276", nil, Qt::Application::UnicodeUTF8)
+    @event_person_id_checkBox.text = Qt::Application.translate("Search_window", "\320\222\321\200\320\260\321\207", nil, Qt::Application::UnicodeUTF8)
+    @event_isPrimary_checkBox.text = Qt::Application.translate("Search_window", "\320\242\320\270\320\277 \320\276\320\261\321\200\320\260\321\211\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
+    @event_lpu_checkBox.text = Qt::Application.translate("Search_window", "\320\233\320\237\320\243", nil, Qt::Application::UnicodeUTF8)
+    @event_order_checkBox.text = Qt::Application.translate("Search_window", "\320\237\320\276\321\200\321\217\320\264\320\276\320\272 \320\276\320\261\321\200\320\260\321\211\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
+    @event_mes_id_checkBox.text = Qt::Application.translate("Search_window", "\320\232\320\276\320\264 \320\234\320\255\320\241", nil, Qt::Application::UnicodeUTF8)
+    @event_relegateOrg_id_checkBox.text = Qt::Application.translate("Search_window", "\320\235\320\260\320\277\321\200\320\260\320\262\320\270\321\202\320\265\320\273\321\214", nil, Qt::Application::UnicodeUTF8)
+    @event_result_id_checkBox.text = Qt::Application.translate("Search_window", "\320\240\320\265\320\267\321\203\320\273\321\214\321\202\320\260\321\202", nil, Qt::Application::UnicodeUTF8)
+    @event_diagnostic_next.text = Qt::Application.translate("Search_window", "\320\241\320\276\320\277\321\203\321\202\321\201\321\202\320\262\321\203\321\216\321\211\320\270\320\265", nil, Qt::Application::UnicodeUTF8)
+    @event_diagnostic_prev.text = Qt::Application.translate("Search_window", "\320\237\321\200\320\265\320\264\320\262\320\260\321\200\320\270\321\202\320\265\320\273\321\214\320\275\321\213\320\265", nil, Qt::Application::UnicodeUTF8)
+    @event_diagnostic_checkBox.text = Qt::Application.translate("Search_window", "\320\232\320\276\320\264\321\213 \320\264\320\270\320\260\320\263\320\275\320\276\320\267\320\276\320\262 \320\277\320\276 \320\234\320\232\320\221", nil, Qt::Application::UnicodeUTF8)
+    @event_org_id_exlude.text = Qt::Application.translate("Search_window", "\320\233\321\216\320\261\320\276\320\265 \320\233\320\237\320\243 \320\272\321\200\320\276\320\274\320\265 \320\261\320\260\320\267\320\276\320\262\320\276\320\263\320\276", nil, Qt::Application::UnicodeUTF8)
     @tabWidget_2.setTabText(@tabWidget_2.indexOf(@tab_2), Qt::Application.translate("Search_window", "\320\236\320\261\321\200\320\260\321\211\320\265\320\275\320\270\320\265", nil, Qt::Application::UnicodeUTF8))
     @action_directionDate_checkBox.text = Qt::Application.translate("Search_window", "\320\224\320\260\321\202\320\260 \320\275\320\260\320\267\320\275\320\260\321\207\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
     @actionType_checkBox.text = Qt::Application.translate("Search_window", "\320\242\320\270\320\277 \320\264\320\265\320\271\321\201\321\202\320\262\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
@@ -2087,13 +2126,13 @@ class Ui_Search_window
     @action_MKB_checkBox.text = Qt::Application.translate("Search_window", "\320\232\320\276\320\264\321\213 \320\264\320\270\320\260\320\263\320\275\320\276\320\267\320\276\320\262 \320\277\320\276 \320\234\320\232\320\221", nil, Qt::Application::UnicodeUTF8)
     @action_setPerson_id_speciality_checkBox.text = Qt::Application.translate("Search_window", "\320\241\320\277\320\265\321\206\320\270\320\260\320\273\321\214\320\275\320\276\321\201\321\202\321\214 \320\275\320\260\320\267\320\275\320\260\321\207\320\270\320\262\321\210\320\265\320\263\320\276", nil, Qt::Application::UnicodeUTF8)
     @action_setPerson_id_orgStructure_checkBox.text = Qt::Application.translate("Search_window", "\320\237\320\276\320\264\321\200\320\260\320\267\320\264\320\265\320\273\320\265\320\275\320\270\320\265 \320\275\320\260\320\267\320\275\320\260\321\207\320\270\320\262\321\210\320\265\320\263\320\276", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_9.text = Qt::Application.translate("Search_window", "\320\241\320\277\320\265\321\206\320\270\320\260\320\273\321\214\320\275\320\276\321\201\321\202\321\214 \320\270\321\201\320\277\320\276\320\273\320\275\320\270\321\202\320\265\320\273\321\217", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_10.text = Qt::Application.translate("Search_window", "\320\230\321\201\320\277\320\276\320\273\320\275\320\270\321\202\320\265\320\273\321\214", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_11.text = Qt::Application.translate("Search_window", "\320\220\321\201\321\201\320\270\321\201\321\202\320\265\320\275\321\202", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_12.text = Qt::Application.translate("Search_window", "\320\232\320\276\320\264 \321\200\320\260\320\261\320\276\321\202\321\213", nil, Qt::Application::UnicodeUTF8)
+    @action_person_id_speciality_checkBox.text = Qt::Application.translate("Search_window", "\320\241\320\277\320\265\321\206\320\270\320\260\320\273\321\214\320\275\320\276\321\201\321\202\321\214 \320\270\321\201\320\277\320\276\320\273\320\275\320\270\321\202\320\265\320\273\321\217", nil, Qt::Application::UnicodeUTF8)
+    @action_person_id_checkBox.text = Qt::Application.translate("Search_window", "\320\230\321\201\320\277\320\276\320\273\320\275\320\270\321\202\320\265\320\273\321\214", nil, Qt::Application::UnicodeUTF8)
+    @action_assistant_id_checkBox.text = Qt::Application.translate("Search_window", "\320\220\321\201\321\201\320\270\321\201\321\202\320\265\320\275\321\202", nil, Qt::Application::UnicodeUTF8)
+    @action_ActionProperty_Job_Ticket_checkBox.text = Qt::Application.translate("Search_window", "\320\232\320\276\320\264 \321\200\320\260\320\261\320\276\321\202\321\213", nil, Qt::Application::UnicodeUTF8)
     @action_finance_id_checkBox.text = Qt::Application.translate("Search_window", "\320\242\320\270\320\277 \321\204\320\270\320\275\320\260\320\275\321\201\320\270\321\200\320\276\320\262\320\260\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_8.text = Qt::Application.translate("Search_window", "\320\237\320\276\320\264\321\200\320\260\320\267\320\264\320\265\320\273\320\265\320\275\320\270\320\265 \320\270\321\201\320\277\320\276\320\273\320\275\320\270\321\202\320\265\320\273\321\217", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_16.text = Qt::Application.translate("Search_window", "\320\235\320\265\321\201\320\276\320\263\320\273\320\260\321\201\320\276\320\262\320\260\320\275\320\275\321\213\320\265", nil, Qt::Application::UnicodeUTF8)
+    @action_person_id_orgStructure_checkBox.text = Qt::Application.translate("Search_window", "\320\237\320\276\320\264\321\200\320\260\320\267\320\264\320\265\320\273\320\265\320\275\320\270\320\265 \320\270\321\201\320\277\320\276\320\273\320\275\320\270\321\202\320\265\320\273\321\217", nil, Qt::Application::UnicodeUTF8)
+    @action_ActionType_isRequiredCoordination.text = Qt::Application.translate("Search_window", "\320\235\320\265\321\201\320\276\320\263\320\273\320\260\321\201\320\276\320\262\320\260\320\275\320\275\321\213\320\265", nil, Qt::Application::UnicodeUTF8)
     @action_plannedEndDate_checkBox.text = Qt::Application.translate("Search_window", "\320\237\320\273\320\260\320\275\320\276\320\262\320\260\321\217 \320\264\320\260\321\202\320\260 \320\262\321\213\320\277\320\276\320\273\320\275\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
     @tabWidget_2.setTabText(@tabWidget_2.indexOf(@tab_3), Qt::Application.translate("Search_window", "\320\224\320\265\320\271\321\201\321\202\320\262\320\270\321\217", nil, Qt::Application::UnicodeUTF8))
     @menu.title = Qt::Application.translate("Search_window", "\320\241\321\202\320\276\320\273\320\261\321\206\321\213", nil, Qt::Application::UnicodeUTF8)

@@ -20,9 +20,11 @@ require "date"
 require "./module/export.rb"
 require "./module/rb.rb"
 require "./module/crutch.rb"
+require "./module/Widgets/PoTreeWidget.rb"
 require "./module/QaTreeWidget.rb"
 require "./module/QaTreeWidgetActionType.rb"
 require "./module/QaTreeWidgetLPU.rb"
+
 
 
 

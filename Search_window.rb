@@ -1,20 +1,19 @@
 class Search_window < Qt::MainWindow
   attr_accessor :limit
 
-  slots "id_checkBox_change(int)", "ok_search_button_clicked()", "birthDate_checkBox_change(int)", "document_checkBox_ui_fill()", "oncick_export_to_csv()", "address_select_area_ui_fill()", "address_select_city_ui_fill(int)", "address_select_street(int)", "event_type_ui_fill()", "orgStructure_checkBox_ui_fill()", "age_checkBox_change(int)", "action_setPerson_id_orgStructure_fill()", "db_limit_change(QString)"
+  slots "id_checkBox_change(int)", "ok_search_button_clicked()", "birthDate_checkBox_change(int)", "document_checkBox_ui_fill()", "oncick_export_to_csv()", "address_select_area_ui_fill()", "address_select_city_ui_fill(int)", "address_select_street(int)", "event_type_ui_fill()", "orgStructure_checkBox_ui_fill()", "age_checkBox_change(int)", "action_setPerson_id_orgStructure_fill()", "db_limit_change(QString)", "event_orgStructure_selecter_fill(int)", "actionType_tree_select_fill(int)", "actionType_class_fill(int)"
 
   def initialize
     super
     @ui = Ui_Search_window.new
     @ui.setupUi(self)
     
-    #@limit = 1_000
     @limit = @ui.db_limit_selecter.currentText
     
     #...
-    @ui_user = {}
-    @ui_user["action_type_tree_fields"] = QaTreeWidgetActionType.new
-    @ui.action_type_tree.addWidget(@ui_user["action_type_tree_fields"])
+    #@ui_user = {}
+    #@ui_user["action_type_tree_fields"] = QaTreeWidgetActionType.new
+    #@ui.action_type_tree.addWidget(@ui_user["action_type_tree_fields"])
     #...
     
     connect(@ui.ok_search_button, SIGNAL("clicked()"), SLOT("ok_search_button_clicked()"))
@@ -33,11 +32,14 @@ class Search_window < Qt::MainWindow
     
     connect(@ui.address_select_area, SIGNAL("currentIndexChanged(int)"), SLOT("address_select_city_ui_fill(int)"))
     connect(@ui.address_select_city, SIGNAL("currentIndexChanged(int)"), SLOT("address_select_street(int)"))
+    connect(@ui.event_orgStructure_checkBox, SIGNAL("stateChanged(int)"), SLOT("event_orgStructure_selecter_fill(int)"))
     
     connect(@ui.export_csv, SIGNAL("triggered()"), SLOT("oncick_export_to_csv()"))
     
     #вкладка действия
-    connect(@ui.actionType_class, SIGNAL("currentIndexChanged(int)"), @ui_user["action_type_tree_fields"], SLOT("action_type_class_changed(int)"))
+    #connect(@ui.actionType_class, SIGNAL("currentIndexChanged(int)"), @ui_user["action_type_tree_fields"], SLOT("action_type_class_changed(int)"))
+    connect(@ui.actionType_checkBox, SIGNAL("stateChanged(int)"), SLOT("actionType_class_fill(int)"))
+    connect(@ui.actionType_class, SIGNAL("currentIndexChanged(int)"), SLOT("actionType_tree_select_fill(int)"))
     connect(@ui.action_setPerson_id_orgStructure_checkBox, SIGNAL("stateChanged(int)"), SLOT("action_setPerson_id_orgStructure_fill()"))
     
     #...
@@ -143,6 +145,10 @@ class Search_window < Qt::MainWindow
       db = db.joins(:event).where(event: { nextEventDate: event_start..event_end })
     end
     
+    if @ui.event_orgStructure_checkBox.checked?
+      #db = db.joins(:event).where@ui.event_orgStructure_selecter.currentVariantWithChildren
+    end
+    
     #if @ui.orgStructure_checkBox.checked?
     
     #end
@@ -152,7 +158,7 @@ class Search_window < Qt::MainWindow
     #действия(action)
     db = db.joins(:actionType)
     if @ui.actionType_checkBox.checked?
-      db = db.where("`ActionType`.`code` LIKE '#{@ui_user["action_type_tree_fields"].currentText.scan(/(^.*)\s\|/).flatten.first.force_encoding("UTF-8")}%'")
+      #db = db.where("`ActionType`.`code` LIKE '#{@ui_user["action_type_tree_fields"].currentText.scan(/(^.*)\s\|/).flatten.first.force_encoding("UTF-8")}%'")
     else #одно из действий будет выбрано по умолчанию, иначе всё будет работать очень очень медленно и выводить чаще всего не нужные данные
       db = db.where("`ActionType`.`code` LIKE 'А16%'")
     end
@@ -315,8 +321,12 @@ class Search_window < Qt::MainWindow
   end  
   
   def action_setPerson_id_orgStructure_fill
-    p 123
-    p @ui_user["action_type_tree_fields"].currentText
+    return if !@ui.action_setPerson_id_orgStructure_selecter.count.zero?
+    @ui.action_setPerson_id_orgStructure_selecter.setData(S11::OrgStructure.select([:id, :parent_id, :code, :name]).all.as_json, "parent_id") do |key, value|
+      x = Qt::StandardItem.new "#{value["code"]} | #{value["name"]}"
+      x.setData(Qt::Variant.new(key))
+      x
+    end
   end
   
   def birthDate_checkBox_change(state)
@@ -337,7 +347,37 @@ class Search_window < Qt::MainWindow
     @ui.id_edit.enabled = state
   end
   
+  def event_orgStructure_selecter_fill i
+    return if !@ui.event_orgStructure_selecter.count.zero?
+    @ui.event_orgStructure_selecter.setData(S11::OrgStructure.select([:id, :parent_id, :code]).all.as_json) do |key, value|
+      x = Qt::StandardItem.new "#{value["code"]}"
+      x.setData(Qt::Variant.new(key))
+      x
+    end
+  end
   
+  def actionType_class_fill i
+    @ui.actionType_class.setCurrentIndex(2) if @ui.actionType_class.currentIndex == -1
+    @ui.actionType_class.enabled = i
+    @ui.actionType_tree_select.enabled = i
+  end
+  
+  def actionType_tree_select_fill i
+    if @ui.actionType_tree_select.model_cache[i]
+      @ui.actionType_tree_select.setModel(@ui.actionType_tree_select.model_cache[i])
+    else
+      @ui.actionType_tree_select.model_cache[i] = Qt::StandardItemModel.new
+      @ui.actionType_tree_select.setModel(@ui.actionType_tree_select.model_cache[i])
+      x = Qt::StandardItem.new "Не выбрано"
+      x.setData(Qt::Variant.new("привет!"))
+      @ui.actionType_tree_select.model.appendRow x
+      @ui.actionType_tree_select.setData(S11::ActionType.select([:id, :group_id, :code, :name]).where(class: i, showInForm: 1).all.as_json, "group_id") do |key, value|
+        x = Qt::StandardItem.new "#{value["code"]} | #{value["name"]}"
+        x.setData(Qt::Variant.new(key))
+        x
+      end
+    end
+  end
   
 
 end

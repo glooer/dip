@@ -248,8 +248,8 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>609</width>
-                 <height>826</height>
+                 <width>626</width>
+                 <height>766</height>
                 </rect>
                </property>
                <property name="styleSheet">
@@ -601,7 +601,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                    </sizepolicy>
                   </property>
                   <property name="currentIndex">
-                   <number>0</number>
+                   <number>4</number>
                   </property>
                   <widget class="QWidget" name="page">
                    <property name="geometry">
@@ -827,7 +827,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>173</width>
+                     <width>591</width>
                      <height>117</height>
                     </rect>
                    </property>
@@ -923,7 +923,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>166</width>
+                     <width>591</width>
                      <height>91</height>
                     </rect>
                    </property>
@@ -1001,8 +1001,8 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>207</width>
-                     <height>68</height>
+                     <width>608</width>
+                     <height>69</height>
                     </rect>
                    </property>
                    <property name="sizePolicy">
@@ -1079,8 +1079,8 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>164</width>
-                     <height>68</height>
+                     <width>608</width>
+                     <height>69</height>
                     </rect>
                    </property>
                    <attribute name="label">
@@ -1233,9 +1233,9 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>0</y>
+                 <y>-8</y>
                  <width>609</width>
-                 <height>850</height>
+                 <height>874</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_6">
@@ -1294,6 +1294,13 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                    <widget class="QCheckBox" name="event_orgStructure_checkBox">
                     <property name="text">
                      <string>Подразделение</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="PoTreeWidget" name="event_orgStructure_selecter">
+                    <property name="enabled">
+                     <bool>false</bool>
                     </property>
                    </widget>
                   </item>
@@ -1391,14 +1398,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="6" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_21">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_17">
+                   <widget class="QCheckBox" name="event_person_speciality_id_checkBox">
                     <property name="text">
                      <string>Специальность</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_16">
+                   <widget class="QComboBox" name="event_person_speciality_id_selecter">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1416,14 +1423,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="7" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_22">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_18">
+                   <widget class="QCheckBox" name="event_person_id_checkBox">
                     <property name="text">
                      <string>Врач</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_15">
+                   <widget class="QComboBox" name="event_person_id_selecter">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1434,14 +1441,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="8" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_23">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_19">
+                   <widget class="QCheckBox" name="event_isPrimary_checkBox">
                     <property name="text">
                      <string>Тип обращения</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_14">
+                   <widget class="QComboBox" name="event_isPrimary_selecter">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1452,14 +1459,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="12" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_25">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_21">
+                   <widget class="QCheckBox" name="event_lpu_checkBox">
                     <property name="text">
                      <string>ЛПУ</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_12">
+                   <widget class="PoTreeWidget" name="event_lpu_selecter">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1470,14 +1477,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="10" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_24">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_20">
+                   <widget class="QCheckBox" name="event_order_checkBox">
                     <property name="text">
                      <string>Порядок обращения</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_13">
+                   <widget class="QComboBox" name="event_order_selecter">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1488,14 +1495,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="15" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_27">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_23">
+                   <widget class="QCheckBox" name="event_mes_id_checkBox">
                     <property name="text">
                      <string>Код МЭС</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="lineEdit_7">
+                   <widget class="QLineEdit" name="event_mes_id_edit">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1506,14 +1513,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="14" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_26">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_22">
+                   <widget class="QCheckBox" name="event_relegateOrg_id_checkBox">
                     <property name="text">
                      <string>Направитель</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_11">
+                   <widget class="QComboBox" name="event_relegateOrg_id_selecter">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1524,14 +1531,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="16" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_28">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_24">
+                   <widget class="QCheckBox" name="event_result_id_checkBox">
                     <property name="text">
                      <string>Результат</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_9">
+                   <widget class="QComboBox" name="event_result_id_selecter">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1542,7 +1549,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="17" column="0">
                  <layout class="QGridLayout" name="gridLayout_11">
                   <item row="1" column="1">
-                   <widget class="QCheckBox" name="checkBox_26">
+                   <widget class="QCheckBox" name="event_diagnostic_next">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1552,7 +1559,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                    </widget>
                   </item>
                   <item row="1" column="0">
-                   <widget class="QCheckBox" name="checkBox_25">
+                   <widget class="QCheckBox" name="event_diagnostic_prev">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1562,21 +1569,21 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                    </widget>
                   </item>
                   <item row="2" column="1">
-                   <widget class="QLineEdit" name="lineEdit_6">
+                   <widget class="QLineEdit" name="event_diagnostic_end">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
                    </widget>
                   </item>
                   <item row="2" column="0">
-                   <widget class="QLineEdit" name="lineEdit_5">
+                   <widget class="QLineEdit" name="event_diagnostic_start">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
                    </widget>
                   </item>
                   <item row="0" column="0" colspan="2">
-                   <widget class="QCheckBox" name="checkBox_27">
+                   <widget class="QCheckBox" name="event_diagnostic_checkBox">
                     <property name="text">
                      <string>Коды диагнозов по МКБ</string>
                     </property>
@@ -1585,7 +1592,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                  </layout>
                 </item>
                 <item row="13" column="0">
-                 <widget class="QCheckBox" name="checkBox_28">
+                 <widget class="QCheckBox" name="event_org_id_exlude">
                   <property name="text">
                    <string>Любое ЛПУ кроме базового</string>
                   </property>
@@ -1628,7 +1635,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                  <x>0</x>
                  <y>0</y>
                  <width>609</width>
-                 <height>871</height>
+                 <height>885</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_8">
@@ -1678,8 +1685,11 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                   </item>
                   <item>
                    <widget class="QComboBox" name="actionType_class">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="currentIndex">
-                     <number>2</number>
+                     <number>-1</number>
                     </property>
                     <item>
                      <property name="text">
@@ -1704,7 +1714,11 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                    </widget>
                   </item>
                   <item>
-                   <layout class="QVBoxLayout" name="action_type_tree"/>
+                   <widget class="PoTreeWidget" name="actionType_tree_select">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
                   </item>
                  </layout>
                 </item>
@@ -1819,7 +1833,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                   <item row="0" column="1">
                    <widget class="QCheckBox" name="action_isUrgent_checkBox">
                     <property name="enabled">
-                     <bool>false</bool>
+                     <bool>true</bool>
                     </property>
                     <property name="text">
                      <string>Срочно</string>
@@ -1924,7 +1938,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="action_setPerson_id_orgStructure_selecter">
+                   <widget class="PoTreeWidget" name="action_setPerson_id_orgStructure_selecter">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1935,7 +1949,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="11" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_14">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_9">
+                   <widget class="QCheckBox" name="action_person_id_speciality_checkBox">
                     <property name="enabled">
                      <bool>true</bool>
                     </property>
@@ -1945,7 +1959,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_6">
+                   <widget class="QComboBox" name="action_person_id_speciality_selecter">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1956,14 +1970,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="12" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_15">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_10">
+                   <widget class="QCheckBox" name="action_person_id_checkBox">
                     <property name="text">
                      <string>Исполнитель</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_7">
+                   <widget class="QComboBox" name="action_person_id_selecter">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1974,14 +1988,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="13" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_16">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_11">
+                   <widget class="QCheckBox" name="action_assistant_id_checkBox">
                     <property name="text">
                      <string>Ассистент</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_8">
+                   <widget class="QComboBox" name="action_assistant_id_selecter">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1992,14 +2006,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="15" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_17">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_12">
+                   <widget class="QCheckBox" name="action_ActionProperty_Job_Ticket_checkBox">
                     <property name="text">
                      <string>Код работы</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="lineEdit">
+                   <widget class="QLineEdit" name="action_ActionProperty_Job_Ticket_edit">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -2028,14 +2042,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <item row="10" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_13">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_8">
+                   <widget class="QCheckBox" name="action_person_id_orgStructure_checkBox">
                     <property name="text">
                      <string>Подразделение исполнителя</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_5">
+                   <widget class="PoTreeWidget" name="action_person_id_orgStructure_tree_select">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -2044,7 +2058,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                  </layout>
                 </item>
                 <item row="14" column="0">
-                 <widget class="QCheckBox" name="checkBox_16">
+                 <widget class="QCheckBox" name="action_ActionType_isRequiredCoordination">
                   <property name="text">
                    <string>Несогласованные</string>
                   </property>
@@ -2525,6 +2539,13 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PoTreeWidget</class>
+   <extends>QComboBox</extends>
+   <header location="global">potreewidget.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>
@@ -3068,6 +3089,486 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
     <hint type="destinationlabel">
      <x>994</x>
      <y>204</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_setPerson_id_speciality_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>action_setPerson_id_speciality_selecter</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>245</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>838</x>
+     <y>268</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_setPerson_id_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>action_setPerson_id_selecter</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>689</x>
+     <y>294</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>838</x>
+     <y>317</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_plannedEndDate_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>action_plannedEndDate_end</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>343</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>987</x>
+     <y>366</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_plannedEndDate_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>action_plannedEndDate_start</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>343</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>689</x>
+     <y>366</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_status_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>action_status_selecter</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>392</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>838</x>
+     <y>415</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_endDate_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>action_endDate_end</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>441</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>838</x>
+     <y>488</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_endDate_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>action_endDate_start</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>441</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>838</x>
+     <y>464</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_MKB_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>action_MKB_end</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>763</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>986</x>
+     <y>788</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_MKB_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>action_MKB_start</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>763</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>690</x>
+     <y>788</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_contract_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>action_contract_edit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>710</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>822</x>
+     <y>735</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_contract_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>action_contract_edit_button</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>710</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1119</x>
+     <y>735</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_finance_id_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>action_finance_id_selecter</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>661</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>838</x>
+     <y>684</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_ActionProperty_Job_Ticket_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>action_ActionProperty_Job_Ticket_edit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>610</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>838</x>
+     <y>634</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_person_id_orgStructure_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>action_person_id_orgStructure_tree_select</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>391</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>838</x>
+     <y>414</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_person_id_speciality_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>action_person_id_speciality_selecter</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>440</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>838</x>
+     <y>463</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_person_id_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>action_person_id_selecter</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>489</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>838</x>
+     <y>512</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_assistant_id_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>action_assistant_id_selecter</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>538</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>838</x>
+     <y>561</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>event_orgStructure_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>event_orgStructure_selecter</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>251</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>838</x>
+     <y>275</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>event_person_speciality_id_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>event_person_speciality_id_selecter</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>302</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>838</x>
+     <y>325</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>event_person_id_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>event_person_id_selecter</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>351</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>838</x>
+     <y>374</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>event_isPrimary_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>event_isPrimary_selecter</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>400</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>838</x>
+     <y>423</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>event_order_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>event_order_selecter</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>449</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>838</x>
+     <y>472</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>event_lpu_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>event_lpu_selecter</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>521</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>838</x>
+     <y>544</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>event_relegateOrg_id_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>event_relegateOrg_id_selecter</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>593</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>838</x>
+     <y>616</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>event_mes_id_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>event_mes_id_edit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>642</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>838</x>
+     <y>666</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>event_result_id_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>event_result_id_selecter</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>693</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>838</x>
+     <y>716</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>event_diagnostic_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>event_diagnostic_end</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>742</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>987</x>
+     <y>789</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>event_diagnostic_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>event_diagnostic_next</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>742</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>987</x>
+     <y>765</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>event_diagnostic_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>event_diagnostic_prev</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>742</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>689</x>
+     <y>765</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>event_diagnostic_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>event_diagnostic_start</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>742</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>689</x>
+     <y>789</y>
     </hint>
    </hints>
   </connection>
