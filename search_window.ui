@@ -248,7 +248,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>626</width>
+                 <width>614</width>
                  <height>766</height>
                 </rect>
                </property>
@@ -608,7 +608,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>591</width>
+                     <width>249</width>
                      <height>145</height>
                     </rect>
                    </property>
@@ -827,7 +827,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>591</width>
+                     <width>173</width>
                      <height>117</height>
                     </rect>
                    </property>
@@ -923,7 +923,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>591</width>
+                     <width>166</width>
                      <height>91</height>
                     </rect>
                    </property>
@@ -1001,8 +1001,8 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>608</width>
-                     <height>69</height>
+                     <width>207</width>
+                     <height>68</height>
                     </rect>
                    </property>
                    <property name="sizePolicy">
@@ -1079,7 +1079,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>608</width>
+                     <width>596</width>
                      <height>69</height>
                     </rect>
                    </property>
@@ -1233,8 +1233,8 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>-8</y>
-                 <width>609</width>
+                 <y>0</y>
+                 <width>597</width>
                  <height>874</height>
                 </rect>
                </property>
@@ -1634,7 +1634,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>609</width>
+                 <width>597</width>
                  <height>885</height>
                 </rect>
                </property>
@@ -2136,8 +2136,25 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
       <addaction name="menu_Client_socStatus_benefit"/>
       <addaction name="menu_Client_socStatus_capacity"/>
      </widget>
+     <widget class="QMenu" name="menu_10">
+      <property name="title">
+       <string>Идентификаторы</string>
+      </property>
+      <addaction name="menu_Client_id"/>
+      <addaction name="menu_Client_indentification_5"/>
+      <addaction name="menu_Client_indentification_1"/>
+      <addaction name="menu_Client_indentification_2"/>
+      <addaction name="menu_Client_indentification_3"/>
+      <addaction name="menu_Client_indentification_4"/>
+      <addaction name="menu_Client_indentification_6"/>
+      <addaction name="menu_Client_indentification_7"/>
+      <addaction name="menu_Client_indentification_8"/>
+      <addaction name="menu_Client_indentification_10"/>
+      <addaction name="menu_Client_indentification_11"/>
+      <addaction name="menu_Client_indentification_12"/>
+     </widget>
      <addaction name="separator"/>
-     <addaction name="menu_Client_id"/>
+     <addaction name="menu_10"/>
      <addaction name="menu_Client_lastName"/>
      <addaction name="menu_Client_firstName"/>
      <addaction name="menu_Client_patrName"/>
@@ -2255,23 +2272,6 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
    </property>
    <property name="menuRole">
     <enum>QAction::TextHeuristicRole</enum>
-   </property>
-  </action>
-  <action name="menu_Client_id">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>Ид</string>
-   </property>
-   <property name="iconVisibleInMenu">
-    <bool>false</bool>
-   </property>
-   <property name="priority">
-    <enum>QAction::NormalPriority</enum>
    </property>
   </action>
   <action name="menu_Client_birthDate">
@@ -2536,6 +2536,102 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
    </property>
    <property name="text">
     <string>Название</string>
+   </property>
+  </action>
+  <action name="menu_Client_id">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Ид пациента</string>
+   </property>
+  </action>
+  <action name="menu_Client_indentification_5">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Архивный номер</string>
+   </property>
+  </action>
+  <action name="menu_Client_indentification_1">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Единый полис</string>
+   </property>
+  </action>
+  <action name="menu_Client_indentification_2">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Идентификатор ЕИС РПФ</string>
+   </property>
+  </action>
+  <action name="menu_Client_indentification_3">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Идентификатор ЕИС МУ</string>
+   </property>
+  </action>
+  <action name="menu_Client_indentification_4">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Идентификатор системы хранения изображений</string>
+   </property>
+  </action>
+  <action name="menu_Client_indentification_6">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Идентификатор ТФОМС Курганской области</string>
+   </property>
+  </action>
+  <action name="menu_Client_indentification_7">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Идентификатор ВТМП</string>
+   </property>
+  </action>
+  <action name="menu_Client_indentification_8">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Идентификатор лабораторной системы</string>
+   </property>
+  </action>
+  <action name="menu_Client_indentification_10">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Адрес регистрации пациента</string>
+   </property>
+  </action>
+  <action name="menu_Client_indentification_11">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Адрес проживания пациента</string>
+   </property>
+  </action>
+  <action name="menu_Client_indentification_12">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Фото-номер</string>
    </property>
   </action>
  </widget>

@@ -14,6 +14,10 @@ module S11
       select("IF(ClientAddress.type = 0, 'Проживания', 'Регистрации') as 'Тип адреса'")
     end#остановился на добавлении адреса, нужно делать выборку и шарашить её в join
     
+    def self.with_clientIdentification n, as
+      select("(SELECT `ClientIdentification`.`identifier` FROM `ClientIdentification` WHERE `ClientIdentification`.`client_id` = `Client`.`id` AND `ClientIdentification`.`accountingSystem_id` = #{n} LIMIT 1) as '#{as}'")
+    end
+    
     belongs_to :rbBloodType, foreign_key: "bloodType_id"
     
     has_many :clientIdentification, foreign_key: "client_id"
@@ -78,14 +82,16 @@ module S11
     WHERE APT.actionType_id=Action.actionType_id AND AP.action_id=Action.id AND APT.deleted=0 AND APT.name LIKE Отделение
     AND OS.deleted=0 LIMIT 1) as Отделение")
     '''
+    '''
     select("(SELECT OS.name
     FROM ActionPropertyType AS APT
     INNER JOIN ActionProperty AS AP ON AP.type_id=APT.id
     INNER JOIN ActionProperty_OrgStructure AS APOS ON APOS.id=AP.id
     INNER JOIN OrgStructure AS OS ON OS.id=APOS.value
-    WHERE APT.actionType_id=Action.actionType_id AND AP.action_id=Action.id AND APT.deleted=0 AND APT.name LIKE 'Направлен в отделение'
+    WHERE APT.actionType_id=Action.actionType_id AND AP.action_id=Action.id AND APT.deleted=0 AND APT.name LIKE Направлен в отделение
     AND OS.deleted=0 LIMIT 1) AS nameOrgStructure")
-    
+    '''
+    select("(SELECT OrgStructure.name FROM `Action` INNER JOIN `ActionProperty` ON `Action`.id = `ActionProperty`.action_id INNER JOIN `ActionProperty_OrgStructure` ON `ActionProperty`.id = `ActionProperty_OrgStructure`.id INNER JOIN `OrgStructure` ON `OrgStructure`.id = `ActionProperty_OrgStructure`.value WHERE `Action`.event_id = `Event`.id  and `Action`.actionType_id = 113 AND `ActionProperty`.type_id = 1699 ORDER BY `Action`.id DESC LIMIT 1) as 'Текущий стационар'")
     end
     
     

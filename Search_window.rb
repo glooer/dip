@@ -156,11 +156,11 @@ class Search_window < Qt::MainWindow
     
     
     #действия(action)
-    db = db.joins(:actionType)
+    #db = db.joins(:actionType)
     if @ui.actionType_checkBox.checked?
       #db = db.where("`ActionType`.`code` LIKE '#{@ui_user["action_type_tree_fields"].currentText.scan(/(^.*)\s\|/).flatten.first.force_encoding("UTF-8")}%'")
     else #одно из действий будет выбрано по умолчанию, иначе всё будет работать очень очень медленно и выводить чаще всего не нужные данные
-      db = db.where("`ActionType`.`code` LIKE 'А16%'")
+      #db = db.where("`ActionType`.`code` LIKE 'А16%'")
     end
     
     if @ui.action_directionDate_checkBox.checked?
@@ -200,9 +200,23 @@ class Search_window < Qt::MainWindow
     db = db.with_socStatus(1, "Льгота") if @ui.menu_Client_socStatus_benefit.checked?
     db = db.with_socStatus(35, "Дееспособность") if @ui.menu_Client_socStatus_capacity.checked?
 
+    #идентификаторы клиента
+    db = db.with_clientIdentification 1, "Единый полис" if @ui.menu_Client_indentification_1.checked?
+    db = db.with_clientIdentification 2, "Идентификатор ЕИС РПФ" if @ui.menu_Client_indentification_2.checked?
+    db = db.with_clientIdentification 3, "Идентификатор ЕИС МУ" if @ui.menu_Client_indentification_3.checked?
+    db = db.with_clientIdentification 4, "Идентификатор системы хранения изображений" if @ui.menu_Client_indentification_4.checked?
+    db = db.with_clientIdentification 5, "Архивный номер" if @ui.menu_Client_indentification_5.checked?
+    db = db.with_clientIdentification 6, "Идентификатор ТФОМС Курганской области" if @ui.menu_Client_indentification_6.checked?
+    db = db.with_clientIdentification 7, "Идентификатор ВТМП" if @ui.menu_Client_indentification_7.checked?
+    db = db.with_clientIdentification 8, "Идентификатор лабораторной системы" if @ui.menu_Client_indentification_8.checked?
+    db = db.with_clientIdentification 10, "Адрес регистрации пациента" if @ui.menu_Client_indentification_10.checked?
+    db = db.with_clientIdentification 11, "Адрес проживания пациента" if @ui.menu_Client_indentification_11.checked?
+    db = db.with_clientIdentification 12, "Фото-номер" if @ui.menu_Client_indentification_12.checked?
+    #идентификаторы клиента end
+    
     if @ui.menu_Action_sub.checked?
       #db = db.joins(:action).with_department.where("(Action.`actionType_id` IN (SELECT ActionType.id FROM ActionType WHERE ActionType.class=0))")
-      db = db.joins(:actionType).with_department
+      db = db.joins(:event).with_department
     end
     #адрес
     # !!!записи начнут дублироваться, ибо есть адрес прописки и есть проживания
