@@ -33,6 +33,7 @@ module S11
     has_many :contract, :through => :event
     has_many :rbFinance, :through => :contract
     has_many :mes, :through => :event
+    has_many :eventPerson, :through => :event
     
     
     has_many :action, :through => :event
@@ -73,30 +74,8 @@ module S11
     end
     
     def self.with_department
-    '''
-      select("(SELECT OS.name
-    FROM ActionPropertyType AS APT
-    INNER JOIN ActionProperty AS AP ON AP.type_id=APT.id
-    INNER JOIN ActionProperty_OrgStructure AS APOS ON APOS.id=AP.id
-    INNER JOIN OrgStructure AS OS ON OS.id=APOS.value
-    WHERE APT.actionType_id=Action.actionType_id AND AP.action_id=Action.id AND APT.deleted=0 AND APT.name LIKE Отделение
-    AND OS.deleted=0 LIMIT 1) as Отделение")
-    '''
-    '''
-    select("(SELECT OS.name
-    FROM ActionPropertyType AS APT
-    INNER JOIN ActionProperty AS AP ON AP.type_id=APT.id
-    INNER JOIN ActionProperty_OrgStructure AS APOS ON APOS.id=AP.id
-    INNER JOIN OrgStructure AS OS ON OS.id=APOS.value
-    WHERE APT.actionType_id=Action.actionType_id AND AP.action_id=Action.id AND APT.deleted=0 AND APT.name LIKE Направлен в отделение
-    AND OS.deleted=0 LIMIT 1) AS nameOrgStructure")
-    '''
-    select("(SELECT OrgStructure.name FROM `Action` INNER JOIN `ActionProperty` ON `Action`.id = `ActionProperty`.action_id INNER JOIN `ActionProperty_OrgStructure` ON `ActionProperty`.id = `ActionProperty_OrgStructure`.id INNER JOIN `OrgStructure` ON `OrgStructure`.id = `ActionProperty_OrgStructure`.value WHERE `Action`.event_id = `Event`.id  and `Action`.actionType_id = 113 AND `ActionProperty`.type_id = 1699 ORDER BY `Action`.id DESC LIMIT 1) as 'Текущий стационар'")
+      select("(SELECT OrgStructure.name FROM `Action` INNER JOIN `ActionProperty` ON `Action`.id = `ActionProperty`.action_id INNER JOIN `ActionProperty_OrgStructure` ON `ActionProperty`.id = `ActionProperty_OrgStructure`.id INNER JOIN `OrgStructure` ON `OrgStructure`.id = `ActionProperty_OrgStructure`.value WHERE `Action`.event_id = `Event`.id  and `Action`.actionType_id = 113 AND `ActionProperty`.type_id = 1699 ORDER BY `Action`.id DESC LIMIT 1) as 'Отделение'")
     end
-    
-    
-    
-    
     
     has_many :clientSocStatus, -> { where("ClientSocStatus.id IN (SELECT MAX(id) FROM ClientSocStatus as CSS WHERE CSS.client_id = ClientSocStatus.client_id GROUP BY CSS.socStatusClass_id, CSS.client_id)") }, foreign_key: "client_id"
     

@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'search_window.ui'
 **
-** Created: Ïò 10. èþí 13:38:11 2016
+** Created: Ïò 10. èþí 18:49:17 2016
 **      by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -38,7 +38,7 @@ class Ui_Search_window
     attr_reader :menu_Client_socStatus_disability
     attr_reader :menu_Client_socStatus_benefit
     attr_reader :menu_Client_socStatus_capacity
-    attr_reader :menu_Action_sub
+    attr_reader :menu_Event_sub
     attr_reader :menu_Event_MES_code
     attr_reader :menu_Event_MES_name
     attr_reader :menu_Client_id
@@ -435,10 +435,10 @@ class Ui_Search_window
     @menu_Client_socStatus_capacity = Qt::Action.new(search_window)
     @menu_Client_socStatus_capacity.objectName = "menu_Client_socStatus_capacity"
     @menu_Client_socStatus_capacity.checkable = true
-    @menu_Action_sub = Qt::Action.new(search_window)
-    @menu_Action_sub.objectName = "menu_Action_sub"
-    @menu_Action_sub.checkable = true
-    @menu_Action_sub.checked = true
+    @menu_Event_sub = Qt::Action.new(search_window)
+    @menu_Event_sub.objectName = "menu_Event_sub"
+    @menu_Event_sub.checkable = true
+    @menu_Event_sub.checked = true
     @menu_Event_MES_code = Qt::Action.new(search_window)
     @menu_Event_MES_code.objectName = "menu_Event_MES_code"
     @menu_Event_MES_code.checkable = true
@@ -514,6 +514,7 @@ class Ui_Search_window
     @tableView.objectName = "tableView"
     @sizePolicy.heightForWidth = @tableView.sizePolicy.hasHeightForWidth
     @tableView.sizePolicy = @sizePolicy
+    @tableView.sortingEnabled = true
 
     @verticalLayout_7.addWidget(@tableView)
 
@@ -1965,6 +1966,7 @@ class Ui_Search_window
     @menu_3.addAction(@menu_Address_city)
     @menu_3.addAction(@menu_Address_area)
     @menu_event.addAction(@menu_Event_type)
+    @menu_event.addAction(@menu_Event_sub)
     @menu_event.addAction(@menu_7.menuAction())
     @menu_event.addAction(@menu_Event_setDate)
     @menu_event.addAction(@menu_Event_execDate)
@@ -1977,7 +1979,6 @@ class Ui_Search_window
     @menu_7.addAction(@menu_Event_contract_finance_name)
     @menu_9.addAction(@menu_Event_MES_code)
     @menu_9.addAction(@menu_Event_MES_name)
-    @menu_8.addAction(@menu_Action_sub)
     @menu_4.addAction(@menu_5.menuAction())
     @menu_5.addAction(@export_csv)
 
@@ -2091,7 +2092,7 @@ class Ui_Search_window
     @menu_Client_socStatus_disability.text = Qt::Application.translate("Search_window", "\320\230\320\275\320\262\320\260\320\273\320\270\320\264\320\275\320\276\321\201\321\202\321\214", nil, Qt::Application::UnicodeUTF8)
     @menu_Client_socStatus_benefit.text = Qt::Application.translate("Search_window", "\320\233\321\214\320\263\320\276\321\202\320\260", nil, Qt::Application::UnicodeUTF8)
     @menu_Client_socStatus_capacity.text = Qt::Application.translate("Search_window", "\320\224\320\265\320\265\321\201\320\277\320\276\321\201\320\276\320\261\320\275\320\276\321\201\321\202\321\214", nil, Qt::Application::UnicodeUTF8)
-    @menu_Action_sub.text = Qt::Application.translate("Search_window", "\320\237\320\276\320\264\321\200\320\260\320\267\320\264\320\265\320\273\320\265\320\275\320\270\320\265", nil, Qt::Application::UnicodeUTF8)
+    @menu_Event_sub.text = Qt::Application.translate("Search_window", "\320\237\320\276\320\264\321\200\320\260\320\267\320\264\320\265\320\273\320\265\320\275\320\270\320\265", nil, Qt::Application::UnicodeUTF8)
     @menu_Event_MES_code.text = Qt::Application.translate("Search_window", "\320\232\320\276\320\264", nil, Qt::Application::UnicodeUTF8)
     @menu_Event_MES_name.text = Qt::Application.translate("Search_window", "\320\235\320\260\320\267\320\262\320\260\320\275\320\270\320\265", nil, Qt::Application::UnicodeUTF8)
     @menu_Client_id.text = Qt::Application.translate("Search_window", "\320\230\320\264 \320\277\320\260\321\206\320\270\320\265\320\275\321\202\320\260", nil, Qt::Application::UnicodeUTF8)

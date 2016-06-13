@@ -146,7 +146,7 @@ class Search_window < Qt::MainWindow
     end
     
     if @ui.event_orgStructure_checkBox.checked?
-      #db = db.joins(:event).where@ui.event_orgStructure_selecter.currentVariantWithChildren
+      db = db.joins(:eventPerson)#.where(eventPerson: {orgStructure_id: @ui.event_orgStructure_selecter.currentVariantWithChildren})#@ui.event_orgStructure_selecter.currentVariantWithChildren
     end
     
     #if @ui.orgStructure_checkBox.checked?
@@ -214,10 +214,7 @@ class Search_window < Qt::MainWindow
     db = db.with_clientIdentification 12, "Фото-номер" if @ui.menu_Client_indentification_12.checked?
     #идентификаторы клиента end
     
-    if @ui.menu_Action_sub.checked?
-      #db = db.joins(:action).with_department.where("(Action.`actionType_id` IN (SELECT ActionType.id FROM ActionType WHERE ActionType.class=0))")
-      db = db.joins(:event).with_department
-    end
+    db = db.joins(:event).with_department if @ui.menu_Event_sub.checked?
     #адрес
     # !!!записи начнут дублироваться, ибо есть адрес прописки и есть проживания
     #db = db.with_addressType.joins( :clientAddress ) if @ui.menu_Address_type.checked? 
@@ -241,6 +238,7 @@ class Search_window < Qt::MainWindow
     db = db.select("rbFinance.name as 'Источник финансирования'").joins{ rbFinance.outer } if @ui.menu_Event_contract_finance_name.checked?
     db = db.select("mes.MES.code as 'МЭС (код)'").joins{ mes.outer } if @ui.menu_Event_MES_code.checked?
     db = db.select("mes.MES.name as 'МЭС (название)'").joins{ mes.outer } if @ui.menu_Event_MES_name.checked?
+    db = db.joins(:event).with_department if @ui.menu_Event_sub.checked?
     
     db
     #

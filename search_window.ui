@@ -80,6 +80,9 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
             <verstretch>1</verstretch>
            </sizepolicy>
           </property>
+          <property name="sortingEnabled">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -2196,6 +2199,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
       <addaction name="menu_Event_MES_name"/>
      </widget>
      <addaction name="menu_Event_type"/>
+     <addaction name="menu_Event_sub"/>
      <addaction name="menu_7"/>
      <addaction name="menu_Event_setDate"/>
      <addaction name="menu_Event_execDate"/>
@@ -2208,7 +2212,6 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
      <property name="title">
       <string>Действия</string>
      </property>
-     <addaction name="menu_Action_sub"/>
     </widget>
     <addaction name="menu_2"/>
     <addaction name="menu_3"/>
@@ -2511,7 +2514,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
     <string>Дееспособность</string>
    </property>
   </action>
-  <action name="menu_Action_sub">
+  <action name="menu_Event_sub">
    <property name="checkable">
     <bool>true</bool>
    </property>
