@@ -1,7 +1,7 @@
 module S11
   class Client < S11ActiveRecord::Base
     self.table_name = "Client"
-    
+    #default_scope{ where(deleted: false) }
     def self.with_sex(as = "Пол")
       select("IF(Client.sex = 1, 'М', 'Ж') as '#{as}'")
     end

@@ -1236,7 +1236,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>0</y>
+                 <y>-87</y>
                  <width>597</width>
                  <height>874</height>
                 </rect>
@@ -1433,7 +1433,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="event_person_id_selecter">
+                   <widget class="PoTableComboBox" name="event_person_id_selecter">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1455,6 +1455,26 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
+                    <item>
+                     <property name="text">
+                      <string>Первичный</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Повторный</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Активное посещение</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Перевозка</string>
+                     </property>
+                    </item>
                    </widget>
                   </item>
                  </layout>
@@ -1636,7 +1656,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>0</y>
+                 <y>-119</y>
                  <width>597</width>
                  <height>885</height>
                 </rect>
@@ -1844,9 +1864,15 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                    </widget>
                   </item>
                   <item row="1" column="0" colspan="2">
-                   <widget class="QComboBox" name="action_setPerson_id_selecter">
+                   <widget class="PoTableComboBox" name="action_setPerson_id_selecter">
                     <property name="enabled">
                      <bool>false</bool>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>0</height>
+                     </size>
                     </property>
                    </widget>
                   </item>
@@ -1980,7 +2006,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="action_person_id_selecter">
+                   <widget class="PoTableComboBox" name="action_person_id_selecter">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -1998,7 +2024,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="action_assistant_id_selecter">
+                   <widget class="PoTableComboBox" name="action_assistant_id_selecter">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -2643,6 +2669,11 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
    <class>PoTreeWidget</class>
    <extends>QComboBox</extends>
    <header location="global">potreewidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PoTableComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">potablecombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

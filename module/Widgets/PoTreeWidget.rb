@@ -29,6 +29,7 @@ class PoTreeWidget < Qt::ComboBox
   def initialize *args
     super  
     setView UTreeView.new self
+    view.setMinimumSize 700, 300
     #view.viewport.installEventFilter self
     acceptDrops = false
     #view.setMinimumSize 600, 300

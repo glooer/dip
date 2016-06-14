@@ -1,7 +1,7 @@
 module S11
   class Event < S11ActiveRecord::Base
     self.table_name = "Event"
-    
+    #default_scope{ where(deleted: false) }
     belongs_to :client, foreign_key: "client_id"
     belongs_to :eventType, foreign_key: "eventType_id"
     belongs_to :rbResult, foreign_key: "result_id"

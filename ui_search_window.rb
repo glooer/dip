@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'search_window.ui'
 **
-** Created: Ïò 10. èþí 18:49:17 2016
+** Created: Âò 14. èþí 03:43:08 2016
 **      by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -1238,7 +1238,7 @@ class Ui_Search_window
     @scrollArea_2.widgetResizable = true
     @scrollAreaWidgetContents_2 = Qt::Widget.new()
     @scrollAreaWidgetContents_2.objectName = "scrollAreaWidgetContents_2"
-    @scrollAreaWidgetContents_2.geometry = Qt::Rect.new(0, 0, 597, 874)
+    @scrollAreaWidgetContents_2.geometry = Qt::Rect.new(0, -87, 597, 874)
     @gridLayout_6 = Qt::GridLayout.new(@scrollAreaWidgetContents_2)
     @gridLayout_6.objectName = "gridLayout_6"
     @verticalLayout_2 = Qt::VBoxLayout.new()
@@ -1388,7 +1388,7 @@ class Ui_Search_window
 
     @verticalLayout_22.addWidget(@event_person_id_checkBox)
 
-    @event_person_id_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_2)
+    @event_person_id_selecter = PoTableComboBox.new(@scrollAreaWidgetContents_2)
     @event_person_id_selecter.objectName = "event_person_id_selecter"
     @event_person_id_selecter.enabled = false
 
@@ -1548,7 +1548,7 @@ class Ui_Search_window
     @scrollArea_3.widgetResizable = true
     @scrollAreaWidgetContents_3 = Qt::Widget.new()
     @scrollAreaWidgetContents_3.objectName = "scrollAreaWidgetContents_3"
-    @scrollAreaWidgetContents_3.geometry = Qt::Rect.new(0, 0, 597, 885)
+    @scrollAreaWidgetContents_3.geometry = Qt::Rect.new(0, -119, 597, 885)
     @gridLayout_8 = Qt::GridLayout.new(@scrollAreaWidgetContents_3)
     @gridLayout_8.objectName = "gridLayout_8"
     @action_directionDate_layout = Qt::VBoxLayout.new()
@@ -1660,9 +1660,10 @@ class Ui_Search_window
 
     @gridLayout_9.addWidget(@action_isUrgent_checkBox, 0, 1, 1, 1)
 
-    @action_setPerson_id_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
+    @action_setPerson_id_selecter = PoTableComboBox.new(@scrollAreaWidgetContents_3)
     @action_setPerson_id_selecter.objectName = "action_setPerson_id_selecter"
     @action_setPerson_id_selecter.enabled = false
+    @action_setPerson_id_selecter.minimumSize = Qt::Size.new(0, 0)
 
     @gridLayout_9.addWidget(@action_setPerson_id_selecter, 1, 0, 1, 2)
 
@@ -1779,7 +1780,7 @@ class Ui_Search_window
 
     @verticalLayout_15.addWidget(@action_person_id_checkBox)
 
-    @action_person_id_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
+    @action_person_id_selecter = PoTableComboBox.new(@scrollAreaWidgetContents_3)
     @action_person_id_selecter.objectName = "action_person_id_selecter"
     @action_person_id_selecter.enabled = false
 
@@ -1795,7 +1796,7 @@ class Ui_Search_window
 
     @verticalLayout_16.addWidget(@action_assistant_id_checkBox)
 
-    @action_assistant_id_selecter = Qt::ComboBox.new(@scrollAreaWidgetContents_3)
+    @action_assistant_id_selecter = PoTableComboBox.new(@scrollAreaWidgetContents_3)
     @action_assistant_id_selecter.objectName = "action_assistant_id_selecter"
     @action_assistant_id_selecter.enabled = false
 
@@ -2048,7 +2049,7 @@ class Ui_Search_window
     Qt::Object.connect(@event_diagnostic_checkBox, SIGNAL('clicked(bool)'), @event_diagnostic_prev, SLOT('setEnabled(bool)'))
     Qt::Object.connect(@event_diagnostic_checkBox, SIGNAL('clicked(bool)'), @event_diagnostic_start, SLOT('setEnabled(bool)'))
 
-    @tabWidget_2.setCurrentIndex(1)
+    @tabWidget_2.setCurrentIndex(2)
     @toolBox.setCurrentIndex(4)
     @actionType_class.setCurrentIndex(-1)
 

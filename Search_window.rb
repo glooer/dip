@@ -1,7 +1,7 @@
 class Search_window < Qt::MainWindow
   attr_accessor :limit
 
-  slots "id_checkBox_change(int)", "ok_search_button_clicked()", "birthDate_checkBox_change(int)", "document_checkBox_ui_fill()", "oncick_export_to_csv()", "address_select_area_ui_fill()", "address_select_city_ui_fill(int)", "address_select_street(int)", "event_type_ui_fill()", "orgStructure_checkBox_ui_fill()", "age_checkBox_change(int)", "action_setPerson_id_orgStructure_fill()", "db_limit_change(QString)", "event_orgStructure_selecter_fill(int)", "actionType_tree_select_fill(int)", "actionType_class_fill(int)"
+  slots "id_checkBox_change(int)", "ok_search_button_clicked()", "birthDate_checkBox_change(int)", "document_checkBox_ui_fill()", "oncick_export_to_csv()", "address_select_area_ui_fill()", "address_select_city_ui_fill(int)", "address_select_street(int)", "event_type_ui_fill()", "orgStructure_checkBox_ui_fill()", "age_checkBox_change(int)", "action_setPerson_id_orgStructure_fill()", "db_limit_change(QString)", "event_orgStructure_selecter_fill(int)", "actionType_tree_select_fill(int)", "actionType_class_fill(int)", "event_exec_speciality_fill(int)", "action_execPerson_speciality_fill(int)", "action_setPerson_speciality_fill(int)", "action_person_id_orgStructure_fill()", "action_finance_id_selecter_fill(int)", "action_setPerson_id_selecter_fill(int)", "event_person_id_selecter_fill(int)", "action_person_id_selecter_fill(int)", "action_assistant_id_selecter_fill(int)", "event_lpu_selecter_fill(int)", "event_relegateOrg_id_selecter_fill(int)", "event_result_id_selecter_fill(int)"
 
   def initialize
     super
@@ -33,6 +33,11 @@ class Search_window < Qt::MainWindow
     connect(@ui.address_select_area, SIGNAL("currentIndexChanged(int)"), SLOT("address_select_city_ui_fill(int)"))
     connect(@ui.address_select_city, SIGNAL("currentIndexChanged(int)"), SLOT("address_select_street(int)"))
     connect(@ui.event_orgStructure_checkBox, SIGNAL("stateChanged(int)"), SLOT("event_orgStructure_selecter_fill(int)"))
+    connect(@ui.event_person_speciality_id_checkBox, SIGNAL("stateChanged(int)"), SLOT("event_exec_speciality_fill(int)"))
+    connect(@ui.event_person_id_checkBox, SIGNAL("stateChanged(int)"), SLOT("event_person_id_selecter_fill(int)"))
+    connect(@ui.event_lpu_checkBox, SIGNAL("stateChanged(int)"), SLOT("event_lpu_selecter_fill(int)"))
+    connect(@ui.event_relegateOrg_id_checkBox, SIGNAL("stateChanged(int)"), SLOT("event_relegateOrg_id_selecter_fill(int)"))
+    connect(@ui.event_result_id_checkBox, SIGNAL("stateChanged(int)"), SLOT("event_result_id_selecter_fill(int)"))
     
     connect(@ui.export_csv, SIGNAL("triggered()"), SLOT("oncick_export_to_csv()"))
     
@@ -41,6 +46,13 @@ class Search_window < Qt::MainWindow
     connect(@ui.actionType_checkBox, SIGNAL("stateChanged(int)"), SLOT("actionType_class_fill(int)"))
     connect(@ui.actionType_class, SIGNAL("currentIndexChanged(int)"), SLOT("actionType_tree_select_fill(int)"))
     connect(@ui.action_setPerson_id_orgStructure_checkBox, SIGNAL("stateChanged(int)"), SLOT("action_setPerson_id_orgStructure_fill()"))
+    connect(@ui.action_person_id_orgStructure_checkBox, SIGNAL("stateChanged(int)"), SLOT("action_person_id_orgStructure_fill()"))
+    connect(@ui.action_person_id_speciality_checkBox, SIGNAL("stateChanged(int)"), SLOT("action_execPerson_speciality_fill(int)"))
+    connect(@ui.action_setPerson_id_speciality_checkBox, SIGNAL("stateChanged(int)"), SLOT("action_setPerson_speciality_fill(int)"))
+    connect(@ui.action_finance_id_checkBox, SIGNAL("stateChanged(int)"), SLOT("action_finance_id_selecter_fill(int)"))
+    connect(@ui.action_setPerson_id_checkBox, SIGNAL("stateChanged(int)"), SLOT("action_setPerson_id_selecter_fill(int)"))
+    connect(@ui.action_person_id_checkBox, SIGNAL("stateChanged(int)"), SLOT("action_person_id_selecter_fill(int)"))
+    connect(@ui.action_assistant_id_checkBox, SIGNAL("stateChanged(int)"), SLOT("action_assistant_id_selecter_fill(int)"))
     
     #...
     @ui.id_checkBox.checked = true
@@ -289,6 +301,7 @@ class Search_window < Qt::MainWindow
     end
     '''
     table.first.keys.each.with_index{ |name, i| model.setHeaderData(i, Qt::Horizontal, Qt::Variant.new(name)) }
+    @ui.tableView.resizeColumnsToContents
   end
   
   def address_select_street(x)
@@ -368,6 +381,15 @@ class Search_window < Qt::MainWindow
     end
   end
   
+  def action_person_id_orgStructure_fill
+    return if !@ui.action_person_id_orgStructure_tree_select.count.zero?
+    @ui.action_person_id_orgStructure_tree_select.setData(S11::OrgStructure.select([:id, :parent_id, :code]).all.as_json) do |key, value|
+      x = Qt::StandardItem.new "#{value["code"]}"
+      x.setData(Qt::Variant.new(key))
+      x
+    end
+  end
+  
   def actionType_class_fill i
     @ui.actionType_class.setCurrentIndex(2) if @ui.actionType_class.currentIndex == -1
     @ui.actionType_class.enabled = i
@@ -390,6 +412,71 @@ class Search_window < Qt::MainWindow
       end
     end
   end
+  
+  def event_exec_speciality_fill i
+    return if !@ui.event_person_speciality_id_selecter.count.zero?
+    S11::RbSpeciality.select([:id, :name]).find_each{ |val| @ui.event_person_speciality_id_selecter.addItem(val[:name], Qt::Variant.new(val[:id])) }
+  end
+  
+  def action_execPerson_speciality_fill i
+    return if !@ui.action_person_id_speciality_selecter.count.zero?
+    S11::RbSpeciality.select([:id, :name]).find_each{ |val| @ui.action_person_id_speciality_selecter.addItem(val[:name], Qt::Variant.new(val[:id])) }
+  end
+  
+  def action_setPerson_speciality_fill i
+    return if !@ui.action_setPerson_id_speciality_selecter.count.zero?
+    S11::RbSpeciality.select([:id, :name]).find_each{ |val| @ui.action_setPerson_id_speciality_selecter.addItem(val[:name], Qt::Variant.new(val[:id])) }
+  end
+  
+  def action_finance_id_selecter_fill i
+    return if !@ui.action_finance_id_selecter.count.zero?
+    S11::RbFinance.select([:id, :name]).find_each{ |val| @ui.action_finance_id_selecter.addItem(val[:name], Qt::Variant.new(val[:id])) }
+  end
+  
+  def setPerson_selecter_fill selecter 
+    S11::Person.joins{ [rbPost.outer, rbSpeciality.outer, orgStructure.outer] }.select([Person: [:id, :code, "CONCAT(`Person`.`lastName`, ' ', `Person`.`firstName`, ' ', `Person`.`patrName`) as `PersonFIO`"], rbPost: ["`rbPost`.`name` as `PostName`"], rbSpeciality: ["`rbSpeciality`.`name` as `SpecialityName`"], orgStructure: ["`OrgStructure`.`name` as `OrgStructureName`"]]).find_each do |val|
+      selecter.addItem([val[:PersonFIO], val[:PostName], val[:SpecialityName], val[:OrgStructureName]], Qt::Variant.new(val[:id]), Qt::Variant.new(val[:code]))
+    end
+    selecter.setHeader(["ФИО", "Должность", "Специальность", "Подразделение"])
+    selecter.view.resizeColumnsToContents
+  end
+  
+  def action_setPerson_id_selecter_fill i
+    return if !@ui.action_setPerson_id_selecter.count.zero?
+    setPerson_selecter_fill @ui.action_setPerson_id_selecter
+  end
+  
+  def event_person_id_selecter_fill i
+    return if !@ui.event_person_id_selecter.count.zero?
+    setPerson_selecter_fill @ui.event_person_id_selecter
+  end
+  
+  def action_person_id_selecter_fill i
+    return if !@ui.action_person_id_selecter.count.zero?
+    setPerson_selecter_fill @ui.action_person_id_selecter
+  end
+  
+  def action_assistant_id_selecter_fill i
+    return if !@ui.action_assistant_id_selecter.count.zero?
+    setPerson_selecter_fill @ui.action_assistant_id_selecter
+  end
+  
+  def event_lpu_selecter_fill i
+    return if !@ui.event_lpu_selecter.count.zero?
+    S11::Organisation.select([:id, :infisCode, :shortName]).where("`Organisation`.`infisCode` != ''").order(:infisCode).find_each{ |val| @ui.event_lpu_selecter.addItem("#{val[:infisCode]}|#{val[:shortName]}", Qt::Variant.new(val[:id])) }
+  end
+  
+  def event_relegateOrg_id_selecter_fill i
+    return if !@ui.event_relegateOrg_id_selecter.count.zero?
+    S11::Organisation.select([:id, :infisCode, :shortName]).where("`Organisation`.`infisCode` != ''").order(:infisCode).find_each{ |val| @ui.event_relegateOrg_id_selecter.addItem("#{val[:infisCode]}|#{val[:shortName]}", Qt::Variant.new(val[:id])) }
+  end
+  
+  def event_result_id_selecter_fill i
+    return if !@ui.event_result_id_selecter.count.zero?
+    S11::RbResult.select([:id, :name]).find_each{ |val| @ui.event_result_id_selecter.addItem(val[:name], Qt::Variant.new(val[:id])) }
+  end
+  
+  
   
 
 end
