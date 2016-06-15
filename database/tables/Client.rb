@@ -47,6 +47,22 @@ module S11
       joins{ kladr.outer }.joins("LEFT OUTER JOIN (SELECT `kladr`.`KLADR`.`prefix`, CONCAT(`kladr`.`KLADR`.`NAME`, ' ', `kladr`.`KLADR`.`SOCR`) as AREA FROM `kladr`.`KLADR` WHERE `kladr`.`KLADR`.`parent` = '' GROUP BY `kladr`.`KLADR`.`prefix`) as kladrAREA ON kladrAREA.prefix = `kladr`.`KLADR`.`prefix`")
     end
     
+    def self.joins_event_execPerson
+      joins{ event.outer }.joins("LEFT OUTER JOIN Person as `EventExecPerson` ON `Event`.`execPerson_id` = `EventExecPerson`.`id`")
+    end
+    
+    def self.joins_event_orgStructure *arr
+      where("EXISTS (SELECT NULL FROM `Action` INNER JOIN `ActionProperty` ON `Action`.id = `ActionProperty`.action_id INNER JOIN `ActionProperty_OrgStructure` ON `ActionProperty`.id = `ActionProperty_OrgStructure`.id WHERE `ActionProperty_OrgStructure`.value IN (#{arr.join(",")}) AND `Action`.event_id = `Event`.id AND `Action`.actionType_id = 113 AND `ActionProperty`.type_id = 1699 ORDER BY `Action`.id DESC LIMIT 1)")
+    end
+    
+    def self.exists_event_person_speciality id
+      joins(:event).where("EXISTS (SELECT NULL FROM `Person` WHERE `Person`.speciality_id = #{id} AND `Person`.id = `Event`.execPerson_id)")
+    end
+    
+    def self.exists_event_mes code
+      joins(:event).where("EXISTS (SELECT NULL FROM `mes`.`MES` as `EventMES` WHERE `Event`.`MES_id` = `EventMES`.id AND `EventMES`.`code` like '#{code}')")
+    end
+    
     def self.with_ares
       select("kladrAREA.AREA as 'Область'").joins_ares
     end

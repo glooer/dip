@@ -158,21 +158,56 @@ class Search_window < Qt::MainWindow
     end
     
     if @ui.event_orgStructure_checkBox.checked?
-      db = db.joins(:eventPerson)#.where(eventPerson: {orgStructure_id: @ui.event_orgStructure_selecter.currentVariantWithChildren})#@ui.event_orgStructure_selecter.currentVariantWithChildren
+      db = db.joins_event_orgStructure(@ui.event_orgStructure_selecter.currentVariantWithChildren)
     end
     
-    #if @ui.orgStructure_checkBox.checked?
+    if @ui.event_person_speciality_id_checkBox.checked?
+      db = db.exists_event_person_speciality @ui.event_person_speciality_id_selecter.currentVariant
+    end
     
-    #end
+    if @ui.event_person_id_checkBox.checked?
+      db = db.joins(:event).where event: { execPerson_id: @ui.event_person_id_selecter.currentVariant }
+    end
+    
+    if @ui.event_isPrimary_checkBox.checked?
+      db = db.joins(:event).where event: {isPrimary: @ui.event_isPrimary_selecter.currentIndex + 1 } 
+    end
+    
+    if @ui.event_order_checkBox.checked?
+      db = db.joins(:event).where event: {order: @ui.event_order_selecter.currentIndex + 1 } 
+    end
+    
+    #дн
+    #лпу
+    #лпу любое кроме
+    #направитель
+    
+    
+    if @ui.event_mes_id_checkBox.checked?
+      db = db.exists_event_mes @ui.event_mes_id_edit.textf
+    end
+    
+    if @ui.event_result_id_checkBox.checked?
+      db = db.joins(:event).where event: {result_id: @ui.event_result_id_selecter.currentVariant }
+    end
+    
+    #
+    
+    
+    #
+    
     
     
     
     #действия(action)
-    #db = db.joins(:actionType)
+    
     if @ui.actionType_checkBox.checked?
-      #db = db.where("`ActionType`.`code` LIKE '#{@ui_user["action_type_tree_fields"].currentText.scan(/(^.*)\s\|/).flatten.first.force_encoding("UTF-8")}%'")
-    else #одно из действий будет выбрано по умолчанию, иначе всё будет работать очень очень медленно и выводить чаще всего не нужные данные
-      #db = db.where("`ActionType`.`code` LIKE 'А16%'")
+      if @ui.actionType_tree_select.currentText.force_encoding("UTF-8") == "Не выбрано"
+        db = db.joins(:actionType).where actionType: {"class": @ui.actionType_class.currentIndex}
+      else
+        db = db.joins(:actionType).where("`ActionType`.`code` LIKE '#{@ui.actionType_tree_select.currentText.scan(/(^.*)\s\|/).flatten.first.force_encoding("UTF-8")}%'")
+      end
+      
     end
     
     if @ui.action_directionDate_checkBox.checked?
@@ -261,8 +296,10 @@ class Search_window < Qt::MainWindow
     db_with_select = parse_ui_select(db)
     db_with_select_and_where = parse_ui_where(db_with_select)
     
-    
-    a = db_with_select_and_where.order(:id).take(limit).as_json
+    db = db_with_select_and_where
+    db = db_with_select_and_where.order(:id)
+    db = db.group("`Client`.`id`") if @ui.menu_Client_group_by.checked?
+    a = db.take(limit).as_json
     if a.empty?
       Qt::MessageBox.new{
         self.text = "Пусто"

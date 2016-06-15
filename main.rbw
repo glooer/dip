@@ -22,10 +22,6 @@ require "./module/rb.rb"
 require "./module/crutch.rb"
 require "./module/Widgets/PoTreeWidget.rb"
 require "./module/Widgets/PoTableComboBox.rb"
-require "./module/QaTreeWidget.rb"
-require "./module/QaTreeWidgetActionType.rb"
-require "./module/QaTreeWidgetLPU.rb"
-
 
 
 
@@ -33,5 +29,7 @@ require "./module/QaTreeWidgetLPU.rb"
 
 $qApp = Application.new(ARGV)
 $qApp.exec();
+
+
 
 

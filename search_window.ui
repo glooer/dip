@@ -1236,7 +1236,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>-87</y>
+                 <y>0</y>
                  <width>597</width>
                  <height>874</height>
                 </rect>
@@ -1511,6 +1511,36 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
+                    <item>
+                     <property name="text">
+                      <string>Плановый</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Экстренный</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Самотёком</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Принудительный</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Внутренний перевод</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Неотложная</string>
+                     </property>
+                    </item>
                    </widget>
                   </item>
                  </layout>
@@ -1656,7 +1686,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>-119</y>
+                 <y>0</y>
                  <width>597</width>
                  <height>885</height>
                 </rect>
@@ -2243,6 +2273,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
     <addaction name="menu_3"/>
     <addaction name="menu_event"/>
     <addaction name="menu_8"/>
+    <addaction name="menu_Client_group_by"/>
    </widget>
    <widget class="QMenu" name="menu_4">
     <property name="title">
@@ -2661,6 +2692,14 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
    </property>
    <property name="text">
     <string>Фото-номер</string>
+   </property>
+  </action>
+  <action name="menu_Client_group_by">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Группировать по пациенту</string>
    </property>
   </action>
  </widget>
