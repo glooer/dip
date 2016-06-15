@@ -4,8 +4,8 @@ class Application < Qt::Application
   def initialize *args
     super
     #S11::RbBloodType.select("NULL").take(1) #костыль шоб ActiveRecord разбудить до ввода логина, ибо он долго грузится.
-    if true
-    #if Login_window.new.exec == 1
+    #if true
+    if Login_window.new.exec == 1
       @ui = Search_window.new
       @ui.setup_ui_settings
       @ui.show

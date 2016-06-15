@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'search_window.ui'
 **
-** Created: Ñð 15. èþí 20:01:20 2016
+** Created: ×ò 16. èþí 01:18:58 2016
 **      by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!

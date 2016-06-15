@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'login_window.ui'
 **
-** Created: Ñð 15. èþí 20:01:20 2016
+** Created: ×ò 16. èþí 01:18:58 2016
 **      by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -83,8 +83,8 @@ class Ui_Login_dialog
 
     def retranslateUi(login_dialog)
     login_dialog.windowTitle = Qt::Application.translate("Login_dialog", "\320\222\321\205\320\276\320\264", nil, Qt::Application::UnicodeUTF8)
-    @user_login_label.text = Qt::Application.translate("Login_dialog", "\320\230\320\274\321\217", nil, Qt::Application::UnicodeUTF8)
-    @user_password_label.text = Qt::Application.translate("Login_dialog", "\320\237\320\260\321\200\320\276\320\273\321\214", nil, Qt::Application::UnicodeUTF8)
+    @user_login_label.text = Qt::Application.translate("Login_dialog", "&\320\230\320\274\321\217", nil, Qt::Application::UnicodeUTF8)
+    @user_password_label.text = Qt::Application.translate("Login_dialog", "&\320\237\320\260\321\200\320\276\320\273\321\214", nil, Qt::Application::UnicodeUTF8)
     end # retranslateUi
 
     def retranslate_ui(login_dialog)
