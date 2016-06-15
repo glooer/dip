@@ -1,1 +1,1 @@
-rbuic4 search_window.ui > ui_search_window.rb
+rbuic4 search_window.ui > ui_search_window.rb && rbuic4 login_window.ui > ui_login_window.rb

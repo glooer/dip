@@ -1,7 +1,14 @@
+class Ui_Search_window
+  def itemByName name
+    send(name.to_sym)
+  end
+end
+
+
 class Search_window < Qt::MainWindow
   attr_accessor :limit
 
-  slots "id_checkBox_change(int)", "ok_search_button_clicked()", "birthDate_checkBox_change(int)", "document_checkBox_ui_fill()", "oncick_export_to_csv()", "address_select_area_ui_fill()", "address_select_city_ui_fill(int)", "address_select_street(int)", "event_type_ui_fill()", "orgStructure_checkBox_ui_fill()", "age_checkBox_change(int)", "action_setPerson_id_orgStructure_fill()", "db_limit_change(QString)", "event_orgStructure_selecter_fill(int)", "actionType_tree_select_fill(int)", "actionType_class_fill(int)", "event_exec_speciality_fill(int)", "action_execPerson_speciality_fill(int)", "action_setPerson_speciality_fill(int)", "action_person_id_orgStructure_fill()", "action_finance_id_selecter_fill(int)", "action_setPerson_id_selecter_fill(int)", "event_person_id_selecter_fill(int)", "action_person_id_selecter_fill(int)", "action_assistant_id_selecter_fill(int)", "event_lpu_selecter_fill(int)", "event_relegateOrg_id_selecter_fill(int)", "event_result_id_selecter_fill(int)"
+  slots "id_checkBox_change(int)", "ok_search_button_clicked()", "birthDate_checkBox_change(int)", "document_checkBox_ui_fill()", "oncick_export_to_csv()", "address_select_area_ui_fill()", "address_select_city_ui_fill(int)", "address_select_street(int)", "event_type_ui_fill()", "orgStructure_checkBox_ui_fill()", "age_checkBox_change(int)", "action_setPerson_id_orgStructure_fill()", "db_limit_change(QString)", "event_orgStructure_selecter_fill(int)", "actionType_tree_select_fill(int)", "actionType_class_fill(int)", "event_exec_speciality_fill(int)", "action_execPerson_speciality_fill(int)", "action_setPerson_speciality_fill(int)", "action_person_id_orgStructure_fill()", "action_finance_id_selecter_fill(int)", "action_setPerson_id_selecter_fill(int)", "event_person_id_selecter_fill(int)", "action_person_id_selecter_fill(int)", "action_assistant_id_selecter_fill(int)", "event_lpu_selecter_fill(int)", "event_relegateOrg_id_selecter_fill(int)", "event_result_id_selecter_fill(int)", "test_slot(int, int)"
 
   def initialize
     super
@@ -54,12 +61,47 @@ class Search_window < Qt::MainWindow
     connect(@ui.action_person_id_checkBox, SIGNAL("stateChanged(int)"), SLOT("action_person_id_selecter_fill(int)"))
     connect(@ui.action_assistant_id_checkBox, SIGNAL("stateChanged(int)"), SLOT("action_assistant_id_selecter_fill(int)"))
     
+    
     #...
     @ui.id_checkBox.checked = true
     ok_search_button_clicked
     
+    #connect(@ui)
+    
     #@action_type_tree_fields.setData(S11::ActionType.select("id, group_id, code, name").where("class = 2").all.as_json)
     #....
+  end
+  
+  def closeEvent a
+    save_ui_settings
+  end
+  
+  def save_ui_settings
+    set = Qt::Settings.new("ui.ini", Qt::Settings::IniFormat)
+    set.beginGroup("Ui")
+    
+    ["tableView"].each do |name|
+      set.setValue(name + "_size_x", Qt::Variant.new(@ui.itemByName(name).size.width))
+      set.setValue(name + "_size_y", Qt::Variant.new(@ui.itemByName(name).size.height))
+    end
+    
+    set.endGroup
+  end
+  
+  def test_slot x, y
+    #p @ui.splitter.size
+  end
+  
+  def setup_ui_settings
+    self.showMaximized
+    @ui.splitter.setStretchFactor(0,1)
+    set = Qt::Settings.new("ui.ini", Qt::Settings::IniFormat)
+    set.beginGroup("Ui")
+    ["tableView"].each do |name|
+      @ui.itemByName(name).resize set.value("#{name}_size_x").to_i, set.value("#{name}_size_y").to_i
+    end
+    
+    set.endGroup
   end
   
   def db_limit_change(count)

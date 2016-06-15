@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'search_window.ui'
 **
-** Created: Ñð 15. èþí 03:09:23 2016
+** Created: Ñð 15. èþí 20:01:20 2016
 **      by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -1242,7 +1242,7 @@ class Ui_Search_window
     @scrollArea_2.widgetResizable = true
     @scrollAreaWidgetContents_2 = Qt::Widget.new()
     @scrollAreaWidgetContents_2.objectName = "scrollAreaWidgetContents_2"
-    @scrollAreaWidgetContents_2.geometry = Qt::Rect.new(0, -108, 597, 874)
+    @scrollAreaWidgetContents_2.geometry = Qt::Rect.new(0, 0, 597, 874)
     @gridLayout_6 = Qt::GridLayout.new(@scrollAreaWidgetContents_2)
     @gridLayout_6.objectName = "gridLayout_6"
     @verticalLayout_2 = Qt::VBoxLayout.new()

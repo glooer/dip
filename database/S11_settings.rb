@@ -13,12 +13,6 @@ module S11ActiveRecord
       :password => settings.decryptPassword(settings.value("db/encryptedPassword").toString),
       :database => settings.value("db/database").toString
     )
-    
-    
-    def self.select!(*args)
-      self.select(args)
-      p self.instance_methods
-    end
   end
   
   
