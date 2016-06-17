@@ -367,6 +367,7 @@ class Search_window < Qt::MainWindow
         model.setItem(i, j, newItem)
       end
       model.setHeaderData(i, Qt::Vertical, Qt::Variant.new(id))
+      @ui.tableView.setRowHeight(i, 19)
     end
     #newItem = Qt::StandardItem.new("e")
     #model.setItem(0, 0, newItem)

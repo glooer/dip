@@ -37,12 +37,15 @@ require "Login_window.rb"
 
 
 
-
+#begin
 $qApp = Application.new(ARGV)
 #Qt.debug_level = Qt::DebugLevel::High
 #Qt::Internal::setDebug(Qt::QtDebugChannel::QTDB_GC)
 $qApp.exec();
-
+#rescue
+  #print "какая то ошибка\n"
+  
+#end
 
 
 
