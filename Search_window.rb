@@ -8,14 +8,20 @@ end
 class Search_window < Qt::MainWindow
   attr_accessor :limit
 
-  slots "id_checkBox_change(int)", "ok_search_button_clicked()", "birthDate_checkBox_change(int)", "document_checkBox_ui_fill()", "oncick_export_to_csv()", "address_select_area_ui_fill()", "address_select_city_ui_fill(int)", "address_select_street(int)", "event_type_ui_fill()", "orgStructure_checkBox_ui_fill()", "age_checkBox_change(int)", "action_setPerson_id_orgStructure_fill()", "db_limit_change(QString)", "event_orgStructure_selecter_fill(int)", "actionType_tree_select_fill(int)", "actionType_class_fill(int)", "event_exec_speciality_fill(int)", "action_execPerson_speciality_fill(int)", "action_setPerson_speciality_fill(int)", "action_person_id_orgStructure_fill()", "action_finance_id_selecter_fill(int)", "action_setPerson_id_selecter_fill(int)", "event_person_id_selecter_fill(int)", "action_person_id_selecter_fill(int)", "action_assistant_id_selecter_fill(int)", "event_lpu_selecter_fill(int)", "event_relegateOrg_id_selecter_fill(int)", "event_result_id_selecter_fill(int)", "test_slot(int, int)"
+  slots "id_checkBox_change(int)", "ok_search_button_clicked()", "search_with_offset(int)", "birthDate_checkBox_change(int)", "document_checkBox_ui_fill()", "oncick_export_to_csv()", "address_select_area_ui_fill()", "address_select_city_ui_fill(int)", "address_select_street(int)", "event_type_ui_fill()", "orgStructure_checkBox_ui_fill()", "age_checkBox_change(int)", "action_setPerson_id_orgStructure_fill()", "db_limit_change(QString)", "event_orgStructure_selecter_fill(int)", "actionType_tree_select_fill(int)", "actionType_class_fill(int)", "event_exec_speciality_fill(int)", "action_execPerson_speciality_fill(int)", "action_setPerson_speciality_fill(int)", "action_person_id_orgStructure_fill()", "action_finance_id_selecter_fill(int)", "action_setPerson_id_selecter_fill(int)", "event_person_id_selecter_fill(int)", "action_person_id_selecter_fill(int)", "action_assistant_id_selecter_fill(int)", "event_lpu_selecter_fill(int)", "event_relegateOrg_id_selecter_fill(int)", "event_result_id_selecter_fill(int)", "test_slot()", "paginator_off_event(bool)"
 
   def initialize
     super
     @ui = Ui_Search_window.new
     @ui.setupUi(self)
     
-    @limit = @ui.db_limit_selecter.currentText
+    @widgets_for_save_settings_size = ["tableView"]
+    @widgets_for_save_settings_checked = ["menu_Event_sub"]
+    
+    @count_all_record = Qt::Label.new
+    @ui.statusbar.addPermanentWidget(@count_all_record)
+    
+    #@limit = @ui.db_limit_selecter.currentText
     
     #...
     #@ui_user = {}
@@ -24,7 +30,7 @@ class Search_window < Qt::MainWindow
     #...
     
     connect(@ui.ok_search_button, SIGNAL("clicked()"), SLOT("ok_search_button_clicked()"))
-    connect(@ui.db_limit_selecter, SIGNAL("currentIndexChanged(QString)"), SLOT("db_limit_change(QString)"))
+    #connect(@ui.db_limit_selecter, SIGNAL("currentIndexChanged(QString)"), SLOT("db_limit_change(QString)"))
     
     connect(@ui.id_checkBox, SIGNAL("stateChanged(int)"), SLOT("id_checkBox_change(int)"))
     connect(@ui.birthDate_checkBox, SIGNAL("stateChanged(int)"), SLOT("birthDate_checkBox_change(int)"))
@@ -62,14 +68,28 @@ class Search_window < Qt::MainWindow
     connect(@ui.action_assistant_id_checkBox, SIGNAL("stateChanged(int)"), SLOT("action_assistant_id_selecter_fill(int)"))
     
     
+    #pages
+    connect(@ui.paginator, SIGNAL("currentPageChanged(int)"), SLOT("search_with_offset(int)"))
+    connect(@ui.paginator_off, SIGNAL("triggered(bool)"), SLOT("paginator_off_event(bool)"))
+    
+    
+    
+    connect(@ui.actionTest, SIGNAL("triggered(bool)"), SLOT("test_slot()"))
+    #paginator_off_event
     #...
+    
+    setup_ui_settings
     @ui.id_checkBox.checked = true
     ok_search_button_clicked
+    
+    
     
     #connect(@ui)
     
     #@action_type_tree_fields.setData(S11::ActionType.select("id, group_id, code, name").where("class = 2").all.as_json)
     #....
+    
+    
   end
   
   def closeEvent a
@@ -80,33 +100,76 @@ class Search_window < Qt::MainWindow
     set = Qt::Settings.new("ui.ini", Qt::Settings::IniFormat)
     set.beginGroup("Ui")
     
-    ["tableView"].each do |name|
+    set.setValue("Search_window_isMaximized", Qt::Variant.new(self.maximized?))
+    set.setValue("Search_window_geometry_x", Qt::Variant.new(self.geometry.x))
+    set.setValue("Search_window_geometry_y", Qt::Variant.new(self.geometry.y))
+    set.setValue("Search_window_geometry_width", Qt::Variant.new(self.geometry.width))
+    set.setValue("Search_window_geometry_height", Qt::Variant.new(self.geometry.height))
+    
+    
+    @widgets_for_save_settings_size.each do |name|
       set.setValue(name + "_size_x", Qt::Variant.new(@ui.itemByName(name).size.width))
       set.setValue(name + "_size_y", Qt::Variant.new(@ui.itemByName(name).size.height))
     end
     
-    set.endGroup
-  end
-  
-  def test_slot x, y
-    #p @ui.splitter.size
-  end
-  
-  def setup_ui_settings
-    self.showMaximized
-    @ui.splitter.setStretchFactor(0,1)
-    set = Qt::Settings.new("ui.ini", Qt::Settings::IniFormat)
-    set.beginGroup("Ui")
-    ["tableView"].each do |name|
-      @ui.itemByName(name).resize set.value("#{name}_size_x").to_i, set.value("#{name}_size_y").to_i
+    @widgets_for_save_settings_checked.each do |name|
+      set.setValue(name + "_checked", Qt::Variant.new(@ui.itemByName(name).checked))
     end
+    
+    @ui.menubar.findChildren(Qt::Menu).map(&:actions).flatten.select{ |v| v.objectName and v.checkable }.each do |name|
+      set.setValue(name.objectName + "_checked", Qt::Variant.new(name.checked?))
+    end
+    
+    name = "paginator"
+    set.setValue(name + "_index", Qt::Variant.new(@ui.itemByName(name).currentIndexPagesSizeSelecter))
     
     set.endGroup
   end
   
-  def db_limit_change(count)
-    @limit = count.to_i
+  def test_slot
+    p self.maximized?
+    p self.geometry
   end
+  
+  def setup_ui_settings
+    #self.showMaximized
+    @ui.splitter.setStretchFactor(0,1)
+    set = Qt::Settings.new("ui.ini", Qt::Settings::IniFormat)
+    set.beginGroup("Ui")
+    
+    
+    set.value("Search_window_isMaximized", Qt::Variant.new(self.maximized?))
+    set.value("Search_window_geometry_x", Qt::Variant.new(self.geometry.x))
+    set.value("Search_window_geometry_y", Qt::Variant.new(self.geometry.y))
+    set.value("Search_window_geometry_width", Qt::Variant.new(self.geometry.width))
+    set.value("Search_window_geometry_height", Qt::Variant.new(self.geometry.height))
+    self.setGeometry set.value("Search_window_geometry_x").to_i, set.value("Search_window_geometry_y").to_i, set.value("Search_window_geometry_width").to_i, set.value("Search_window_geometry_height").to_i
+    
+    #p set.value("Search_window_isMaximized").toString
+    self.showMaximized if set.value("Search_window_isMaximized").toBool
+    
+    @widgets_for_save_settings_size.each do |name|
+      @ui.itemByName(name).resize set.value("#{name}_size_x").to_i, set.value("#{name}_size_y").to_i
+    end
+    
+    @widgets_for_save_settings_checked.each do |name|
+      @ui.itemByName(name).checked = set.value("#{name}_checked").toString == "true" ? true : false
+    end
+    
+    @ui.menubar.findChildren(Qt::Menu).map(&:actions).flatten.select{ |v| v.objectName and v.checkable }.each do |name|
+      name.checked = set.value("#{name.objectName}_checked").toString == "true" ? true : false
+    end
+    
+    name = "paginator"
+    @ui.itemByName(name).setIndexPagesSizeSelecter set.value("#{name}_index").to_i
+    set.setValue(name + "_index", Qt::Variant.new(@ui.itemByName(name).currentIndexPagesSizeSelecter))
+    
+    set.endGroup
+  end
+  
+  #def db_limit_change(count)
+    #@limit = count.to_i
+  #end
 
   
   def parse_ui_where(db)
@@ -265,7 +328,19 @@ class Search_window < Qt::MainWindow
     filename = Qt::FileDialog::getSaveFileName(self, "", "Clients_#{time}.csv", "CSV for MS Excel (*.csv)\n All files (*.*)") || return
     filename += ".csv" if File.extname(filename).empty?
     
-    Export.to_csv(filename, @ui.tableView.model.to_a, header: @ui.tableView.model.headers)
+    csv = Export.to_csv(filename)#, @ui.tableView.model.to_a, header: @ui.tableView.model.headers)
+    db = S11::Client.select(:id)
+    db_with_select = parse_ui_select(db)
+    db_with_select_and_where = parse_ui_where(db_with_select)
+    
+    db = db_with_select_and_where
+    #db = db_with_select_and_where.order(:id)
+    #db = db.group("`Client`.`id`") if @ui.menu_Client_group_by.checked?
+    a = db.find_each do |value|
+      csv << value.as_json.values
+    end
+    csv.close
+    #Export.to_csv(filename, @ui.tableView.model.to_a, header: @ui.tableView.model.headers)
   end
   
   def parse_ui_select(db)
@@ -334,6 +409,19 @@ class Search_window < Qt::MainWindow
   end
   
   def ok_search_button_clicked
+    showResult goSearch
+  end
+  
+  def search_with_offset i
+    showResult goSearch i 
+  end
+  
+  def showResult table
+    return Qt::MessageBox.new{ self.text = "Пусто" }.exec() if table.empty?
+    show_main_table table
+  end
+  
+  def goSearch offset = 0, limit = @ui.paginator.currentSize
     db = S11::Client
     db_with_select = parse_ui_select(db)
     db_with_select_and_where = parse_ui_where(db_with_select)
@@ -341,15 +429,20 @@ class Search_window < Qt::MainWindow
     db = db_with_select_and_where
     db = db_with_select_and_where.order(:id)
     db = db.group("`Client`.`id`") if @ui.menu_Client_group_by.checked?
-    a = db.take(limit).as_json
-    if a.empty?
-      Qt::MessageBox.new{
-        self.text = "Пусто"
-      }.exec()
-      return
-    end
-    show_main_table(a)
     
+    db = db.select("SQL_CALC_FOUND_ROWS") if offset == 0 and !@ui.paginator_off.checked?
+    a = db.offset(offset).take(limit).as_json
+    
+    #@ui.paginator.update db.found_rows  if offset == 0 and !@ui.paginator_off.checked?
+    b = db.found_rows
+    if offset == 0 and !@ui.paginator_off.checked?
+      @ui.paginator.update b 
+      @count_all_record.text = "Всего записей: #{b}"
+    end
+    #@count_all_record.text = "hi!"
+    
+    
+    return a    
   end
   
   
@@ -554,6 +647,18 @@ class Search_window < Qt::MainWindow
   def event_result_id_selecter_fill i
     return if !@ui.event_result_id_selecter.count.zero?
     S11::RbResult.select([:id, :name]).find_each{ |val| @ui.event_result_id_selecter.addItem(val[:name], Qt::Variant.new(val[:id])) }
+  end
+  
+  def paginator_off_event i
+    if i
+      mb = Qt::MessageBox.new self do
+        self.text = "Отключение разбивки на страницы может ускорить выполнение запроса, но если результатов запроса будет больше чем ограничение на колличество строк, то будет отображено только указанное колличество строк."
+        self.icon = Qt::MessageBox::Information
+        self.setWindowTitle("Внимание!")
+      end
+      mb.exec
+      mb.dispose
+    end
   end
   
   

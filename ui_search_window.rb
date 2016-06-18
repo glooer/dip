@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'search_window.ui'
 **
-** Created: зђ 16. шўэ 01:18:58 2016
+** Created: бс 18. шўэ 02:04:25 2016
 **      by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -54,18 +54,15 @@ class Ui_Search_window
     attr_reader :menu_Client_indentification_11
     attr_reader :menu_Client_indentification_12
     attr_reader :menu_Client_group_by
+    attr_reader :paginator_off
+    attr_reader :actionTest
     attr_reader :centralwidget
     attr_reader :gridLayout
     attr_reader :splitter
     attr_reader :verticalLayoutWidget
     attr_reader :verticalLayout_7
     attr_reader :tableView
-    attr_reader :horizontalLayout_11
-    attr_reader :toolButton
-    attr_reader :comboBox
-    attr_reader :toolButton_3
-    attr_reader :horizontalSpacer_5
-    attr_reader :db_limit_selecter
+    attr_reader :paginator
     attr_reader :layoutWidget
     attr_reader :gridLayout_2
     attr_reader :horizontalLayout_5
@@ -321,6 +318,7 @@ class Ui_Search_window
     attr_reader :menu_8
     attr_reader :menu_4
     attr_reader :menu_5
+    attr_reader :menu_11
     attr_reader :statusbar
 
     def setupUi(search_window)
@@ -485,6 +483,12 @@ class Ui_Search_window
     @menu_Client_group_by = Qt::Action.new(search_window)
     @menu_Client_group_by.objectName = "menu_Client_group_by"
     @menu_Client_group_by.checkable = true
+    @paginator_off = Qt::Action.new(search_window)
+    @paginator_off.objectName = "paginator_off"
+    @paginator_off.checkable = true
+    @paginator_off.checked = true
+    @actionTest = Qt::Action.new(search_window)
+    @actionTest.objectName = "actionTest"
     @centralwidget = Qt::Widget.new(search_window)
     @centralwidget.objectName = "centralwidget"
     @sizePolicy = Qt::SizePolicy.new(Qt::SizePolicy::Preferred, Qt::SizePolicy::Preferred)
@@ -508,6 +512,7 @@ class Ui_Search_window
     @splitter.opaqueResize = true
     @splitter.handleWidth = 5
     @splitter.childrenCollapsible = true
+    @splitter.setProperty("setStretchFactor", Qt::Variant.new(Qt::ByteArray.new("0, 1")))
     @verticalLayoutWidget = Qt::Widget.new(@splitter)
     @verticalLayoutWidget.objectName = "verticalLayoutWidget"
     @verticalLayout_7 = Qt::VBoxLayout.new(@verticalLayoutWidget)
@@ -522,37 +527,10 @@ class Ui_Search_window
 
     @verticalLayout_7.addWidget(@tableView)
 
-    @horizontalLayout_11 = Qt::HBoxLayout.new()
-    @horizontalLayout_11.objectName = "horizontalLayout_11"
-    @toolButton = Qt::ToolButton.new(@verticalLayoutWidget)
-    @toolButton.objectName = "toolButton"
-    @toolButton.enabled = false
+    @paginator = PoPaginator.new(@verticalLayoutWidget)
+    @paginator.objectName = "paginator"
 
-    @horizontalLayout_11.addWidget(@toolButton)
-
-    @comboBox = Qt::ComboBox.new(@verticalLayoutWidget)
-    @comboBox.objectName = "comboBox"
-    @comboBox.enabled = false
-
-    @horizontalLayout_11.addWidget(@comboBox)
-
-    @toolButton_3 = Qt::ToolButton.new(@verticalLayoutWidget)
-    @toolButton_3.objectName = "toolButton_3"
-    @toolButton_3.enabled = false
-
-    @horizontalLayout_11.addWidget(@toolButton_3)
-
-    @horizontalSpacer_5 = Qt::SpacerItem.new(40, 20, Qt::SizePolicy::Expanding, Qt::SizePolicy::Minimum)
-
-    @horizontalLayout_11.addItem(@horizontalSpacer_5)
-
-    @db_limit_selecter = Qt::ComboBox.new(@verticalLayoutWidget)
-    @db_limit_selecter.objectName = "db_limit_selecter"
-
-    @horizontalLayout_11.addWidget(@db_limit_selecter)
-
-
-    @verticalLayout_7.addLayout(@horizontalLayout_11)
+    @verticalLayout_7.addWidget(@paginator)
 
     @splitter.addWidget(@verticalLayoutWidget)
     @layoutWidget = Qt::Widget.new(@splitter)
@@ -606,7 +584,7 @@ class Ui_Search_window
     @scrollArea.widgetResizable = true
     @scrollAreaWidgetContents = Qt::Widget.new()
     @scrollAreaWidgetContents.objectName = "scrollAreaWidgetContents"
-    @scrollAreaWidgetContents.geometry = Qt::Rect.new(0, 0, 614, 766)
+    @scrollAreaWidgetContents.geometry = Qt::Rect.new(0, 0, 208, 750)
     @scrollAreaWidgetContents.styleSheet = ""
     @verticalLayout = Qt::VBoxLayout.new(@scrollAreaWidgetContents)
     @verticalLayout.objectName = "verticalLayout"
@@ -1144,7 +1122,7 @@ class Ui_Search_window
     @toolBox.addItem(@page_4, Qt::Application.translate("Search_window", "\320\234\320\265\321\201\321\202\320\276 \320\275\320\260\321\205\320\276\320\266\320\264\320\265\320\275\320\270\321\217", nil, Qt::Application::UnicodeUTF8))
     @page_5 = Qt::Widget.new()
     @page_5.objectName = "page_5"
-    @page_5.geometry = Qt::Rect.new(0, 0, 596, 69)
+    @page_5.geometry = Qt::Rect.new(0, 0, 164, 68)
     @horizontalLayout_10 = Qt::HBoxLayout.new(@page_5)
     @horizontalLayout_10.objectName = "horizontalLayout_10"
     @horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
@@ -1552,7 +1530,7 @@ class Ui_Search_window
     @scrollArea_3.widgetResizable = true
     @scrollAreaWidgetContents_3 = Qt::Widget.new()
     @scrollAreaWidgetContents_3.objectName = "scrollAreaWidgetContents_3"
-    @scrollAreaWidgetContents_3.geometry = Qt::Rect.new(0, 0, 597, 885)
+    @scrollAreaWidgetContents_3.geometry = Qt::Rect.new(0, 0, 198, 885)
     @gridLayout_8 = Qt::GridLayout.new(@scrollAreaWidgetContents_3)
     @gridLayout_8.objectName = "gridLayout_8"
     @action_directionDate_layout = Qt::VBoxLayout.new()
@@ -1924,6 +1902,8 @@ class Ui_Search_window
     @menu_4.objectName = "menu_4"
     @menu_5 = Qt::Menu.new(@menu_4)
     @menu_5.objectName = "menu_5"
+    @menu_11 = Qt::Menu.new(@menubar)
+    @menu_11.objectName = "menu_11"
     search_window.setMenuBar(@menubar)
     @statusbar = Qt::StatusBar.new(search_window)
     @statusbar.objectName = "statusbar"
@@ -1932,6 +1912,7 @@ class Ui_Search_window
 
     @menubar.addAction(@menu.menuAction())
     @menubar.addAction(@menu_4.menuAction())
+    @menubar.addAction(@menu_11.menuAction())
     @menu.addAction(@menu_2.menuAction())
     @menu.addAction(@menu_3.menuAction())
     @menu.addAction(@menu_event.menuAction())
@@ -1987,6 +1968,8 @@ class Ui_Search_window
     @menu_9.addAction(@menu_Event_MES_name)
     @menu_4.addAction(@menu_5.menuAction())
     @menu_5.addAction(@export_csv)
+    @menu_11.addAction(@paginator_off)
+    @menu_11.addAction(@actionTest)
 
     retranslateUi(search_window)
     Qt::Object.connect(@document_checkBox, SIGNAL('clicked(bool)'), @document_number, SLOT('setEnabled(bool)'))
@@ -2114,11 +2097,8 @@ class Ui_Search_window
     @menu_Client_indentification_11.text = Qt::Application.translate("Search_window", "\320\220\320\264\321\200\320\265\321\201 \320\277\321\200\320\276\320\266\320\270\320\262\320\260\320\275\320\270\321\217 \320\277\320\260\321\206\320\270\320\265\320\275\321\202\320\260", nil, Qt::Application::UnicodeUTF8)
     @menu_Client_indentification_12.text = Qt::Application.translate("Search_window", "\320\244\320\276\321\202\320\276-\320\275\320\276\320\274\320\265\321\200", nil, Qt::Application::UnicodeUTF8)
     @menu_Client_group_by.text = Qt::Application.translate("Search_window", "\320\223\321\200\321\203\320\277\320\277\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \320\277\320\276 \320\277\320\260\321\206\320\270\320\265\320\275\321\202\321\203", nil, Qt::Application::UnicodeUTF8)
-    @toolButton.text = Qt::Application.translate("Search_window", "<", nil, Qt::Application::UnicodeUTF8)
-    @toolButton_3.text = Qt::Application.translate("Search_window", ">", nil, Qt::Application::UnicodeUTF8)
-    @db_limit_selecter.insertItems(0, [Qt::Application.translate("Search_window", "10", nil, Qt::Application::UnicodeUTF8),
-        Qt::Application.translate("Search_window", "100", nil, Qt::Application::UnicodeUTF8),
-        Qt::Application.translate("Search_window", "1000", nil, Qt::Application::UnicodeUTF8)])
+    @paginator_off.text = Qt::Application.translate("Search_window", "\320\236\321\202\320\272\320\273\321\216\321\207\320\270\321\202\321\214 \321\200\320\260\320\267\320\261\320\270\320\262\320\272\321\203 \320\275\320\260 \321\201\321\202\321\200\320\260\320\275\320\270\321\206\321\213", nil, Qt::Application::UnicodeUTF8)
+    @actionTest.text = Qt::Application.translate("Search_window", "Test", nil, Qt::Application::UnicodeUTF8)
     @pushButton_2.text = Qt::Application.translate("Search_window", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nil, Qt::Application::UnicodeUTF8)
     @ok_search_button.text = Qt::Application.translate("Search_window", "\320\237\321\200\320\270\320\274\320\265\320\275\320\270\321\202\321\214", nil, Qt::Application::UnicodeUTF8)
     @id_checkBox.text = Qt::Application.translate("Search_window", "\320\232\320\276\320\264", nil, Qt::Application::UnicodeUTF8)
@@ -2231,6 +2211,7 @@ class Ui_Search_window
     @menu_8.title = Qt::Application.translate("Search_window", "\320\224\320\265\320\271\321\201\321\202\320\262\320\270\321\217", nil, Qt::Application::UnicodeUTF8)
     @menu_4.title = Qt::Application.translate("Search_window", "\320\240\320\265\320\267\321\203\320\273\321\214\321\202\320\260\321\202\321\213 \320\267\320\260\320\277\321\200\320\276\321\201\320\260", nil, Qt::Application::UnicodeUTF8)
     @menu_5.title = Qt::Application.translate("Search_window", "\320\255\320\272\321\201\320\277\320\276\321\200\321\202", nil, Qt::Application::UnicodeUTF8)
+    @menu_11.title = Qt::Application.translate("Search_window", "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\270", nil, Qt::Application::UnicodeUTF8)
     end # retranslateUi
 
     def retranslate_ui(search_window)

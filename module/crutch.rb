@@ -10,6 +10,11 @@ class Arel::Visitors::ToSql
 
     collector = maybe_visit o.set_quantifier, collector
 
+    if x = o.projections.index("SQL_CALC_FOUND_ROWS")
+      o.projections.delete_at(x)
+      collector << SPACE << "SQL_CALC_FOUND_ROWS"
+    end
+    
     unless o.projections.empty?
       collector << SPACE
       len = o.projections.length - 1

@@ -18,6 +18,10 @@ module S11
       select("(SELECT `ClientIdentification`.`identifier` FROM `ClientIdentification` WHERE `ClientIdentification`.`client_id` = `Client`.`id` AND `ClientIdentification`.`accountingSystem_id` = #{n} LIMIT 1) as '#{as}'")
     end
     
+    def self.found_rows
+      self.find_by_sql("SELECT FOUND_ROWS();").first["FOUND_ROWS()"]
+    end
+    
     belongs_to :rbBloodType, foreign_key: "bloodType_id"
     
     has_many :clientIdentification, foreign_key: "client_id"

@@ -86,67 +86,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
          </widget>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_11">
-          <item>
-           <widget class="QToolButton" name="toolButton">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="text">
-             <string>&lt;</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="comboBox">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QToolButton" name="toolButton_3">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="text">
-             <string>&gt;</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_5">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QComboBox" name="db_limit_selecter">
-            <item>
-             <property name="text">
-              <string>10</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>100</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>1000</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-         </layout>
+         <widget class="PoPaginator" name="paginator" native="true"/>
         </item>
        </layout>
       </widget>
@@ -2287,8 +2227,16 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
     </widget>
     <addaction name="menu_5"/>
    </widget>
+   <widget class="QMenu" name="menu_11">
+    <property name="title">
+     <string>Настройки</string>
+    </property>
+    <addaction name="paginator_off"/>
+    <addaction name="actionTest"/>
+   </widget>
    <addaction name="menu"/>
    <addaction name="menu_4"/>
+   <addaction name="menu_11"/>
   </widget>
   <widget class="QStatusBar" name="statusbar">
    <property name="enabled">
@@ -2702,6 +2650,22 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
     <string>Группировать по пациенту</string>
    </property>
   </action>
+  <action name="paginator_off">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Отключить разбивку на страницы</string>
+   </property>
+  </action>
+  <action name="actionTest">
+   <property name="text">
+    <string>Test</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
@@ -2713,6 +2677,12 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
    <class>PoTableComboBox</class>
    <extends>QComboBox</extends>
    <header location="global">potablecombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PoPaginator</class>
+   <extends>QWidget</extends>
+   <header location="global">popaginator.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

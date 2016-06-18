@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'login_window.ui'
 **
-** Created: зђ 16. шўэ 01:18:58 2016
+** Created: бс 18. шўэ 02:04:25 2016
 **      by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
