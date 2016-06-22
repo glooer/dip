@@ -15,8 +15,7 @@ class Search_window < Qt::MainWindow
     @ui = Ui_Search_window.new
     @ui.setupUi(self)
     
-    @widgets_for_save_settings_size = ["tableView"]
-    @widgets_for_save_settings_checked = ["menu_Event_sub"]
+    
     
     @count_all_record = Qt::Label.new
     @ui.statusbar.addPermanentWidget(@count_all_record)
@@ -97,6 +96,8 @@ class Search_window < Qt::MainWindow
   end
   
   def save_ui_settings
+    AppSettings.save_ui self, @ui
+  '''
     set = Qt::Settings.new("ui.ini", Qt::Settings::IniFormat)
     set.beginGroup("Ui")
     
@@ -124,47 +125,60 @@ class Search_window < Qt::MainWindow
     set.setValue(name + "_index", Qt::Variant.new(@ui.itemByName(name).currentIndexPagesSizeSelecter))
     
     set.endGroup
+    
+    '''
   end
   
   def test_slot
-    p self.maximized?
-    p self.geometry
+    #UiSettings.test @ui
   end
   
   def setup_ui_settings
+    AppSettings.setup_ui self, @ui
     #self.showMaximized
+    '''
     @ui.splitter.setStretchFactor(0,1)
     set = Qt::Settings.new("ui.ini", Qt::Settings::IniFormat)
     set.beginGroup("Ui")
     
-    
-    set.value("Search_window_isMaximized", Qt::Variant.new(self.maximized?))
-    set.value("Search_window_geometry_x", Qt::Variant.new(self.geometry.x))
-    set.value("Search_window_geometry_y", Qt::Variant.new(self.geometry.y))
-    set.value("Search_window_geometry_width", Qt::Variant.new(self.geometry.width))
-    set.value("Search_window_geometry_height", Qt::Variant.new(self.geometry.height))
-    self.setGeometry set.value("Search_window_geometry_x").to_i, set.value("Search_window_geometry_y").to_i, set.value("Search_window_geometry_width").to_i, set.value("Search_window_geometry_height").to_i
-    
-    #p set.value("Search_window_isMaximized").toString
-    self.showMaximized if set.value("Search_window_isMaximized").toBool
+    p ["------", set.value("fdasfdsa").toString]
+    #set.value("Search_window_isMaximized", Qt::Variant.new(self.maximized?))
+    #set.value("Search_window_geometry_x", Qt::Variant.new(self.geometry.x))
+    #set.value("Search_window_geometry_y", Qt::Variant.new(self.geometry.y))
+    #set.value("Search_window_geometry_width", Qt::Variant.new(self.geometry.width))
+    #set.value("Search_window_geometry_height", Qt::Variant.new(self.geometry.height))
+    if set.value("Search_window_isMaximized").toString != ""
+      self.setGeometry set.value("Search_window_geometry_x").to_i, set.value("Search_window_geometry_y").to_i, set.value("Search_window_geometry_width").to_i, set.value("Search_window_geometry_height").to_i
+      self.showMaximized if set.value("Search_window_isMaximized").toBool
+    end
     
     @widgets_for_save_settings_size.each do |name|
-      @ui.itemByName(name).resize set.value("#{name}_size_x").to_i, set.value("#{name}_size_y").to_i
+      if set.value("#{name}_size_y").toString != "" and set.value("#{name}_size_x").toString != ""
+        @ui.itemByName(name).resize set.value("#{name}_size_x").to_i, set.value("#{name}_size_y").to_i
+      end
     end
     
     @widgets_for_save_settings_checked.each do |name|
-      @ui.itemByName(name).checked = set.value("#{name}_checked").toString == "true" ? true : false
+      if set.value("#{name}_checked").toString != ""
+        @ui.itemByName(name).checked = set.value("#{name}_checked").toString == "true" ? true : false
+      end
     end
     
     @ui.menubar.findChildren(Qt::Menu).map(&:actions).flatten.select{ |v| v.objectName and v.checkable }.each do |name|
-      name.checked = set.value("#{name.objectName}_checked").toString == "true" ? true : false
+      if not set.value("#{name.objectName}_checked").toString.nil?
+        name.checked = set.value("#{name.objectName}_checked").toString == "true" ? true : false
+      end
     end
     
+
     name = "paginator"
-    @ui.itemByName(name).setIndexPagesSizeSelecter set.value("#{name}_index").to_i
-    set.setValue(name + "_index", Qt::Variant.new(@ui.itemByName(name).currentIndexPagesSizeSelecter))
+    if set.value("#{name}_index").toString != ""
+      @ui.itemByName(name).setIndexPagesSizeSelecter set.value("#{name}_index").to_i
+    end
+    #set.setValue(name + "_index", Qt::Variant.new(@ui.itemByName(name).currentIndexPagesSizeSelecter))
     
     set.endGroup
+    '''
   end
   
   #def db_limit_change(count)

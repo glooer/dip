@@ -9,6 +9,7 @@ require "squeel"
 #module
 require "csv"
 require "date"
+require "./module/Ui_settings.rb"
 require "./module/export.rb"
 require "./module/rb.rb"
 require "./module/crutch.rb"
