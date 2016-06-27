@@ -100,5 +100,9 @@ module S11
     has_many :clientSocStatus, -> { where("ClientSocStatus.id IN (SELECT MAX(id) FROM ClientSocStatus as CSS WHERE CSS.client_id = ClientSocStatus.client_id GROUP BY CSS.socStatusClass_id, CSS.client_id)") }, foreign_key: "client_id"
     
     has_many :rbSocStatusType, :through => :clientSocStatus
+    
+    def self.with_actionProperty
+      joins(:action).select("(SELECT `ActionProperty_String`.value FROM `ActionProperty` INNER JOIN `ActionPropertyType` ON `ActionPropertyType`.id = `ActionProperty`.type_id INNER JOIN `ActionProperty_String` ON `ActionProperty_String`.id = `ActionProperty`.id WHERE `ActionProperty`.action_id = `Action`.id AND `ActionPropertyType`.name = 'Название операции' LIMIT 1) as `Название операции`")
+    end
   end
 end

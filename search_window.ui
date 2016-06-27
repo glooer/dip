@@ -135,7 +135,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tab">
            <property name="styleSheet">
@@ -236,7 +236,7 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
                      <bool>false</bool>
                     </property>
                     <property name="text">
-                     <string>70650</string>
+                     <string>113191</string>
                     </property>
                    </widget>
                   </item>
@@ -2208,6 +2208,9 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
      <property name="title">
       <string>Действия</string>
      </property>
+     <addaction name="menu_ActionType_code"/>
+     <addaction name="menu_ActionType_name"/>
+     <addaction name="menu_ActionProperty_value"/>
     </widget>
     <addaction name="menu_2"/>
     <addaction name="menu_3"/>
@@ -2664,6 +2667,30 @@ QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }</string>
   <action name="actionTest">
    <property name="text">
     <string>Test</string>
+   </property>
+  </action>
+  <action name="menu_ActionType_code">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Код действия</string>
+   </property>
+  </action>
+  <action name="menu_ActionType_name">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Имя действия</string>
+   </property>
+  </action>
+  <action name="menu_ActionProperty_value">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Название</string>
    </property>
   </action>
  </widget>

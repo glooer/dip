@@ -418,8 +418,20 @@ class Search_window < Qt::MainWindow
     db = db.select("mes.MES.name as 'МЭС (название)'").joins{ mes.outer } if @ui.menu_Event_MES_name.checked?
     db = db.joins(:event).with_department if @ui.menu_Event_sub.checked?
     
+    #действия
+    if @ui.menu_ActionType_code.checked?
+      db = db.select("`ActionType`.code as 'Код действия'").joins(:actionType)
+    end
+  
+    if @ui.menu_ActionType_name.checked?
+      db = db.select("`ActionType`.name as 'Название действия'").joins(:actionType)
+    end
+    
+    if @ui.menu_ActionProperty_value.checked?
+      db = db.with_actionProperty
+    end
+    
     db
-    #
   end
   
   def ok_search_button_clicked
